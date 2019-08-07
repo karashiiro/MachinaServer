@@ -1,6 +1,5 @@
 ﻿namespace Sapphire.Network.Packets
 {
-
     ////////////////////////////////////////////////////////////////////////////////
     /// Lobby Connection IPC Codes
     /**
@@ -378,6 +377,4 @@
     {
         TellReq = 0x0064,
     };
-
-
 }
