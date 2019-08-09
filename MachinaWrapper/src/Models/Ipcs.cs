@@ -1,5 +1,6 @@
 ﻿namespace Sapphire.Network.Packets
 {
+
     ////////////////////////////////////////////////////////////////////////////////
     /// Lobby Connection IPC Codes
     /**
@@ -95,8 +96,7 @@
 
         MailDeleteRequest = 0x012B, // updated 5.0
 
-        FreeCompanyMemberLogInOut = 0x012C, // added 5.0
-                                            // 12D - 137 - constant gap between 4.5x -> 5.0
+        // 12D - 137 - constant gap between 4.5x -> 5.0
         ReqMoogleMailList = 0x0138, // updated 5.0
         ReqMoogleMailLetter = 0x0139, // updated 5.0
         MailLetterNotification = 0x013A, // updated 5.0
@@ -104,7 +104,7 @@
         MarketBoardItemListingCount = 0x0125, // updated 4.5
         MarketBoardItemListing = 0x0126, // updated 4.5
         MarketBoardItemListingHistory = 0x012A, // updated 4.5
-        MarketBoardSearchResult = 0x0139, // updated 4.5
+        MarketBoardSearchResult = 0x013C, // updated 5.0
 
         CharaFreeCompanyTag = 0x013B, // updated 4.5
         FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -368,6 +368,8 @@
     {
         Tell = 0x0064, // updated for sb
         TellErrNotFound = 0x0066,
+
+        FreeCompanyEvent = 0x012C, // added 5.0
     };
 
     /**
@@ -377,4 +379,6 @@
     {
         TellReq = 0x0064,
     };
+
+
 }

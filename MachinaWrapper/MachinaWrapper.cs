@@ -150,11 +150,19 @@ namespace MachinaWrapper
                 {
                     // Inbound packet
                     ipcType = Enum.GetName(typeof(ServerZoneIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    if (ipcType == null)
+                    {
+                        ipcType = Enum.GetName(typeof(ServerChatIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    }
                 }
                 else
                 {
                     // Outbound packet
                     ipcType = Enum.GetName(typeof(ClientZoneIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    if (ipcType == null)
+                    {
+                        ipcType = Enum.GetName(typeof(ClientChatIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    }
                 }
 
                 // Server ID and timestamp
