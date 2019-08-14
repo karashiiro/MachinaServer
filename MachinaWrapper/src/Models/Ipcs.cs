@@ -107,7 +107,7 @@
         MarketBoardSearchResult = 0x0139, // updated 4.5
 
         CharaFreeCompanyTag = 0x013B, // updated 4.5
-        FreeCompanyBoardMsg = 0x013C, // updated 4.5
+        //FreeCompanyBoardMsg = 0x013C, // updated 4.5
         FreeCompanyInfo = 0x013D, // updated 4.5
         ExamineFreeCompanyInfo = 0x013E, // updated 4.5
 
