@@ -129,8 +129,8 @@ namespace MachinaWrapper
 
             // Actor ID obfuscation for some measure of privacy, discouraging stalking and the like.
             // Ideally this data could just be wiped out, but that would make IPC data completely useless.
-            byte[] sourceActorID = BitConverter.GetBytes(BitConverter.ToUInt32(data, SOURCE_ACTOR_OFFSET) ^ Modulator);
-            byte[] targetActorID = BitConverter.GetBytes(BitConverter.ToUInt32(data, TARGET_ACTOR_OFFSET) ^ Modulator);
+            byte[] sourceActorID = SOURCE_ACTOR_OFFSET + 4 < packetSize ? BitConverter.GetBytes(BitConverter.ToUInt32(data, SOURCE_ACTOR_OFFSET) ^ Modulator) : new byte[4];
+            byte[] targetActorID = TARGET_ACTOR_OFFSET + 4 < packetSize ? BitConverter.GetBytes(BitConverter.ToUInt32(data, TARGET_ACTOR_OFFSET) ^ Modulator) : new byte[4];
             // Copy obfuscated data in
             for (int i = 0; i < 4; i++)
             {
@@ -139,35 +139,36 @@ namespace MachinaWrapper
             }
 
             // Get IPC data, if applicable.
-            ushort segmentType = BitConverter.ToUInt16(data, SEGMENT_TYPE_OFFSET);
+            ushort segmentType = SEGMENT_TYPE_OFFSET + 2 < packetSize ? BitConverter.ToUInt16(data, SEGMENT_TYPE_OFFSET) : new ushort();
             string ipcType = null;
             ushort serverID = 0;
             uint timestamp = 0;
             if (segmentType == 3) // IPC segment type
             {
                 // IPC opcode
+                ushort ipcOpcode = IPC_TYPE_OFFSET + 2 < packetSize ? BitConverter.ToUInt16(data, IPC_TYPE_OFFSET) : new ushort();
                 if (operation == "receive")
                 {
                     // Inbound packet
-                    ipcType = Enum.GetName(typeof(ServerZoneIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    ipcType = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
                     if (ipcType == null)
                     {
-                        ipcType = Enum.GetName(typeof(ServerChatIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                        ipcType = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
                     }
                 }
                 else
                 {
                     // Outbound packet
-                    ipcType = Enum.GetName(typeof(ClientZoneIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                    ipcType = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
                     if (ipcType == null)
                     {
-                        ipcType = Enum.GetName(typeof(ClientChatIpcType), BitConverter.ToUInt16(data, IPC_TYPE_OFFSET));
+                        ipcType = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
                     }
                 }
 
                 // Server ID and timestamp
-                serverID = BitConverter.ToUInt16(data, SERVER_ID_OFFSET);
-                timestamp = BitConverter.ToUInt32(data, TIMESTAMP_OFFSET);
+                serverID = SERVER_ID_OFFSET + 2 < packetSize ? BitConverter.ToUInt16(data, SERVER_ID_OFFSET) : new ushort();
+                timestamp = TIMESTAMP_OFFSET + 4 < packetSize ? BitConverter.ToUInt32(data, TIMESTAMP_OFFSET) : new uint();
             }
             
             string type = ipcType ?? "unknown"; // Check if the property name exists
