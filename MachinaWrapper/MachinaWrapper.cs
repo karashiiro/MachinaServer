@@ -67,34 +67,37 @@ namespace MachinaWrapper
             InputLoop.Start();
 
             // Process the input.
-            while (input != "kill")
-            {
-                if (input == "start")
+            Thread InputProcessingLoop = new Thread(() => {
+                while (input != "kill")
                 {
-                    monitor.Start();
-                }
-                else if (input == "stop")
-                {
-                    try
+                    if (input == "start")
                     {
-                        monitor.Stop();
+                        monitor.Start();
                     }
-                    catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
+                    else if (input == "stop")
                     {
-                        Console.Error.WriteLine(nre);
+                        try
+                        {
+                            monitor.Stop();
+                        }
+                        catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
+                        {
+                            Console.Error.WriteLine(nre);
+                        }
                     }
+
+                    input = "";
+                    Thread.Sleep(200); // One-fifth of a second is probably fine for user input, and it's way less intensive than 1.
                 }
 
-                input = "";
-                Thread.Sleep(200); // One-fifth of a second is probably fine for user input, and it's way less intensive than 1.
-            }
-
-            try
-            {
-                monitor.Stop();
-            }
-            catch (NullReferenceException) {}
-            InputLoop.Abort();
+                try
+                {
+                    monitor.Stop();
+                }
+                catch (NullReferenceException) {}
+                InputLoop.Abort();
+            });
+            InputProcessingLoop.Start();
         }
 
         /// <summary>
