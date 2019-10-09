@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MachinaWrapper.cs" />
+    <Compile Include="src\Models\CommonActorControl.cs" />
     <Compile Include="src\Models\Ipcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

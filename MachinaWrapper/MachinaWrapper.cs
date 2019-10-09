@@ -5,6 +5,7 @@
 
 using Machina;
 using Machina.FFXIV;
+using Sapphire.Network.ActorControl;
 using Sapphire.Network.Packets;
 using System;
 using System.Linq;
@@ -144,6 +145,8 @@ namespace MachinaWrapper
             // Get IPC data, if applicable.
             ushort segmentType = SEGMENT_TYPE_OFFSET + 2 < packetSize ? BitConverter.ToUInt16(data, SEGMENT_TYPE_OFFSET) : new ushort();
             string ipcType = null;
+            string actorControlCategory = null;
+            string clientTriggerCategory = null;
             ushort serverID = 0;
             uint timestamp = 0;
             if (segmentType == 3) // IPC segment type
@@ -158,6 +161,15 @@ namespace MachinaWrapper
                     {
                         ipcType = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
                     }
+
+                    // ActorControl categories
+                    if (ipcType == "ActorControl142" || ipcType == "ActorControl143" || ipcType == "ActorControl144")
+                    {
+                        ushort actorControlOpcode = BitConverter.ToUInt16(data, IPC_DATA_OFFSET);
+                        actorControlCategory = Enum.GetName(typeof(ActorControlType), actorControlOpcode) ?? "unknown";
+                        // Camelcase it for JavaScript style
+                        actorControlCategory = actorControlCategory.Substring(0, 1).ToLower() + actorControlCategory.Substring(1);
+                    }
                 }
                 else
                 {
@@ -167,20 +179,28 @@ namespace MachinaWrapper
                     {
                         ipcType = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
                     }
+
+                    // ClientTrigger categories
+                    if (ipcType == "ClientTrigger")
+                    {
+                        ushort clientTriggerOpcode = BitConverter.ToUInt16(data, IPC_DATA_OFFSET);
+                        clientTriggerCategory = Enum.GetName(typeof(ClientTriggerType), clientTriggerOpcode) ?? "unknown";
+                        clientTriggerCategory = clientTriggerCategory.Substring(0, 1).ToLower() + clientTriggerCategory.Substring(1);
+                    }
                 }
 
                 // Server ID and timestamp
                 serverID = SERVER_ID_OFFSET + 2 < packetSize ? BitConverter.ToUInt16(data, SERVER_ID_OFFSET) : new ushort();
                 timestamp = TIMESTAMP_OFFSET + 4 < packetSize ? BitConverter.ToUInt32(data, TIMESTAMP_OFFSET) : new uint();
             }
-            
-            string type = ipcType ?? "unknown"; // Check if the property name exists
-            type = type.Substring(0, 1).ToLower() + type.Substring(1); // Camelcase it for JavaScript style
+
+            ipcType = ipcType ?? "unknown"; // Check if the property name exists
+            ipcType = ipcType.Substring(0, 1).ToLower() + ipcType.Substring(1);
 
             // The JSON consists of potentially useful header information and the IPC data if it exists.
             // Heavy data processing is done on the Node side, since it's easier to test packet structures like that.
             StringBuilder JSON = new StringBuilder(Capacity);
-            JSON.Append("{ \"type\": \"").Append(type).Append("\",\n");
+            JSON.Append("{ \"type\": \"").Append(ipcType).Append("\",\n");
             JSON.Append("  \"connection\": \"").Append(connection).Append("\",\n");
             JSON.Append("  \"operation\": \"").Append(operation).Append("\",\n");
             JSON.Append("  \"epoch\": ").Append(epoch).Append(",\n");
@@ -198,11 +218,24 @@ namespace MachinaWrapper
                 {
                     // Trim useless information
                     Array.Copy(data, IPC_DATA_OFFSET, data, 0, packetSize - IPC_DATA_OFFSET);
+
+                    // If the IPC type isn't unknown we might have category data sitting around
+                    if (actorControlCategory != null)
+                    {
+                        JSON.Append("  \"superType\": \"actorControl\",\n");
+                        JSON.Append("  \"subType\": \"").Append(actorControlCategory).Append("\",\n");
+                    }
+                    else if (clientTriggerCategory != null)
+                    {
+                        JSON.Append("  \"superType\": \"clientTrigger\",\n");
+                        JSON.Append("  \"subType\": \"").Append(clientTriggerCategory).Append("\",\n");
+                    }
                 }
             }
             JSON.Append("  \"data\": [").Append(string.Join(",", data)).Append("] }\n");
 
             // Update the size so that future StringBuilders don't need to repeatedly resize themselves.
+            // This is likely to be the main cause of memory usage increases.
             if (JSON.Capacity > Capacity)
             {
                 Capacity = JSON.Capacity;
