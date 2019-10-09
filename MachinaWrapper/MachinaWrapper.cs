@@ -163,7 +163,7 @@ namespace MachinaWrapper
                     }
 
                     // ActorControl categories
-                    if (ipcType == "ActorControl142" || ipcType == "ActorControl143" || ipcType == "ActorControl144")
+                    if (ipcType == "ActorControl" || ipcType == "ActorControlSelf" || ipcType == "ActorControlTarget")
                     {
                         ushort actorControlOpcode = BitConverter.ToUInt16(data, IPC_DATA_OFFSET);
                         actorControlCategory = Enum.GetName(typeof(ActorControlType), actorControlOpcode) ?? "unknown";
