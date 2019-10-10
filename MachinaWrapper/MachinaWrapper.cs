@@ -53,6 +53,9 @@ namespace MachinaWrapper
                 case "PacketSpecific":
                     Parser = new Parser(ParserMode.PacketSpecific);
                     break;
+                default:
+                    Parser = new Parser(ParserMode.RAMHeavy);
+                    break;
             }
             else
             {
