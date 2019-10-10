@@ -1,7 +1,7 @@
 
 
 
-namespace Sapphire.Network.Packets
+namespace Sapphire.Common.Packets
 {
 //  ////////////////////////////////////////////////////////////////////////////////
 //  /// Lobby Connection IPC Codes

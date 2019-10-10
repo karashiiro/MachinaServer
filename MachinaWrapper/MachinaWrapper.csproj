@@ -53,9 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MachinaWrapper.cs" />
-    <Compile Include="src\Models\CommonActorControl.cs" />
-    <Compile Include="src\Models\Ipcs.cs" />
+    <Compile Include="src\Models\Sapphire\Common.cs" />
+    <Compile Include="src\Models\Sapphire\CommonActorControl.cs" />
+    <Compile Include="src\Models\MachinaWrapper\Packet.cs" />
+    <Compile Include="src\Models\Sapphire\Ipcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Parsing\Parser.cs" />
+    <Compile Include="src\Parsing\ParserMode.cs" />
+    <Compile Include="src\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
