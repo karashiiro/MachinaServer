@@ -1,10 +1,7 @@
-
-
-
 namespace Sapphire.Common.Packets
 {
-//  ////////////////////////////////////////////////////////////////////////////////
-//  /// Lobby Connection IPC Codes
+  ////////////////////////////////////////////////////////////////////////////////
+  /// Lobby Connection IPC Codes
   /**
   * Server IPC Lobby Type Codes.
   */
@@ -29,14 +26,14 @@ namespace Sapphire.Common.Packets
     ReqCharDelete = 0x000A,
     ReqCharCreate = 0x000B,
   };
-//  ////////////////////////////////////////////////////////////////////////////////
-//  /// Zone Connection IPC Codes
+  ////////////////////////////////////////////////////////////////////////////////
+  /// Zone Connection IPC Codes
   /**
   * Server IPC Zone Type Codes.
   */
   enum ServerZoneIpcType : ushort
   {
-//    // static opcode ( the ones that rarely, if ever, change )
+    // static opcode ( the ones that rarely, if ever, change )
     Ping = 0x0065,
     Init = 0x0066,
     ActorFreeSpawn = 0x0191,
@@ -46,7 +43,7 @@ namespace Sapphire.Common.Packets
     ActorControlSelf = 0x0143,
     ActorControlTarget = 0x0144,
     UpdateHpMpTp = 0x0145,
-//    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
     ChatBanned = 0x006B,
     Playtime = 0x0100, // updated 5.0
     Logout = 0x0077, // updated 5.0
@@ -76,7 +73,7 @@ namespace Sapphire.Common.Packets
     BlackList = 0x0123, // updated 5.0
     LinkshellList = 0x012A, // updated 5.0
     MailDeleteRequest = 0x012B, // updated 5.0
-//    // 12D - 137 - constant gap between 4.5x -> 5.0
+    // 12D - 137 - constant gap between 4.5x -> 5.0
     ReqMoogleMailList = 0x0138, // updated 5.0
     ReqMoogleMailLetter = 0x0139, // updated 5.0
     MailLetterNotification = 0x013A, // updated 5.0
@@ -100,7 +97,7 @@ namespace Sapphire.Common.Packets
     GCAffiliation = 0x016F, // updated 5.0
     PlayerSpawn = 0x017F, // updated 5.0
     NpcSpawn = 0x0180, // updated 5.0
-//    NpcSpawn2 = 0x0181, // ( Bigger statuseffectlist? ) updated 5.0
+    NpcSpawn2 = 0x0181, // ( Bigger statuseffectlist? ) updated 5.0
     ActorMove = 0x0182, // updated 5.0
     ActorSetPos = 0x0184, // updated 5.0
     ActorCast = 0x0187, // updated 5.0
@@ -119,7 +116,7 @@ namespace Sapphire.Common.Packets
     ModelEquip = 0x0196, // updated 5.0
     Examine = 0x0197, // updated 5.0
     CharaNameReq = 0x0198, // updated 5.0
-//    // nb: see #565 on github
+    // nb: see #565 on github
     UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
 //    SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
     ItemInfo = 0x01A1, // updated 5.0
@@ -153,7 +150,7 @@ namespace Sapphire.Common.Packets
     Discovery = 0x0212, // updated 5.0
     EorzeaTimeOffset = 0x0214, // updated 5.0
     EquipDisplayFlags = 0x0220, // updated 5.0
-//    /// Housing //////////////////////////////////////
+    /// Housing //////////////////////////////////////
     LandSetInitialize = 0x0234, // updated 5.0
     LandUpdate = 0x0235, // updated 5.0
     YardObjectSpawn = 0x0236, // updated 5.0
@@ -172,7 +169,7 @@ namespace Sapphire.Common.Packets
 //    SharedEstateSettingsResponse = 0x0245, // updated 4.5
 //    LandUpdateHouseName = 0x0257, // updated 4.5
 //    LandSetMap = 0x025B, // updated 4.5
-//    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
 //    DuelChallenge = 0x0277, // 4.2; this is responsible for opening the ui
 //    PerformNote = 0x0286, // updated 4.3
     PrepareZoning = 0x02A4, // updated 5.0
@@ -180,9 +177,9 @@ namespace Sapphire.Common.Packets
 //    // Unknown IPC types that still need to be sent
 //    // TODO: figure all these out properly
 //    // daily quest related, init seed and current quota probably
-    IPCTYPE_UNK_320 = 0x025E, // updated 5.0
-    IPCTYPE_UNK_322 = 0x0260, // updated 5.0
-//    /// Doman Mahjong //////////////////////////////////////
+    DailyQuests = 0x025E, // updated 5.0
+    DailyQuestRepeatFlags = 0x0260, // updated 5.0
+    /// Doman Mahjong //////////////////////////////////////
 //    MahjongOpenGui = 0x02A4, // only available in mahjong instance
 //    MahjongNextRound = 0x02BD, // initial hands(baipai), # of riichi(wat), winds, honba, score and stuff
 //    MahjongPlayerAction = 0x02BE, // tsumo(as in drawing a tile) called chi/pon/kan/riichi
@@ -199,14 +196,14 @@ namespace Sapphire.Common.Packets
   */
   enum ClientZoneIpcType : ushort
   {
-//    PingHandler = 0x0065, // unchanged 5.0
-//    InitHandler = 0x0066, // unchanged 5.0
-//    FinishLoadingHandler = 0x0069, // unchanged 5.0
+    PingHandler = 0x0065, // unchanged 5.0
+    InitHandler = 0x0066, // unchanged 5.0
+    FinishLoadingHandler = 0x0069, // unchanged 5.0
     CFCommenceHandler = 0x006F,
     CFRegisterDuty = 0x0071,
     CFRegisterRoulette = 0x0072,
-//    PlayTimeHandler = 0x0073, // unchanged 5.0
-//    LogoutHandler = 0x0074, // unchanged 5.0
+    PlayTimeHandler = 0x0073, // unchanged 5.0
+    LogoutHandler = 0x0074, // unchanged 5.0
     CancelLogout = 0x0075, // updated 5.0
 //    CFDutyInfoHandler = 0x0078, // updated 4.2
 //    SocialReqSendHandler = 0x00AE, // updated 4.1
@@ -261,8 +258,8 @@ namespace Sapphire.Common.Packets
     UpdatePositionInstance = 0x0180, // updated 5.0
 //    PerformNoteHandler = 0x029B, // updated 4.3
   };
-//  ////////////////////////////////////////////////////////////////////////////////
-//  /// Chat Connection IPC Codes
+  ////////////////////////////////////////////////////////////////////////////////
+  /// Chat Connection IPC Codes
   /**
   * Server IPC Chat Type Codes.
   */
