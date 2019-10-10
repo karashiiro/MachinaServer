@@ -61,7 +61,7 @@ namespace MachinaWrapper.Parsing
             meta.PacketSize = BitConverter.ToUInt32(meta.Data, (int)Offsets.PacketSize);
 
             // Actor ID obfuscation for some measure of privacy, discouraging stalking and the like.
-            // Ideally this data could just be wiped out, but that would make IPC data completely useless.
+            // Ideally this data could just be wiped out, but that would make IPC data useless for minimap features.
             byte[] sourceActorID = (int)Offsets.SourceActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.SourceActor) ^ Modulator) : new byte[4];
             byte[] targetActorID = (int)Offsets.TargetActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.TargetActor) ^ Modulator) : new byte[4];
             // Copy obfuscated data in
@@ -72,11 +72,8 @@ namespace MachinaWrapper.Parsing
             }
 
             // Get IPC data, if applicable.
-            IpcPacket ipcData = new IpcPacket(meta);
-
             meta.SegmentType = (int)Offsets.SegmentType + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.SegmentType) : new ushort();
-            ushort serverId = 0;
-            uint timestamp = 0;
+            IpcPacket ipcData = new IpcPacket(meta);
             if (meta.SegmentType == 3) // IPC segment type
             {
                 // IPC opcode
@@ -118,8 +115,8 @@ namespace MachinaWrapper.Parsing
                 }
 
                 // Server ID and timestamp
-                serverId = (int)Offsets.ServerId + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.ServerId) : new ushort();
-                timestamp = (int)Offsets.Timestamp + 4 < meta.PacketSize ? BitConverter.ToUInt32(meta.Data, (int)Offsets.Timestamp) : new uint();
+                ipcData.ServerId = (int)Offsets.ServerId + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.ServerId) : new ushort();
+                ipcData.Timestamp = (int)Offsets.Timestamp + 4 < meta.PacketSize ? BitConverter.ToUInt32(meta.Data, (int)Offsets.Timestamp) : new uint();
             }
 
             ipcData.Type = ipcData.Type ?? "unknown"; // Check if the property name exists
