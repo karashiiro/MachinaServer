@@ -204,7 +204,7 @@ namespace Sapphire.Common.ActorControl
          * param3 = item id (used for result types 4921 & 4922)
          * param5 = exp amount (x 100)
          */
-        DesynthResult = 0x20F,
+        DesynthOrReductionResult = 0x20F,
 
         GilTrailMsg = 0x211,
 
