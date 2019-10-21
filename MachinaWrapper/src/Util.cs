@@ -14,20 +14,6 @@ namespace MachinaWrapper.Common
         }
 
         /// <summary>
-        /// Return the Program Files (x86) location.
-        /// See https://stackoverflow.com/a/194223
-        /// </summary>
-        public static string ProgramFilesx86()
-        {
-            if (Environment.Is64BitOperatingSystem)
-            {
-                return Environment.GetEnvironmentVariable("ProgramFiles(x86)") ?? @"C:\Program Files (x86)";
-            }
-
-            return Environment.GetEnvironmentVariable("ProgramFiles") ?? @"C:\Program Files";
-        }
-
-        /// <summary>
         /// Returns true if a Korean client can be found.
         /// </summary>
         public static bool SystemHasKRClient()
@@ -46,6 +32,20 @@ namespace MachinaWrapper.Common
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Return the Program Files (x86) location.
+        /// See https://stackoverflow.com/a/194223
+        /// </summary>
+        private static string ProgramFilesx86()
+        {
+            if (Environment.Is64BitOperatingSystem)
+            {
+                return Environment.GetEnvironmentVariable("ProgramFiles(x86)") ?? @"C:\Program Files (x86)";
+            }
+
+            return Environment.GetEnvironmentVariable("ProgramFiles") ?? @"C:\Program Files";
         }
     }
 }

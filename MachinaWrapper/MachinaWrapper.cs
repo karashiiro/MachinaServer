@@ -22,11 +22,32 @@ namespace MachinaWrapper
             int MonitorIndex = Array.IndexOf(args, "--MonitorType");
             int PIDIndex = Array.IndexOf(args, "--ProcessID");
             int IPIndex = Array.IndexOf(args, "--LocalIP");
+            int RegionIndex = Array.IndexOf(args, "--Region");
             
             TCPNetworkMonitor.NetworkMonitorType MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
+            }
+
+            Region localRegion = Region.Global;
+            if (RegionIndex != -1)
+            {
+                if (args[RegionIndex] == "Global")
+                {
+                    localRegion = Region.Global;
+                }
+                else if (args[RegionIndex] == "KR")
+                {
+                    localRegion = Region.KR;
+                }
+            }
+            else
+            {
+                if (Util.SystemHasKRClient())
+                {
+                    localRegion = Region.KR;
+                }
             }
 
             // Create the monitor.
@@ -45,21 +66,21 @@ namespace MachinaWrapper
             if (ParseAlgorithmIndex != -1) switch (args[ParseAlgorithmIndex])
             {
                 case "RAMHeavy":
-                    Parser = new Parser(ParserMode.RAMHeavy);
+                    Parser = new Parser(localRegion, ParserMode.RAMHeavy);
                     break;
                 case "CPUHeavy":
-                    Parser = new Parser(ParserMode.CPUHeavy);
+                    Parser = new Parser(localRegion, ParserMode.CPUHeavy);
                     break;
                 case "PacketSpecific":
-                    Parser = new Parser(ParserMode.PacketSpecific);
+                    Parser = new Parser(localRegion, ParserMode.PacketSpecific);
                     break;
                 default:
-                    Parser = new Parser(ParserMode.RAMHeavy);
+                    Parser = new Parser(localRegion, ParserMode.RAMHeavy);
                     break;
             }
             else
             {
-                Parser = new Parser(ParserMode.RAMHeavy);
+                Parser = new Parser(localRegion, ParserMode.RAMHeavy);
             }
 
             // Check for input.

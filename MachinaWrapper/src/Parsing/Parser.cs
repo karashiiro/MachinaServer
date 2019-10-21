@@ -15,35 +15,40 @@ namespace MachinaWrapper.Parsing
         public int Capacity;
         public List<NameSizePair> MessageSizes;
         public ParserMode Mode;
+        public Region Region;
 
         private readonly uint Modulator = (uint)new Random().Next(int.MinValue, int.MaxValue);
 
-        public Parser()
+        public Parser(Region region)
         {
             Capacity = 50; // Initialize the StringBuilder with 50 characters.
             MessageSizes = new List<NameSizePair>();
             Mode = ParserMode.RAMHeavy;
+            Region = region;
         }
 
-        public Parser(ParserMode mode)
+        public Parser(Region region, ParserMode mode)
         {
             Capacity = 50;
             MessageSizes = new List<NameSizePair>();
             Mode = mode;
+            Region = region;
         }
 
-        public Parser(ParserMode mode, int capacity)
+        public Parser(Region region, ParserMode mode, int capacity)
         {
             Capacity = capacity;
             MessageSizes = new List<NameSizePair>();
             Mode = mode;
+            Region = region;
         }
 
-        public Parser(ParserMode mode, List<NameSizePair> capacities)
+        public Parser(Region region, ParserMode mode, List<NameSizePair> capacities)
         {
             Capacity = 50;
             MessageSizes = capacities;
             Mode = mode;
+            Region = region;
         }
 
         /// <summary>
@@ -76,47 +81,7 @@ namespace MachinaWrapper.Parsing
             IpcPacket ipcData = new IpcPacket(meta);
             if (meta.SegmentType == 3) // IPC segment type
             {
-                // IPC opcode
-                ushort ipcOpcode = (int)Offsets.IpcType + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.IpcType) : new ushort();
-                if (meta.ConnectionType == "receive")
-                {
-                    // Inbound packet
-                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
-                    }
-
-                    // ActorControl categories
-                    if (ipcData.Type == "ActorControl" || ipcData.Type == "ActorControlSelf" || ipcData.Type == "ActorControlTarget")
-                    {
-                        ushort actorControlOpcode = BitConverter.ToUInt16(meta.Data, (int)Offsets.IpcData);
-                        ipcData.ActorControlCategory = Enum.GetName(typeof(ActorControlType), actorControlOpcode) ?? "unknown";
-                        // Camelcase it for JavaScript style
-                        Util.JSify(ref ipcData.ActorControlCategory);
-                    }
-                }
-                else
-                {
-                    // Outbound packet
-                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
-                    }
-
-                    // ClientTrigger categories
-                    if (ipcData.Type == "ClientTrigger")
-                    {
-                        ushort clientTriggerOpcode = BitConverter.ToUInt16(meta.Data, (int)Offsets.IpcData);
-                        ipcData.ClientTriggerCategory = Enum.GetName(typeof(ClientTriggerType), clientTriggerOpcode) ?? "unknown";
-                        Util.JSify(ref ipcData.ClientTriggerCategory);
-                    }
-                }
-
-                // Server ID and timestamp
-                ipcData.ServerId = (int)Offsets.ServerId + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.ServerId) : new ushort();
-                ipcData.Timestamp = (int)Offsets.Timestamp + 4 < meta.PacketSize ? BitConverter.ToUInt32(meta.Data, (int)Offsets.Timestamp) : new uint();
+                ProcessIPCData(ref ipcData);
             }
 
             ipcData.Type = ipcData.Type ?? "unknown"; // Check if the property name exists
@@ -229,6 +194,83 @@ namespace MachinaWrapper.Parsing
             Console.Out.Write(JSON.ToString());
 
             return JSON;
+        }
+
+        private void ProcessIPCData(ref IpcPacket ipcData)
+        {
+            // IPC opcode
+            ushort ipcOpcode = (int)Offsets.IpcType + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcType) : new ushort();
+            if (ipcData.Metadata.ConnectionType == "receive")
+            {
+                // Inbound packet
+                switch (Region)
+                {
+                    case Region.Global:
+                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
+                        if (ipcData.Type == null)
+                        {
+                            ipcData.Type = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
+                        }
+                        break;
+                    case Region.KR:
+                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode);
+                        if (ipcData.Type == null)
+                        {
+                            ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
+                        }
+                        break;
+                    case Region.CN:
+                        break;
+                    default:
+                        throw new NoRegionException("No region set!");
+                }
+
+                // ActorControl categories
+                if (ipcData.Type == "ActorControl" || ipcData.Type == "ActorControlSelf" || ipcData.Type == "ActorControlTarget")
+                {
+                    ushort actorControlOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                    ipcData.ActorControlCategory = Enum.GetName(typeof(ActorControlType), actorControlOpcode) ?? "unknown";
+                    // Camelcase it for JavaScript style
+                    Util.JSify(ref ipcData.ActorControlCategory);
+                }
+            }
+            else
+            {
+                // Outbound packet
+                switch (Region)
+                {
+                    case Region.Global:
+                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
+                        if (ipcData.Type == null)
+                        {
+                            ipcData.Type = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
+                        }
+                        break;
+                    case Region.KR:
+                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode);
+                        if (ipcData.Type == null)
+                        {
+                            ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
+                        }
+                        break;
+                    case Region.CN:
+                        break;
+                    default:
+                        throw new NoRegionException("No region set!");
+                }
+
+                // ClientTrigger categories
+                if (ipcData.Type == "ClientTrigger")
+                {
+                    ushort clientTriggerOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                    ipcData.ClientTriggerCategory = Enum.GetName(typeof(ClientTriggerType), clientTriggerOpcode) ?? "unknown";
+                    Util.JSify(ref ipcData.ClientTriggerCategory);
+                }
+            }
+
+            // Server ID and timestamp
+            ipcData.ServerId = (int)Offsets.ServerId + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.ServerId) : new ushort();
+            ipcData.Timestamp = (int)Offsets.Timestamp + 4 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.Timestamp) : new uint();
         }
     }
 }
