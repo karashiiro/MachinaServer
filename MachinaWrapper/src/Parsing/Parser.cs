@@ -196,6 +196,9 @@ namespace MachinaWrapper.Parsing
             return JSON;
         }
 
+        /// <summary>
+        /// Converts opcodes into readable strings.
+        /// </summary>
         private void ProcessIPCData(ref IpcPacket ipcData)
         {
             // IPC opcode
@@ -271,6 +274,29 @@ namespace MachinaWrapper.Parsing
             // Server ID and timestamp
             ipcData.ServerId = (int)Offsets.ServerId + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.ServerId) : new ushort();
             ipcData.Timestamp = (int)Offsets.Timestamp + 4 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.Timestamp) : new uint();
+
+            ValidateRegion(ipcData);
+        }
+
+        /// <summary>
+        /// Switches the parser region if it detects an out-of-range world.
+        /// </summary>
+        private void ValidateRegion(IpcPacket ipcData)
+        {
+            // Check world ID for region validation
+            if (ipcData.Type == "InitZone")
+            {
+                ushort worldId = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                if (Region != Region.Global && 23 <= worldId && worldId <= 99)
+                {
+                    Region = Region.Global;
+                }
+                else if (Region != Region.KR && 2050 <= worldId && worldId <= 2583)
+                {
+                    Region = Region.KR;
+                }
+                // TODO China
+            }
         }
     }
 }
