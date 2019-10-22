@@ -1,6 +1,5 @@
 namespace Sapphire.Common.Packets
 {
-
     ////////////////////////////////////////////////////////////////////////////////
     /// Lobby Connection IPC Codes
     /**
@@ -47,9 +46,9 @@ namespace Sapphire.Common.Packets
         InitZone = 0x019A,
 
         EffectResult = 0x0141,
-        ActorControl142 = 0x0142,
-        ActorControl143 = 0x0143,
-        ActorControl144 = 0x0144,
+        ActorControl = 0x0142,
+        ActorControlSelf = 0x0143,
+        ActorControlTarget = 0x0144,
         UpdateHpMpTp = 0x0145,
 
         ///////////////////////////////////////////////////
@@ -239,7 +238,7 @@ namespace Sapphire.Common.Packets
         MahjongEndRoundRon = 0x2C0, // called ron or double ron (waiting for action must be flagged from discard packet to call)
         MahjongTileDiscard = 0x02C1, // giri (discarding a tile.) chi(1)/pon(2)/kan(4)/ron(8) flags etc..
         MahjongPlayersInfo = 0x02C2, // actor id, name, rating and stuff..
-                                     // 2C3 and 2C4 are currently unknown
+                                        // 2C3 and 2C4 are currently unknown
         MahjongEndRoundDraw = 0x02C5, // self explanatory
         MahjongEndGame = 0x02C6, // finished oorasu(all-last) round; shows a result screen.
     };
