@@ -14,6 +14,27 @@ namespace MachinaWrapper.Common
         }
 
         /// <summary>
+        /// Returns true if a Global client can be found.
+        /// </summary>
+        public static bool SystemHasGlobalClient()
+        {
+            string[] folders = {
+                @"SquareEnix\FINAL FANTASY XIV - A Realm Reborn",
+                @"FINAL FANTASY XIV - A Realm Reborn"
+            };
+
+            foreach (string folder in folders)
+            {
+                if (Directory.Exists(Path.Combine(ProgramFilesx86(), folder)))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Returns true if a Korean client can be found.
         /// </summary>
         public static bool SystemHasKRClient()

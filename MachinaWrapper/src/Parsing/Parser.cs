@@ -158,6 +158,7 @@ namespace MachinaWrapper.Parsing
             // Heavy data processing is done on the Node side, since it's easier to test packet structures like that.
             StringBuilder JSON = new StringBuilder(capacity ?? Capacity);
             JSON.Append("{ \"type\": \"").Append(ipcData.Type).Append("\",\n");
+            JSON.Append("  \"opcode\": ").Append(ipcData.Opcode).Append(",\n");
             JSON.Append("  \"connection\": \"").Append(ipcData.Metadata.ConnectionRoute).Append("\",\n");
             JSON.Append("  \"operation\": \"").Append(ipcData.Metadata.ConnectionType).Append("\",\n");
             JSON.Append("  \"epoch\": ").Append(ipcData.Metadata.Epoch).Append(",\n");
@@ -203,6 +204,7 @@ namespace MachinaWrapper.Parsing
         {
             // IPC opcode
             ushort ipcOpcode = (int)Offsets.IpcType + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcType) : new ushort();
+            ipcData.Opcode = ipcOpcode;
             if (ipcData.Metadata.ConnectionType == "receive")
             {
                 // Inbound packet

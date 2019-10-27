@@ -33,16 +33,12 @@ namespace MachinaWrapper
             Region localRegion = Region.Global;
             if (RegionIndex != -1)
             {
-                if (args[RegionIndex] == "Global")
-                {
-                    localRegion = Region.Global;
-                }
-                else if (args[RegionIndex] == "KR")
+                if (args[RegionIndex] == "KR")
                 {
                     localRegion = Region.KR;
                 }
             }
-            else
+            else if (!Util.SystemHasGlobalClient())
             {
                 if (Util.SystemHasKRClient())
                 {

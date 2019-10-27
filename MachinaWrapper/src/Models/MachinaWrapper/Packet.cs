@@ -4,6 +4,7 @@
     {
         public Packet Metadata;
         public string Type;
+        public ushort Opcode;
         public ushort ServerId;
         public uint Timestamp;
         public string ActorControlCategory;
