@@ -33,7 +33,7 @@ namespace MachinaWrapper
             Region localRegion = Region.Global;
             if (RegionIndex != -1)
             {
-                if (args[RegionIndex] == "KR")
+                if (args[RegionIndex + 1] == "KR")
                 {
                     localRegion = Region.KR;
                 }
