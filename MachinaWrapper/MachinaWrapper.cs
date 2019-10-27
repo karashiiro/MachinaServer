@@ -59,20 +59,24 @@ namespace MachinaWrapper
 
             // Create the parser.
             int ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
-            if (ParseAlgorithmIndex != -1) switch (args[ParseAlgorithmIndex])
+            if (ParseAlgorithmIndex != -1)
             {
-                case "RAMHeavy":
+                if (args[ParseAlgorithmIndex + 1] == "RAMHeavy")
+                {
                     Parser = new Parser(localRegion, ParserMode.RAMHeavy);
-                    break;
-                case "CPUHeavy":
+                }
+                else if (args[ParseAlgorithmIndex + 1] == "CPUHeavy")
+                {
                     Parser = new Parser(localRegion, ParserMode.CPUHeavy);
-                    break;
-                case "PacketSpecific":
+                }
+                else if (args[ParseAlgorithmIndex + 1] == "PacketSpecific")
+                {
                     Parser = new Parser(localRegion, ParserMode.PacketSpecific);
-                    break;
-                default:
+                }
+                else
+                {
                     Parser = new Parser(localRegion, ParserMode.RAMHeavy);
-                    break;
+                }
             }
             else
             {
