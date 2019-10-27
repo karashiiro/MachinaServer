@@ -159,6 +159,7 @@ namespace MachinaWrapper.Parsing
             StringBuilder JSON = new StringBuilder(capacity ?? Capacity);
             JSON.Append("{ \"type\": \"").Append(ipcData.Type).Append("\",\n");
             JSON.Append("  \"opcode\": ").Append(ipcData.Opcode).Append(",\n");
+            JSON.Append("  \"region\": \"").Append(Region).Append("\",\n");
             JSON.Append("  \"connection\": \"").Append(ipcData.Metadata.ConnectionRoute).Append("\",\n");
             JSON.Append("  \"operation\": \"").Append(ipcData.Metadata.ConnectionType).Append("\",\n");
             JSON.Append("  \"epoch\": ").Append(ipcData.Metadata.Epoch).Append(",\n");
@@ -208,26 +209,29 @@ namespace MachinaWrapper.Parsing
             if (ipcData.Metadata.ConnectionType == "receive")
             {
                 // Inbound packet
-                switch (Region)
+                if (Region == Region.Global)
                 {
-                    case Region.Global:
-                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
-                        if (ipcData.Type == null)
-                        {
-                            ipcData.Type = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
-                        }
-                        break;
-                    case Region.KR:
-                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode);
-                        if (ipcData.Type == null)
-                        {
-                            ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
-                        }
-                        break;
-                    case Region.CN:
-                        break;
-                    default:
-                        throw new NoRegionException("No region set!");
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
+                    }
+                }
+                else if (Region == Region.KR)
+                {
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
+                    }
+                }
+                else if (Region == Region.CN)
+                {
+                    //
+                }
+                else
+                {
+                    throw new NoRegionException("No region set!");
                 }
 
                 // ActorControl categories
@@ -242,26 +246,29 @@ namespace MachinaWrapper.Parsing
             else
             {
                 // Outbound packet
-                switch (Region)
+                if (Region == Region.Global)
                 {
-                    case Region.Global:
-                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
-                        if (ipcData.Type == null)
-                        {
-                            ipcData.Type = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
-                        }
-                        break;
-                    case Region.KR:
-                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode);
-                        if (ipcData.Type == null)
-                        {
-                            ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
-                        }
-                        break;
-                    case Region.CN:
-                        break;
-                    default:
-                        throw new NoRegionException("No region set!");
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
+                    }
+                }
+                else if (Region == Region.KR)
+                {
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
+                    }
+                }
+                else if (Region == Region.CN)
+                {
+                    //
+                }
+                else
+                {
+                    throw new NoRegionException("No region set!");
                 }
 
                 // ClientTrigger categories
