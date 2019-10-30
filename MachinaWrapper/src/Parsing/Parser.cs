@@ -284,7 +284,7 @@ namespace MachinaWrapper.Parsing
             ipcData.ServerId = (int)Offsets.ServerId + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.ServerId) : new ushort();
             ipcData.Timestamp = (int)Offsets.Timestamp + 4 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.Timestamp) : new uint();
 
-            ValidateRegion(ipcData);
+            // ValidateRegion(ipcData);
         }
 
         /// <summary>
@@ -296,11 +296,11 @@ namespace MachinaWrapper.Parsing
             if (ipcData.Type == "InitZone")
             {
                 ushort worldId = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
-                if (Region != Region.Global && 23 <= worldId && worldId <= 99)
+                if (Region != Region.Global && 23 >= worldId && worldId <= 99)
                 {
                     Region = Region.Global;
                 }
-                else if (Region != Region.KR && 2050 <= worldId && worldId <= 2583)
+                else if (Region != Region.KR && 2050 >= worldId && worldId <= 2583)
                 {
                     Region = Region.KR;
                 }
