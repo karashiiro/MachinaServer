@@ -296,11 +296,11 @@ namespace MachinaWrapper.Parsing
             if (ipcData.Type == "InitZone")
             {
                 ushort worldId = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
-                if (Region != Region.Global && 23 >= worldId && worldId <= 99)
+                if (Region != Region.Global && worldId >= 23 && worldId <= 99)
                 {
                     Region = Region.Global;
                 }
-                else if (Region != Region.KR && 2050 >= worldId && worldId <= 2583)
+                else if (Region != Region.KR && worldId >= 2050 && worldId <= 2583)
                 {
                     Region = Region.KR;
                 }
