@@ -117,8 +117,9 @@ namespace Sapphire.Common.Packets
 
         //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-        //StatusEffectList = 0x015B, // updated 5.0
-        //EurekaStatusEffectList = 0x015C, // updated 5.0
+        StatusEffectList = 0x023A, // updated 5.1
+        EurekaStatusEffectList = 0x0398, // updated 5.1
+        BossStatusEffectList = 0x00E6, // added 5.1
         Effect = 0x00A7, // updated 5.1
         AoeEffect8 = 0x00A9, // updated 5.1
         AoeEffect16 = 0x015F, // updated 5.1
@@ -159,11 +160,11 @@ namespace Sapphire.Common.Packets
 
         SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x0145, // updated 5.1
-        ContainerInfo = 0x0246, // updated 5.1
+        ItemInfo = 0x031E, // updated 5.1
+        ContainerInfo = 0x0145, // updated 5.1
         InventoryTransactionFinish = 0x01AB, // updated 5.1
         InventoryTransaction = 0x023E, // updated 5.1
-        CurrencyCrystalInfo = 0x031E, // updated 5.1
+        CurrencyCrystalInfo = 0x0246, // updated 5.1
 
         InventoryActionAck = 0x0084, // updated 5.1
         UpdateInventorySlot = 0x0072, // updated 5.1

@@ -172,23 +172,20 @@ namespace MachinaWrapper.Parsing
                 JSON.Append("  \"targetActorSessionID\": ").Append(BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.TargetActor)).Append(",\n");
                 JSON.Append("  \"serverID\": ").Append(ipcData.ServerId).Append(",\n");
                 JSON.Append("  \"timestamp\": ").Append(ipcData.Timestamp).Append(",\n");
+                
+                // Trim useless information
+                ipcData.Metadata.Data = ipcData.Metadata.Data.Skip((int)Offsets.IpcData).ToArray();
 
-                if (ipcData.Type != "unknown") // We do need header data if the type is unknown
+                // If the IPC type isn't unknown we might have category data sitting around
+                if (ipcData.ActorControlCategory != null)
                 {
-                    // Trim useless information
-                    Array.Copy(ipcData.Metadata.Data, (int)Offsets.IpcData, ipcData.Metadata.Data, 0, ipcData.Metadata.PacketSize - (int)Offsets.IpcData);
-
-                    // If the IPC type isn't unknown we might have category data sitting around
-                    if (ipcData.ActorControlCategory != null)
-                    {
-                        JSON.Append("  \"superType\": \"actorControl\",\n");
-                        JSON.Append("  \"subType\": \"").Append(ipcData.ActorControlCategory).Append("\",\n");
-                    }
-                    else if (ipcData.ClientTriggerCategory != null)
-                    {
-                        JSON.Append("  \"superType\": \"clientTrigger\",\n");
-                        JSON.Append("  \"subType\": \"").Append(ipcData.ClientTriggerCategory).Append("\",\n");
-                    }
+                    JSON.Append("  \"superType\": \"actorControl\",\n");
+                    JSON.Append("  \"subType\": \"").Append(ipcData.ActorControlCategory).Append("\",\n");
+                }
+                else if (ipcData.ClientTriggerCategory != null)
+                {
+                    JSON.Append("  \"superType\": \"clientTrigger\",\n");
+                    JSON.Append("  \"subType\": \"").Append(ipcData.ClientTriggerCategory).Append("\",\n");
                 }
             }
             JSON.Append("  \"data\": [").Append(string.Join(",", ipcData.Metadata.Data)).Append("] }\n");
