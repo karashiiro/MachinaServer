@@ -105,6 +105,8 @@ namespace Sapphire.Common.Packets
         //ReqMoogleMailLetter = 0x0139, // updated 5.0
         //MailLetterNotification = 0x013A, // updated 5.0
 
+        MarketTaxRates = 0x0076, // added 5.1
+
         //MarketBoardItemListingCount = 0x013B, // updated 5.0
         MarketBoardItemListing = 0x036A, // updated 5.1
         MarketBoardItemListingHistory = 0x0194, // updated 5.1
@@ -175,19 +177,98 @@ namespace Sapphire.Common.Packets
     */
     enum ClientZoneIpcType : ushort
     {
-
-        PingHandler = 0x0065, // unchanged 5.0
+        // PingHandler = 0x0065, // unchanged 5.0
         InitHandler = 0x03D2, // updated 5.1
 
-        FinishLoadingHandler = 0x0069, // unchanged 5.0
+        FinishLoadingHandler = 0x01DC, // updated 5.1
 
         CFCommenceHandler = 0x006F,
 
 
         CFRegisterDuty = 0x0071,
         CFRegisterRoulette = 0x0072,
-        PlayTimeHandler = 0x0073, // unchanged 5.0
-        LogoutHandler = 0x0074, // unchanged 5.0
+        PlayTimeHandler = 0x0276, // updated 5.1
+        LogoutHandler = 0x02D6, // updated 5.1
+        CancelLogout = 0x008F, // updated 5.1
+
+        // CFDutyInfoHandler = 0x0078, // updated 4.2
+
+        // SocialReqSendHandler = 0x00AE, // updated 4.1
+        // CreateCrossWorldLS = 0x00AF, // updated 4.3
+
+        ChatHandler = 0x02FF, // updated 5.1
+
+        SocialListHandler = 0x01F6, // updated 5.1
+        // SetSearchInfoHandler = 0x00E4, // updated 5.0
+        ReqSearchInfoHandler = 0x024D, // updated 5.1
+        // ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
+
+        // ReqRemovePlayerFromBlacklist = 0x00F1, // updated 5.0
+        BlackListHandler = 0x0167, // updated 5.1
+        // PlayerSearchHandler = 0x00F4, // updated 5.0
+
+        LinkshellListHandler = 0x00D3, // updated 5.1
+
+        // MarketBoardRequestItemListingInfo = 0x0102, // updated 4.5
+        // MarketBoardRequestItemListings = 0x0103, // updated 4.5
+        // MarketBoardSearch = 0x0107, // updated 4.5
+
+        // ReqExamineFcInfo = 0x0113, // updated 4.1
+
+        // FcInfoReqHandler = 0x011A, // updated 4.2
+
+        // FreeCompanyUpdateShortMessageHandler = 0x0123, // added 5.0
+
+        // ReqMarketWishList = 0x012C, // updated 4.3
+
+        // ReqJoinNoviceNetwork = 0x0129, // updated 4.2
+
+        // ReqCountdownInitiate = 0x0135, // updated 5.0
+        // ReqCountdownCancel = 0x0136, // updated 5.0
+
+        ZoneLineHandler = 0x02E0, // updated 5.1
+        ClientTrigger = 0x00B1, // updated 5.1
+        DiscoveryHandler = 0x0177, // updated 5.1
+
+        // PlaceFieldMarker = 0x013C, // updated 5.0
+
+        // SkillHandler = 0x013D, // updated 5.0
+        GMCommand1 = 0x00A4, // updated 5.1
+        // GMCommand2 = 0x013F, // updated 5.0
+        // AoESkillHandler = 0x140, // updated 5.0
+
+        UpdatePositionHandler = 0x01EC, // updated 5.1
+
+        InventoryModifyHandler = 0x0372, // updated 5.1
+        // InventoryEquipRecommendedItems = 0x0149, // updated 5.0
+
+        // ReqPlaceHousingItem = 0x014B, // updated 5.0
+        // BuildPresetHandler = 0x014F, // updated 5.0
+
+        // TalkEventHandler = 0x0151, // updated 5.0
+        // EmoteEventHandler = 0x0152, // updated 5.0
+        // WithinRangeEventHandler = 0x0153, // updated 5.0
+        // OutOfRangeEventHandler = 0x0154, // updated 5.0
+        // EnterTeriEventHandler = 0x0155, // updated 5.0
+        // ShopEventHandler = 0x0156, // updated 5.0
+
+        // ReturnEventHandler = 0x015A, // updated 5.0?
+        // TradeReturnEventHandler = 0x015B, // updated 5.0?
+
+        // LinkshellEventHandler = 0x016B, // updated 4.5
+        // LinkshellEventHandler1 = 0x016C, // updated 4.5
+
+        // ReqEquipDisplayFlagsChange = 0x0175, // updated 5.0
+
+        // LandRenameHandler = 0xF177, // updated 5.0
+        // HousingUpdateHouseGreeting = 0x0178, // updated 5.0
+        // HousingUpdateObjectPosition = 0x0179, // updated 5.0
+
+        // SetSharedEstateSettings = 0x017B, // updated 5.0
+
+        // UpdatePositionInstance = 0x0180, // updated 5.0
+
+        // PerformNoteHandler = 0x029B, // updated 4.3
     };
 
     ////////////////////////////////////////////////////////////////////////////////
