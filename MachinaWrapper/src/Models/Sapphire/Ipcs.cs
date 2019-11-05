@@ -107,7 +107,7 @@ namespace Sapphire.Common.Packets
 
         MarketTaxRates = 0x0076, // added 5.1
 
-        //MarketBoardItemListingCount = 0x013B, // updated 5.0
+        MarketBoardItemListingCount = 0x039D, // updated 5.1
         MarketBoardItemListing = 0x036A, // updated 5.1
         MarketBoardItemListingHistory = 0x0194, // updated 5.1
         //MarketBoardSearchResult = 0x0139, // updated 4.5
