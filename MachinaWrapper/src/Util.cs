@@ -56,6 +56,27 @@ namespace MachinaWrapper.Common
         }
 
         /// <summary>
+        /// Returns true if a Chinese client can be found.
+        /// </summary>
+        public static bool SystemHasCNClient()
+        {
+            string[] folders = {
+                @"上海数龙科技有限公司\最终幻想XIV",
+                @"最终幻想XIV"
+            };
+
+            foreach (string folder in folders)
+            {
+                if (Directory.Exists(Path.Combine(ProgramFilesx86(), folder)))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Return the Program Files (x86) location.
         /// See https://stackoverflow.com/a/194223
         /// </summary>

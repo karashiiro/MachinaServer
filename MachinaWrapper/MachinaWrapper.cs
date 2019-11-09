@@ -37,12 +37,20 @@ namespace MachinaWrapper
                 {
                     localRegion = Region.KR;
                 }
+                else if (args[RegionIndex + 1] == "CN")
+                {
+                    localRegion = Region.CN;
+                }
             }
             else if (!Util.SystemHasGlobalClient())
             {
                 if (Util.SystemHasKRClient())
                 {
                     localRegion = Region.KR;
+                }
+                else if (Util.SystemHasCNClient())
+                {
+                    localRegion = Region.CN;
                 }
             }
 
