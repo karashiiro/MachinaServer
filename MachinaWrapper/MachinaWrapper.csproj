@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FFXIVNetworkMonitor.cs" />
     <Compile Include="MachinaWrapper.cs" />
     <Compile Include="src\Models\MachinaWrapper\Common.cs" />
     <Compile Include="src\Models\Sapphire\Common.cs" />

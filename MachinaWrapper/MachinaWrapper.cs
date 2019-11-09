@@ -4,7 +4,6 @@
  */
 
 using Machina;
-using Machina.FFXIV;
 using MachinaWrapper.Common;
 using MachinaWrapper.Parsing;
 using System;
@@ -58,6 +57,7 @@ namespace MachinaWrapper
             FFXIVNetworkMonitor monitor = new FFXIVNetworkMonitor
             {
                 MonitorType = MonitorType,
+                Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
                 LocalIP = IPIndex != -1 ? args[IPIndex + 1] : "",
                 UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1 ? true : false,
