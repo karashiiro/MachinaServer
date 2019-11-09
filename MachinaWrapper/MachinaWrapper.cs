@@ -4,7 +4,6 @@
  */
 
 using Machina;
-using Machina.FFXIV;
 using MachinaWrapper.Common;
 using MachinaWrapper.Parsing;
 using System;
@@ -37,6 +36,10 @@ namespace MachinaWrapper
                 {
                     localRegion = Region.KR;
                 }
+                else if (args[RegionIndex + 1] == "CN")
+                {
+                    localRegion = Region.CN;
+                }
             }
             else if (!Util.SystemHasGlobalClient())
             {
@@ -44,12 +47,17 @@ namespace MachinaWrapper
                 {
                     localRegion = Region.KR;
                 }
+                else if (Util.SystemHasCNClient())
+                {
+                    localRegion = Region.CN;
+                }
             }
 
             // Create the monitor.
             FFXIVNetworkMonitor monitor = new FFXIVNetworkMonitor
             {
                 MonitorType = MonitorType,
+                Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
                 LocalIP = IPIndex != -1 ? args[IPIndex + 1] : "",
                 UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1 ? true : false,

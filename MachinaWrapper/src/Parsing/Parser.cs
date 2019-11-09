@@ -224,7 +224,11 @@ namespace MachinaWrapper.Parsing
                 }
                 else if (Region == Region.CN)
                 {
-                    //
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeCN), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeCN), ipcOpcode);
+                    }
                 }
                 else
                 {
@@ -261,7 +265,11 @@ namespace MachinaWrapper.Parsing
                 }
                 else if (Region == Region.CN)
                 {
-                    //
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeCN), ipcOpcode);
+                    if (ipcData.Type == null)
+                    {
+                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeCN), ipcOpcode);
+                    }
                 }
                 else
                 {
@@ -301,7 +309,10 @@ namespace MachinaWrapper.Parsing
                 {
                     Region = Region.KR;
                 }
-                // TODO China
+                else if (Region != Region.CN && worldId >= 1040 && worldId <= 1671)
+                {
+                    Region = Region.CN;
+                }
             }
         }
     }
