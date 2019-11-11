@@ -110,7 +110,7 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListingCount = 0x039D, // updated 5.1
         MarketBoardItemListing = 0x036A, // updated 5.1
         MarketBoardItemListingHistory = 0x0194, // updated 5.1
-        //MarketBoardSearchResult = 0x0139, // updated 4.5
+        MarketBoardSearchResult = 0x0371, // updated 5.1
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
