@@ -222,6 +222,8 @@ namespace Sapphire.Common.ActorControl
 
         GearSetEquipMsg = 0x321,
 
+        SetBait = 0x325, // param1: bait ID
+
         SetFestival = 0x386, // param1: festival.exd index
 
         ToggleOrchestrionUnlock = 0x396,
