@@ -179,6 +179,8 @@ namespace Sapphire.Common.Packets
 
         EventStart = 0x00C9, // updated 5.11
         EventFinish = 0x0387, // updated 5.11
+        EventUnk0 = 0x00A8, // updated 5.11
+        EventUnk1 = 0x0195, // updated 5.11
 
         //EventLinkshell = 0x1169,
 
