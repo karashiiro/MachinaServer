@@ -155,7 +155,7 @@ namespace Sapphire.Common.Packets
 
         ModelEquip = 0x0170, // updated 5.11
         //Examine = 0x00EA, // updated 5.1
-        //CharaNameReq = 0x0198, // updated 5.0
+        CharaNameReq = 0x006C, // updated 5.11
 
         // nb: see #565 on github
         //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
@@ -328,7 +328,7 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x013F, // updated 5.0
         //AoESkillHandler = 0x140, // updated 5.0
 
-        //UpdatePositionHandler = 0x01EC, // updated 5.1
+        UpdatePositionHandler = 0x01BF, // updated 5.11
 
         InventoryModifyHandler = 0x029B, // updated 5.11
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
