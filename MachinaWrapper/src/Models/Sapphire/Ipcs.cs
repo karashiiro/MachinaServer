@@ -59,7 +59,7 @@ namespace Sapphire.Common.Packets
         ///////////////////////////////////////////////////
 
         // ChatBanned = 0x006B,
-        Playtime = 0x0148, // updated 2019.11.19.0000.0000
+        PlayTime = 0x0148, // updated 2019.11.19.0000.0000
         //Logout = 0x011D, // updated 5.1
         //CFNotify = 0x0078,
         //CFMemberStatus = 0x0079,
