@@ -105,7 +105,7 @@ namespace Sapphire.Common.Packets
         //ReqMoogleMailLetter = 0x0139, // updated 5.0
         //MailLetterNotification = 0x013A, // updated 5.0
 
-        MarketTaxRates = 0x039F, // updated 5.11
+        MarketTaxRates = 0x185, // updated 5.12
 
         MarketBoardItemListingCount = 0x023A, // updated 5.12
         MarketBoardItemListing = 0x0390, // updated 5.12
