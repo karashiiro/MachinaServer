@@ -47,7 +47,7 @@ namespace Sapphire.Common.Packets
         InitZone = 0x01D8, // updated 5.11
 
         EffectResult = 0x00B9, // updated 5.11
-        ActorControl = 0x008D, // updated 5.11
+        ActorControl = 0x00BC, // updated 5.12
         ActorControlSelf = 0x00EB, // updated 5.11
         ActorControlTarget = 0x01F5, // updated 5.11
 
@@ -59,7 +59,7 @@ namespace Sapphire.Common.Packets
         ///////////////////////////////////////////////////
 
         ChatBanned = 0x006B,
-        //Playtime = 0x01DB, // updated 5.1
+        Playtime = 0x0148, // updated 5.12
         //Logout = 0x011D, // updated 5.1
         //CFNotify = 0x0078,
         //CFMemberStatus = 0x0079,
@@ -107,10 +107,10 @@ namespace Sapphire.Common.Packets
 
         MarketTaxRates = 0x039F, // updated 5.11
 
-        MarketBoardItemListingCount = 0x00F2, // updated 5.11
-        MarketBoardItemListing = 0x01E2, // updated 5.11
-        MarketBoardItemListingHistory = 0x0123, // updated 5.11
-        MarketBoardSearchResult = 0x00B7, // updated 5.11
+        MarketBoardItemListingCount = 0x023A, // updated 5.12
+        MarketBoardItemListing = 0x0390, // updated 5.12
+        MarketBoardItemListingHistory = 0x01C2, // updated 5.12
+        MarketBoardSearchResult = 0x02E7, // updated 5.12
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -131,8 +131,8 @@ namespace Sapphire.Common.Packets
 
         //GCAffiliation = 0x016F, // updated 5.0
 
-        PlayerSpawn = 0x0243, // updated 5.11
-        NpcSpawn = 0x021B, // updated 5.11
+        PlayerSpawn = 0x01E0, // updated 5.12
+        NpcSpawn = 0x0389, // updated 5.12
         NpcSpawn2 = 0x0137, // ( Bigger statuseffectlist? ) updated 5.11
         ActorMove = 0x00DD, // updated 5.11
 
@@ -145,9 +145,9 @@ namespace Sapphire.Common.Packets
         HateList = 0x03C5, // updated 5.11
         ObjectSpawn = 0x02A0, // updated 5.11
         ObjectDespawn = 0x036B, // updated 5.11
-        UpdateClassInfo = 0x00FC, // updated 5.11
+        UpdateClassInfo = 0x02E5, // updated 5.12
         //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-        PlayerSetup = 0x01A1, // updated 5.11
+        PlayerSetup = 0x0291, // updated 5.12
         PlayerStats = 0x0324, // updated 5.11
         ActorOwner = 0x0322, // updated 5.11
         //PlayerStateFlags = 0x019F, // updated 5.1
@@ -162,7 +162,7 @@ namespace Sapphire.Common.Packets
 
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x01D4, // updated 5.11
+        ItemInfo = 0x02EE, // updated 5.12
         //ContainerInfo = 0x0145, // updated 5.1
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
@@ -318,7 +318,7 @@ namespace Sapphire.Common.Packets
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
         //ZoneLineHandler = 0x02E0, // updated 5.1
-        ClientTrigger = 0x01F2, // updated 5.11
+        ClientTrigger = 0x0245, // updated 5.12
         //DiscoveryHandler = 0x0177, // updated 5.1
 
         //PlaceFieldMarker = 0x013C, // updated 5.0
