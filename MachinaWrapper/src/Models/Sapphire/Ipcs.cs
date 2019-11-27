@@ -44,22 +44,22 @@ namespace Sapphire.Common.Packets
         Init = 0x0066,
 
         // ActorFreeSpawn = 0x0249, // updated 5.11
-        // InitZone = 0x01D8, // updated 5.11
+        InitZone = 0x01A3, // updated 5.11a
 
-        EffectResult = 0x025E, // updated 2019.11.19.0000.0000
-        ActorControl = 0x00BC, // updated 2019.11.19.0000.0000
-        ActorControlSelf = 0x02EA, // updated 2019.11.19.0000.0000
-        ActorControlTarget = 0x0109, // updated 2019.11.19.0000.0000
+        EffectResult = 0x025E, // updated 5.11a
+        ActorControl = 0x00BC, // updated 5.11a
+        ActorControlSelf = 0x02EA, // updated 5.11a
+        ActorControlTarget = 0x0109, // updated 5.11a
 
         /*!
          * @brief Used when resting
          */
-        UpdateHpMpTp = 0x02CC, // updated 2019.11.19.0000.0000
+        UpdateHpMpTp = 0x02CC, // updated 5.11a
 
         ///////////////////////////////////////////////////
 
         // ChatBanned = 0x006B,
-        PlayTime = 0x0148, // updated 2019.11.19.0000.0000
+        PlayTime = 0x0148, // updated 5.11a
         //Logout = 0x011D, // updated 5.1
         //CFNotify = 0x0078,
         //CFMemberStatus = 0x0079,
@@ -105,12 +105,12 @@ namespace Sapphire.Common.Packets
         //ReqMoogleMailLetter = 0x0139, // updated 5.0
         //MailLetterNotification = 0x013A, // updated 5.0
 
-        MarketTaxRates = 0x0185, // updated 2019.11.19.0000.0000
+        MarketTaxRates = 0x0185, // updated 5.11a
 
-        MarketBoardItemListingCount = 0x023A, // updated 2019.11.19.0000.0000
-        MarketBoardItemListing = 0x0390, // updated 2019.11.19.0000.0000
-        MarketBoardItemListingHistory = 0x01C2, // updated 2019.11.19.0000.0000
-        MarketBoardSearchResult = 0x02E7, // updated 2019.11.19.0000.0000
+        MarketBoardItemListingCount = 0x023A, // updated 5.11a
+        MarketBoardItemListing = 0x0390, // updated 5.11a
+        MarketBoardItemListingHistory = 0x01C2, // updated 5.11a
+        MarketBoardSearchResult = 0x02E7, // updated 5.11a
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -119,36 +119,36 @@ namespace Sapphire.Common.Packets
 
         //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-        StatusEffectList = 0x023C, // updated 2019.11.19.0000.0000
+        StatusEffectList = 0x023C, // updated 5.11a
         //EurekaStatusEffectList = 0x01C2, // updated 5.11
-        BossStatusEffectList = 0x00FB, // added 2019.11.19.0000.0000
-        Effect = 0x01C6, // updated 2019.11.19.0000.0000
-        AoeEffect8 = 0x02C3, // updated 2019.11.19.0000.0000
-        AoeEffect16 = 0x02BE, // updated 2019.11.19.0000.0000
-        AoeEffect24 = 0x0076, // updated 2019.11.19.0000.0000
-        AoeEffect32 = 0x01EA, // updated 2019.11.19.0000.0000
+        BossStatusEffectList = 0x00FB, // added 5.11a
+        Effect = 0x01C6, // updated 5.11a
+        AoeEffect8 = 0x02C3, // updated 5.11a
+        AoeEffect16 = 0x02BE, // updated 5.11a
+        AoeEffect24 = 0x0076, // updated 5.11a
+        AoeEffect32 = 0x01EA, // updated 5.11a
         // PersistantEffect = 0x0165, // updated 5.0
 
         // GCAffiliation = 0x016F, // updated 5.0
 
-        PlayerSpawn = 0x01E0, // updated 2019.11.19.0000.0000
-        NpcSpawn = 0x0389, // updated 2019.11.19.0000.0000
-        NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 2019.11.19.0000.0000
-        ActorMove = 0x009F, // updated 2019.11.19.0000.0000
+        PlayerSpawn = 0x01E0, // updated 5.11a
+        NpcSpawn = 0x0389, // updated 5.11a
+        NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 5.11a
+        ActorMove = 0x009F, // updated 5.11a
 
-        ActorSetPos = 0x0071, // updated 2019.11.19.0000.0000
+        ActorSetPos = 0x0071, // updated 5.11a
 
-        ActorCast = 0x033E, // updated 2019.11.19.0000.0000
+        ActorCast = 0x033E, // updated 5.11a
         //SomeCustomiseChangePacketProbably = 0x0187, // added 5.0
         //PartyList = 0x022B, // updated 5.11
         //HateRank = 0x00B8, // updated 5.11
         //HateList = 0x03C5, // updated 5.11
         //ObjectSpawn = 0x02A0, // updated 5.11
         //ObjectDespawn = 0x036B, // updated 5.11
-        UpdateClassInfo = 0x02E5, // updated 2019.11.19.0000.0000
+        UpdateClassInfo = 0x02E5, // updated 5.11a
         //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-        PlayerSetup = 0x0291, // updated 2019.11.19.0000.0000
-        PlayerStats = 0x01BB, // updated 2019.11.19.0000.0000
+        PlayerSetup = 0x0291, // updated 5.11a
+        PlayerStats = 0x01BB, // updated 5.11a
         // ActorOwner = 0x0322, // updated 5.11
         // PlayerStateFlags = 0x019F, // updated 5.1
         // PlayerClassInfo = 0x02D4, // updated 5.1
@@ -162,23 +162,23 @@ namespace Sapphire.Common.Packets
 
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x02EE, // updated 2019.11.19.0000.0000
+        ItemInfo = 0x02EE, // updated 5.11a
         //ContainerInfo = 0x0145, // updated 5.1
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
-        CurrencyCrystalInfo = 0x01BD, // updated 2019.11.19.0000.0000
+        CurrencyCrystalInfo = 0x01BD, // updated 5.11a
 
         //InventoryActionAck = 0x0084, // updated 5.1
         // UpdateInventorySlot = 0x0112, // updated 5.11
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
-        // EventPlay = 0x0386, // updated 5.11
+        EventPlay = 0x0187, // updated 5.11a
         // DirectorPlayScene = 0x01B9, // updated 5.0
         //EventOpenGilShop = 0x01BC, // updated 5.0
 
-        // EventStart = 0x00C9, // updated 5.11
-        // EventFinish = 0x0387, // updated 5.11
+        EventStart = 0x0189, // updated 5.11a
+        EventFinish = 0x0357, // updated 5.11a
         // EventUnk0 = 0x00A8, // updated 5.11
         // EventUnk1 = 0x0195, // updated 5.11
 
@@ -243,7 +243,7 @@ namespace Sapphire.Common.Packets
         //PerformNote = 0x0286, // updated 4.3
 
         //PrepareZoning = 0x02A4, // updated 5.0
-        ActorGauge = 0x02B5, // updated 2019.11.19.0000.0000
+        ActorGauge = 0x02B5, // updated 5.11a
 
         // daily quest info -> without them sent,  login will take longer...
         //DailyQuests = 0x02B6, // updated 5.1
@@ -318,7 +318,7 @@ namespace Sapphire.Common.Packets
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
         //ZoneLineHandler = 0x02E0, // updated 5.1
-        ClientTrigger = 0x0245, // updated 2019.11.19.0000.0000
+        ClientTrigger = 0x0245, // updated 5.11a
         //DiscoveryHandler = 0x0177, // updated 5.1
 
         //PlaceFieldMarker = 0x013C, // updated 5.0
@@ -328,9 +328,9 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x013F, // updated 5.0
         //AoESkillHandler = 0x140, // updated 5.0
 
-        UpdatePositionHandler = 0x034B, // updated 2019.11.19.0000.0000
+        UpdatePositionHandler = 0x034B, // updated 5.11a
 
-        InventoryModifyHandler = 0x0310, // updated 2019.11.19.0000.0000
+        InventoryModifyHandler = 0x0310, // updated 5.11a
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
         //ReqPlaceHousingItem = 0x014B, // updated 5.0

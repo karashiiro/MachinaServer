@@ -1,3 +1,6 @@
+// https://raw.githubusercontent.com/karashiiro/MachinaWrapperJSON/b69c5dd1b42c0c30ffca54055d059849d150d4ee/MachinaWrapper/src/Models/Sapphire/Ipcs.cs
+// Switch to this on December 3
+
 namespace Sapphire.Common.Packets
 {
     ////////////////////////////////////////////////////////////////////////////////
