@@ -169,7 +169,7 @@ namespace Sapphire.Common.Packets
         CurrencyCrystalInfo = 0x01BD, // updated 5.11a
 
         //InventoryActionAck = 0x0084, // updated 5.1
-        // UpdateInventorySlot = 0x0112, // updated 5.11
+        UpdateInventorySlot = 0x035F, // updated 5.11a
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
