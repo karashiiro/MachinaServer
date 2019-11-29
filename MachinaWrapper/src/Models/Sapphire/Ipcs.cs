@@ -48,6 +48,7 @@ namespace Sapphire.Common.Packets
 
         EffectResult = 0x025E, // updated 5.11a
         ActorControl = 0x00BC, // updated 5.11a
+        ActorControl1 = 0x02EA, // updated 5.11a
         ActorControlSelf = 0x02EA, // updated 5.11a
         ActorControlTarget = 0x0109, // updated 5.11a
 
