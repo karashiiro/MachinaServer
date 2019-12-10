@@ -44,11 +44,11 @@ namespace Sapphire.Common.Packets
         Init = 0x0066,
 
         // ActorFreeSpawn = 0x0249, // updated 5.11
-        InitZone = 0x01A3, // updated 5.11a
+        InitZone = 0x01BA, // updated 5.15
 
-        EffectResult = 0x025E, // updated 5.11a
-        ActorControl = 0x00BC, // updated 5.11a
-        ActorControlSelf = 0x02EA, // updated 5.11a
+        EffectResult = 0x010B, // updated 5.15
+        ActorControl = 0x012F, // updated 5.15
+        ActorControlSelf = 0x0201, // updated 5.15
         ActorControlTarget = 0x0109, // updated 5.11a
 
         /*!
@@ -59,7 +59,7 @@ namespace Sapphire.Common.Packets
         ///////////////////////////////////////////////////
 
         // ChatBanned = 0x006B,
-        PlayTime = 0x0148, // updated 5.11a
+        PlayTime = 0x02FA, // updated 5.15
         //Logout = 0x011D, // updated 5.1
         //CFNotify = 0x0078,
         //CFMemberStatus = 0x0079,
@@ -107,10 +107,10 @@ namespace Sapphire.Common.Packets
 
         MarketTaxRates = 0x0185, // updated 5.11a
 
-        MarketBoardItemListingCount = 0x023A, // updated 5.11a
-        MarketBoardItemListing = 0x0390, // updated 5.11a
-        MarketBoardItemListingHistory = 0x01C2, // updated 5.11a
-        MarketBoardSearchResult = 0x02E7, // updated 5.11a
+        MarketBoardItemListingCount = 0x0349, // updated 5.15
+        MarketBoardItemListing = 0x0130, // updated 5.15
+        MarketBoardItemListingHistory = 0x01F7, // updated 5.15
+        MarketBoardSearchResult = 0x01CF, // updated 5.15
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -131,8 +131,8 @@ namespace Sapphire.Common.Packets
 
         // GCAffiliation = 0x016F, // updated 5.0
 
-        PlayerSpawn = 0x01E0, // updated 5.11a
-        NpcSpawn = 0x0389, // updated 5.11a
+        PlayerSpawn = 0x00DC, // updated 5.15
+        NpcSpawn = 0x0219, // updated 5.15
         NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 5.11a
         ActorMove = 0x009F, // updated 5.11a
 
@@ -145,10 +145,10 @@ namespace Sapphire.Common.Packets
         //HateList = 0x03C5, // updated 5.11
         //ObjectSpawn = 0x02A0, // updated 5.11
         //ObjectDespawn = 0x036B, // updated 5.11
-        UpdateClassInfo = 0x02E5, // updated 5.11a
+        UpdateClassInfo = 0x02EF, // updated 5.15
         //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-        PlayerSetup = 0x0291, // updated 5.11a
-        PlayerStats = 0x01BB, // updated 5.11a
+        PlayerSetup = 0x03B4, // updated 5.15
+        PlayerStats = 0x0328, // updated 5.15
         // ActorOwner = 0x0322, // updated 5.11
         // PlayerStateFlags = 0x019F, // updated 5.1
         // PlayerClassInfo = 0x02D4, // updated 5.1
@@ -162,26 +162,26 @@ namespace Sapphire.Common.Packets
 
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x02EE, // updated 5.11a
+        ItemInfo = 0x02B5, // updated 5.15
         //ContainerInfo = 0x0145, // updated 5.1
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
-        CurrencyCrystalInfo = 0x01BD, // updated 5.11a
+        CurrencyCrystalInfo = 0x010E, // updated 5.15
 
         //InventoryActionAck = 0x0084, // updated 5.1
-        UpdateInventorySlot = 0x035F, // updated 5.11a
+        UpdateInventorySlot = 0x03AB, // updated 5.15
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
-        EventPlay = 0x0187, // updated 5.11a
+        EventPlay = 0x00A0, // updated 5.15
         // DirectorPlayScene = 0x01B9, // updated 5.0
         //EventOpenGilShop = 0x01BC, // updated 5.0
 
-        EventStart = 0x0189, // updated 5.11a
-        EventFinish = 0x0357, // updated 5.11a
-        EventUnk0 = 0x0346, // updated 5.11
-        EventUnk1 = 0x02FC, // updated 5.11a
-        UseMooch = 0x028E, // updated 5.11a
+        EventStart = 0x03E3, // updated 5.15
+        EventFinish = 0x011A, // updated 5.15
+        EventUnk0 = 0x00D8, // updated 5.15
+        EventUnk1 = 0x0081, // updated 5.15
+        UseMooch = 0x0394, // updated 5.15
 
         //EventLinkshell = 0x1169,
 
@@ -319,7 +319,7 @@ namespace Sapphire.Common.Packets
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
         //ZoneLineHandler = 0x02E0, // updated 5.1
-        ClientTrigger = 0x0245, // updated 5.11a
+        ClientTrigger = 0x0371, // updated 5.15
         //DiscoveryHandler = 0x0177, // updated 5.1
 
         //PlaceFieldMarker = 0x013C, // updated 5.0
@@ -329,9 +329,9 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x013F, // updated 5.0
         //AoESkillHandler = 0x140, // updated 5.0
 
-        UpdatePositionHandler = 0x034B, // updated 5.11a
+        UpdatePositionHandler = 0x0255, // updated 5.15
 
-        InventoryModifyHandler = 0x0310, // updated 5.11a
+        InventoryModifyHandler = 0x0143, // updated 5.11a
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
         //ReqPlaceHousingItem = 0x014B, // updated 5.0

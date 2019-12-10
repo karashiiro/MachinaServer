@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>MachinaWrapper.MachinaWrapper</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Machina, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
