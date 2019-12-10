@@ -329,7 +329,7 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x013F, // updated 5.0
         //AoESkillHandler = 0x140, // updated 5.0
 
-        UpdatePositionHandler = 0x0255, // updated 5.15
+        UpdatePositionHandler = 0x0355, // updated 5.15
 
         InventoryModifyHandler = 0x0143, // updated 5.11a
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
