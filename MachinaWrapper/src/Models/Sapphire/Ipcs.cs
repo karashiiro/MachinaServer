@@ -65,6 +65,8 @@ namespace Sapphire.Common.Packets
         //CFMemberStatus = 0x0079,
         //CFDutyInfo = 0x007A,
         //CFPlayerInNeed = 0x007F,
+        CFNotifyPop = 0x0135, // added 5.15
+        CFPreferredRole = 0x02A2, // added 5.15
 
         //SocialRequestError = 0x00AD,
 
