@@ -48,6 +48,7 @@ namespace Sapphire.Common.Packets
         Playtime = 0x0100, // updated 5.0
         Logout = 0x0077, // updated 5.0
         CFNotify = 0x0078,
+        CfPreferredRole = 0x7F, // updated 5.0 
         CFMemberStatus = 0x0079,
         CFDutyInfo = 0x007A,
         CFPlayerInNeed = 0x007F,
@@ -77,10 +78,11 @@ namespace Sapphire.Common.Packets
         ReqMoogleMailList = 0x0138, // updated 5.0
         ReqMoogleMailLetter = 0x0139, // updated 5.0
         MailLetterNotification = 0x013A, // updated 5.0
+        MarketTaxRates = 0x1CC, // updated 5.15
         MarketBoardItemListingCount = 0x013B, // updated 5.0
         MarketBoardItemListing = 0x013C, // updated 5.0
         MarketBoardItemListingHistory = 0x140, // updated 5.0
-                                               //    MarketBoardSearchResult = 0x0139, // updated 4.5
+        MarketBoardSearchResult = 0x14A, // updated 5.0
                                                //    CharaFreeCompanyTag = 0x013B, // updated 4.5
                                                //    FreeCompanyBoardMsg = 0x013C, // updated 4.5
                                                //    FreeCompanyInfo = 0x013D, // updated 4.5
@@ -132,6 +134,9 @@ namespace Sapphire.Common.Packets
         EventOpenGilShop = 0x01BC, // updated 5.0
         EventStart = 0x01BE, // updated 5.0
         EventFinish = 0x01BF, // updated 5.0
+        EventUnk0 = 0x1B6, // updated 5.0
+        EventUnk1 = 0x1FA, // updated 5.0
+        UseMooch = 0x1A4, // updated 5.0
         EventLinkshell = 0x1169,
         QuestActiveList = 0x01D2, // updated 5.0
         QuestUpdate = 0x01D3, // updated 5.0
