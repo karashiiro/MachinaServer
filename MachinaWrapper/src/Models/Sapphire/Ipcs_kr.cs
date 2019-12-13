@@ -82,7 +82,7 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListingCount = 0x013B, // updated 5.0
         MarketBoardItemListing = 0x013C, // updated 5.0
         MarketBoardItemListingHistory = 0x140, // updated 5.0
-        MarketBoardSearchResult = 0x14A, // updated 4.5
+        MarketBoardSearchResult = 0x14A, // updated 5.0
                                                //    CharaFreeCompanyTag = 0x013B, // updated 4.5
                                                //    FreeCompanyBoardMsg = 0x013C, // updated 4.5
                                                //    FreeCompanyInfo = 0x013D, // updated 4.5
