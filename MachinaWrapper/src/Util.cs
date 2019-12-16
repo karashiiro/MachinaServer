@@ -39,14 +39,28 @@ namespace MachinaWrapper.Common
         /// </summary>
         public static bool SystemHasKRClient()
         {
-            string[] folders = {
+            string[] programFilesFolders = {
                 @"SquareEnix\FINAL FANTASY XIV - KOREA",
                 @"FINAL FANTASY XIV - KOREA"
             };
 
-            foreach (string folder in folders)
+            foreach (string folder in programFilesFolders)
             {
                 if (Directory.Exists(Path.Combine(ProgramFilesx86(), folder)))
+                {
+                    return true;
+                }
+            }
+
+            string[] otherFolders = { // KR has several wacky install locations because Korean publishers (and SEGA, incidentally) refuse to use Program Files
+                @"C:\Naver\FINAL FANTASY XIV - KOREA",
+                @"C:\Nexon\FINAL FANTASY XIV - KOREA",
+                @"C:\Kakao\FINAL FANTASY XIV - KOREA"
+            };
+
+            foreach (string folder in otherFolders)
+            {
+                if (Directory.Exists(folder))
                 {
                     return true;
                 }

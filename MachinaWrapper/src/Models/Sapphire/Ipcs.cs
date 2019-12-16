@@ -49,12 +49,12 @@ namespace Sapphire.Common.Packets
         EffectResult = 0x010B, // updated 5.15
         ActorControl = 0x012F, // updated 5.15
         ActorControlSelf = 0x0201, // updated 5.15
-        ActorControlTarget = 0x0109, // updated 5.11a
+        ActorControlTarget = 0x01BE, // updated 5.15
 
         /*!
          * @brief Used when resting
          */
-        UpdateHpMpTp = 0x02CC, // updated 5.11a
+        UpdateHpMpTp = 0x0075, // updated 5.15
 
         ///////////////////////////////////////////////////
 
@@ -123,24 +123,24 @@ namespace Sapphire.Common.Packets
 
         StatusEffectList = 0x023C, // updated 5.11a
         //EurekaStatusEffectList = 0x01C2, // updated 5.11
-        BossStatusEffectList = 0x00FB, // added 5.11a
-        Effect = 0x01C6, // updated 5.11a
-        AoeEffect8 = 0x02C3, // updated 5.11a
-        AoeEffect16 = 0x02BE, // updated 5.11a
-        AoeEffect24 = 0x0076, // updated 5.11a
-        AoeEffect32 = 0x01EA, // updated 5.11a
+        BossStatusEffectList = 0x0312, // added 5.15
+        Effect = 0x02AA, // updated 5.15
+        AoeEffect8 = 0x00B3, // updated 5.15
+        AoeEffect16 = 0x00E6, // updated 5.15
+        AoeEffect24 = 0x010A, // updated 5.15
+        AoeEffect32 = 0x01C8, // updated 5.15
         // PersistantEffect = 0x0165, // updated 5.0
 
         // GCAffiliation = 0x016F, // updated 5.0
 
         PlayerSpawn = 0x00DC, // updated 5.15
         NpcSpawn = 0x0219, // updated 5.15
-        NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 5.11a
-        ActorMove = 0x009F, // updated 5.11a
+        // NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 5.11a
+        // ActorMove = 0x009F, // updated 5.11a
 
-        ActorSetPos = 0x0071, // updated 5.11a
+        // ActorSetPos = 0x0071, // updated 5.11a
 
-        ActorCast = 0x033E, // updated 5.11a
+        ActorCast = 0x01EC, // updated 5.15
         //SomeCustomiseChangePacketProbably = 0x0187, // added 5.0
         //PartyList = 0x022B, // updated 5.11
         //HateRank = 0x00B8, // updated 5.11
@@ -246,7 +246,7 @@ namespace Sapphire.Common.Packets
         //PerformNote = 0x0286, // updated 4.3
 
         //PrepareZoning = 0x02A4, // updated 5.0
-        ActorGauge = 0x02B5, // updated 5.11a
+        ActorGauge = 0x0337, // updated 5.15
 
         // daily quest info -> without them sent,  login will take longer...
         //DailyQuests = 0x02B6, // updated 5.1
