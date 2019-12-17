@@ -24,4 +24,4 @@ jobs:
     - name: CD into the repository
       run: cd node-machina-ffxiv
     - name: Move build results into node-machina-ffxiv
-      run: move ../MachinaWrapper/bin/Release/*.* ./MachinaWrapper
+      run: move ../MachinaWrapperJSON/MachinaWrapper/bin/Release/*.* ./MachinaWrapper
