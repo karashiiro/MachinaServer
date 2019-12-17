@@ -22,4 +22,4 @@ jobs:
     - name: Clone node-machina-ffxiv
       run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
     - name: Move build results into node-machina-ffxiv
-      run: move ./MachinaWrapper/bin/Release/*.* ./node-machina-ffxiv/MachinaWrapper /Y
+      run: move /Y ./MachinaWrapper/bin/Release/*.* ./node-machina-ffxiv/MachinaWrapper
