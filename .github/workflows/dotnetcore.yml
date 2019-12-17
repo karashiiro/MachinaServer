@@ -21,5 +21,7 @@ jobs:
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
     - name: Clone node-machina-ffxiv
       run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
+    - name: Empty old build files
+      run: del ./node-machina-ffxiv/MachinaWrapper/*.*
     - name: Move build results into node-machina-ffxiv
-      run: move /Y ./MachinaWrapper/bin/Release/*.* ./node-machina-ffxiv/MachinaWrapper
+      run: move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
