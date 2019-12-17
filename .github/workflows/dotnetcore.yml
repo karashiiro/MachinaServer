@@ -14,6 +14,6 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Install Machina.FFXIV
-      run: dotnet add package Machina.FFXIV
+      run: dotnet add ./MachinaWrapper/MachinaWrapper.csproj package Machina.FFXIV
     - name: Build with dotnet
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
