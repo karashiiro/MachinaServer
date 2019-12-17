@@ -1,0 +1,36 @@
+name: Build and push to node-machina-ffxiv
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: Install dependencies
+      run: nuget restore
+    - name: Build with dotnet
+      run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
+    - name: Clone node-machina-ffxiv
+      run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
+    - name: Move build results into node-machina-ffxiv
+      run: |
+        del ./node-machina-ffxiv/MachinaWrapper/*.*
+        move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
+    - name: Commit build results to node-machina-ffxiv
+      run: |
+        cd node-machina-ffxiv
+        git add -A
+    - name: Push commit to master
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
