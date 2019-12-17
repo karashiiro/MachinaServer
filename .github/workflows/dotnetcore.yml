@@ -16,6 +16,6 @@ jobs:
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
     - name: Install dependencies
-      run: nuget install
+      run: nuget restore
     - name: Build with dotnet
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
