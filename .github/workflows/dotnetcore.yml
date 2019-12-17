@@ -1,4 +1,4 @@
-name: Build and commit to node-machina-ffxiv
+name: Build and push to node-machina-ffxiv
 
 on: [push]
 
@@ -25,3 +25,5 @@ jobs:
       run: del ./node-machina-ffxiv/MachinaWrapper/*.*
     - name: Move build results into node-machina-ffxiv
       run: move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
+    - name: Commit build results to node-machina-ffxiv
+      run: cd node-machina-ffxiv && git add -A
