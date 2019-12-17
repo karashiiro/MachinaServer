@@ -25,3 +25,5 @@ jobs:
       run: cd node-machina-ffxiv
     - name: Move build results into node-machina-ffxiv
       run: move ../MachinaWrapperJSON/MachinaWrapper/bin/Release/*.* ./MachinaWrapper
+    - name: Debug
+      run: ls
