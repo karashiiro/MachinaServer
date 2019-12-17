@@ -21,9 +21,5 @@ jobs:
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
     - name: Clone node-machina-ffxiv
       run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
-    - name: CD into the repository
-      run: cd node-machina-ffxiv
     - name: Move build results into node-machina-ffxiv
-      run: move ../MachinaWrapperJSON/MachinaWrapper/bin/Release/*.* ./MachinaWrapper
-    - name: Debug
-      run: ls
+      run: move ./MachinaWrapper/bin/Release/*.* ./node-machina-ffxiv/MachinaWrapper
