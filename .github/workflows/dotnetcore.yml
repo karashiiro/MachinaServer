@@ -25,13 +25,8 @@ jobs:
       run: |
         del ./node-machina-ffxiv/MachinaWrapper/*.*
         move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
-    - name: Commit build results to node-machina-ffxiv
+    - name: Push build results to node-machina-ffxiv
       run: |
         cd node-machina-ffxiv
-        git add -A
-    - name: Push commit to master
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: master
-        directory: ./node-machina-ffxiv
+        git commit -a -m "Import new build results from MachinaWrapperJSON"
+        git push
