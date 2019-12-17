@@ -17,7 +17,7 @@ namespace MachinaWrapper
 
         static void Main(string[] args)
         {
-            // Use arguments to configure the monitor.
+            // Configure the monitor with command-line arguments.
             int MonitorIndex = Array.IndexOf(args, "--MonitorType");
             int PIDIndex = Array.IndexOf(args, "--ProcessID");
             int IPIndex = Array.IndexOf(args, "--LocalIP");
