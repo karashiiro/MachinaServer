@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build and commit to node-machina-ffxiv
 
 on: [push]
 
@@ -19,3 +19,7 @@ jobs:
       run: nuget restore
     - name: Build with dotnet
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
+    - name: Clone node-machina-ffxiv
+      run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
+    - name: CD into the repository
+      run: cd node-machina-ffxiv
