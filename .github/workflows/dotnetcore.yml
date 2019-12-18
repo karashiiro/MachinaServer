@@ -20,7 +20,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
     - name: Clone node-machina-ffxiv
-      run: git clone https://node-machina-worker:{{ secrets.WORKER_ACCESS_KEY }}@github.com/karashiiro/node-machina-ffxiv.git
+      run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
     - name: Move build results into node-machina-ffxiv
       run: |
         del ./node-machina-ffxiv/MachinaWrapper/*.*
@@ -30,3 +30,5 @@ jobs:
         cd node-machina-ffxiv
         git commit -a -m "Import new build results from MachinaWrapperJSON"
         git push
+        node-machina-worker
+        {{ secrets.WORKER_ACCESS_KEY }}
