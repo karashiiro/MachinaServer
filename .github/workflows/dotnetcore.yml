@@ -23,15 +23,19 @@ jobs:
       run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
     - name: Move build results into node-machina-ffxiv
       run: |
-        del ./node-machina-ffxiv/MachinaWrapper/*.*
+        del ./node-machina-ffxiv/MachinaWrapper/*.dll
+        del ./node-machina-ffxiv/MachinaWrapper/*.exe
+        del ./node-machina-ffxiv/MachinaWrapper/*.config
         move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
-    - name: Push build results to node-machina-ffxiv
+    - name: Configure GitHub user
       run: |
-        cd node-machina-ffxiv
         git config --global user.email "action@github.com"
         git config --global user.name "Push To node-machina"
         git config credential.helper store
         git commit -a -m "Import new build results from MachinaWrapperJSON"
-        git push
-        node-machina-worker
-        {{ secrets.WORKER_ACCESS_KEY }}
+        cd node-machina-ffxiv
+    - name: Push build results to node-machina-ffxiv
+      uses: ad-m/github-push-action@master
+      with:
+        repository: karashiiro/node-machina-ffxiv
+        github_token: ${{ secrets.WORKER_ACCESS_KEY }}
