@@ -28,6 +28,8 @@ jobs:
     - name: Push build results to node-machina-ffxiv
       run: |
         cd node-machina-ffxiv
+        git config --global user.email "action@github.com"
+        git config --global user.name "Push To node-machina"
         git config credential.helper store
         git commit -a -m "Import new build results from MachinaWrapperJSON"
         git push
