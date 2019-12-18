@@ -32,6 +32,7 @@ jobs:
         git config --global user.email "action@github.com"
         git config --global user.name "Push To node-machina"
         git config credential.helper store
+        git add -A
         git commit -a -m "Import new build results from MachinaWrapperJSON"
         cd node-machina-ffxiv
     - name: Push build results to node-machina-ffxiv
