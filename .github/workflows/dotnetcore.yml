@@ -37,5 +37,6 @@ jobs:
     - name: Push build results to node-machina-ffxiv
       uses: ad-m/github-push-action@master
       with:
+        directory: ./node-machina-ffxiv
         repository: karashiiro/node-machina-ffxiv
         github_token: ${{ secrets.WORKER_ACCESS_KEY }}
