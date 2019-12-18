@@ -29,12 +29,11 @@ jobs:
         move ./MachinaWrapper/bin/Release/*.dll, ./MachinaWrapper/bin/Release/*.exe, ./MachinaWrapper/bin/Release/*.config ./node-machina-ffxiv/MachinaWrapper
     - name: Configure GitHub user
       run: |
+        cd node-machina-ffxiv
         git config --global user.email "action@github.com"
         git config --global user.name "Push To node-machina"
         git config credential.helper store
-        git add -A
         git commit -a -m "Import new build results from MachinaWrapperJSON"
-        cd node-machina-ffxiv
     - name: Push build results to node-machina-ffxiv
       uses: ad-m/github-push-action@master
       with:
