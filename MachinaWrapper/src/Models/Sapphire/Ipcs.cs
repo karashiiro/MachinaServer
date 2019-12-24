@@ -43,13 +43,13 @@ namespace Sapphire.Common.Packets
         Ping = 0x0065,
         Init = 0x0066,
 
-        // ActorFreeSpawn = 0x0249, // updated 5.11
+        ActorFreeSpawn = 0x009B, // updated 5.18
         InitZone = 0x01BA, // updated 5.15
 
         EffectResult = 0x010B, // updated 5.15
-        ActorControl = 0x012F, // updated 5.15
-        ActorControlSelf = 0x0201, // updated 5.15
-        ActorControlTarget = 0x01BE, // updated 5.15
+        ActorControl = 0x03BE, // updated 5.18
+        ActorControlSelf = 0x00E3, // updated 5.18
+        ActorControlTarget = 0x024D, // updated 5.18
 
         /*!
          * @brief Used when resting
@@ -59,8 +59,8 @@ namespace Sapphire.Common.Packets
         ///////////////////////////////////////////////////
 
         // ChatBanned = 0x006B,
-        PlayTime = 0x02FA, // updated 5.15
-        //Logout = 0x011D, // updated 5.1
+        PlayTime = 0x00E7, // updated 5.18
+        Logout = 0x0142, // updated 5.18
         //CFNotify = 0x0078,
         //CFMemberStatus = 0x0079,
         //CFDutyInfo = 0x007A,
@@ -76,7 +76,7 @@ namespace Sapphire.Common.Packets
 
         //LogMessage = 0x00D0,
 
-        //Chat = 0x02DC, // updated 5.1
+        Chat = 0x02A3, // updated 5.18
 
         //WorldVisitList = 0x00FE, // added 4.5
 
@@ -91,8 +91,8 @@ namespace Sapphire.Common.Packets
         //ServerNotice = 0x0116, // updated 5.0
         //SetOnlineStatus = 0x015E, // updated 5.1
 
-        // CountdownInitiate = 0x0309, // updated 5.11
-        // CountdownCancel = 0x013C, // updated 5.11
+        //CountdownInitiate = 0x0309, // updated 5.11
+        CountdownCancel = 0x00D9, // updated 5.18
 
         //PlayerAddedToBlacklist = 0x033F, // updated 5.1
         //PlayerRemovedFromBlacklist = 0x0385, // updated 5.1
@@ -121,41 +121,41 @@ namespace Sapphire.Common.Packets
 
         //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-        StatusEffectList = 0x023C, // updated 5.11a
-        //EurekaStatusEffectList = 0x01C2, // updated 5.11
+        StatusEffectList = 0x0183, // updated 5.18
+        EurekaStatusEffectList = 0x0167, // updated 5.18
         BossStatusEffectList = 0x0312, // added 5.15
-        Effect = 0x02AA, // updated 5.15
-        AoeEffect8 = 0x00B3, // updated 5.15
-        AoeEffect16 = 0x00E6, // updated 5.15
-        AoeEffect24 = 0x010A, // updated 5.15
-        AoeEffect32 = 0x01C8, // updated 5.15
-        // PersistantEffect = 0x0165, // updated 5.0
+        Effect = 0x026B, // updated 5.18
+        AoeEffect8 = 0x033E, // updated 5.18
+        AoeEffect16 = 0x0305, // updated 5.18
+        AoeEffect24 = 0x023F, // updated 5.18
+        AoeEffect32 = 0x0352, // updated 5.18
+        PersistantEffect = 0x019C, // updated 5.18
 
         // GCAffiliation = 0x016F, // updated 5.0
 
-        PlayerSpawn = 0x00DC, // updated 5.15
-        NpcSpawn = 0x0219, // updated 5.15
-        // NpcSpawn2 = 0x031F, // ( Bigger statuseffectlist? ) updated 5.11a
-        // ActorMove = 0x009F, // updated 5.11a
+        PlayerSpawn = 0x0262, // updated 5.18
+        NpcSpawn = 0x0186, // updated 5.18
+        NpcSpawn2 = 0x010C, // ( Bigger statuseffectlist? ) updated 5.18
+        ActorMove = 0x021B, // updated 5.18
 
-        // ActorSetPos = 0x0071, // updated 5.11a
+        ActorSetPos = 0x0068, // updated 5.18
 
-        ActorCast = 0x01EC, // updated 5.15
-        //SomeCustomiseChangePacketProbably = 0x0187, // added 5.0
-        //PartyList = 0x022B, // updated 5.11
-        //HateRank = 0x00B8, // updated 5.11
-        //HateList = 0x03C5, // updated 5.11
-        //ObjectSpawn = 0x02A0, // updated 5.11
-        //ObjectDespawn = 0x036B, // updated 5.11
-        UpdateClassInfo = 0x02EF, // updated 5.15
+        ActorCast = 0x03B1, // updated 5.18
+        SomeCustomiseChangePacketProbably = 0x00CD, // updated 5.18
+        PartyList = 0x0287, // updated 5.18
+        HateRank = 0x0226, // updated 5.18
+        HateList = 0x0361, // updated 5.18
+        ObjectSpawn = 0x027F, // updated 5.18
+        ObjectDespawn = 0x034B, // updated 5.18
+        UpdateClassInfo = 0x0362, // updated 5.18
         //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-        PlayerSetup = 0x03B4, // updated 5.15
-        PlayerStats = 0x0328, // updated 5.15
-        // ActorOwner = 0x0322, // updated 5.11
-        // PlayerStateFlags = 0x019F, // updated 5.1
-        // PlayerClassInfo = 0x02D4, // updated 5.1
+        //PlayerSetup = 0x03B4, // updated 5.15
+        PlayerStats = 0x017A, // updated 5.18
+        //ActorOwner = 0x0322, // updated 5.11
+        PlayerStateFlags = 0x02C6, // updated 5.18
+        //PlayerClassInfo = 0x02D4, // updated 5.1
 
-        // ModelEquip = 0x0170, // updated 5.11
+        //ModelEquip = 0x0170, // updated 5.11
         //Examine = 0x00EA, // updated 5.1
         CharaNameReq = 0x0172, // updated 5.15
 
@@ -180,7 +180,7 @@ namespace Sapphire.Common.Packets
         //EventOpenGilShop = 0x01BC, // updated 5.0
 
         EventStart = 0x03E3, // updated 5.15
-        EventFinish = 0x011A, // updated 5.15
+        EventFinish = 0x0230, // updated 5.18
         EventUnk0 = 0x00D8, // updated 5.15
         EventUnk1 = 0x0081, // updated 5.15
         UseMooch = 0x0394, // updated 5.15
@@ -189,9 +189,9 @@ namespace Sapphire.Common.Packets
 
         //QuestActiveList = 0x01D2, // updated 5.0
         //QuestUpdate = 0x01D3, // updated 5.0
-        //QuestCompleteList = 0x01D4, // updated 5.0
+        QuestCompleteList = 0x0066, // updated 5.18
 
-        //QuestFinish = 0x01D5, // updated 5.0
+        QuestFinish = 0x025D, // updated 5.18
         //MSQTrackerComplete = 0x01D6, // updated 5.0
         //MSQTrackerProgress = 0xF1CD, // updated 4.5 ? this actually looks like the two opcodes have been combined, see #474
 
@@ -199,7 +199,7 @@ namespace Sapphire.Common.Packets
 
         //QuestTracker = 0x01E3, // updated 5.0
 
-        //Mount = 0x01F3, // updated 5.0
+        Mount = 0x02F0, // updated 5.18
 
         //DirectorVars = 0x01F5, // updated 5.0
         //DirectorPopUp = 0x0200, // updated 5.0 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
@@ -208,7 +208,7 @@ namespace Sapphire.Common.Packets
 
         // WeatherChange = 0x02FB, // updated 5.11
         //PlayerTitleList = 0x037D, // updated 5.1
-        //Discovery = 0x0094, // updated 5.1
+        Discovery = 0x0285, // updated 5.18
 
         //EorzeaTimeOffset = 0x03B8, // updated 5.1
 
@@ -246,7 +246,7 @@ namespace Sapphire.Common.Packets
         //PerformNote = 0x0286, // updated 4.3
 
         //PrepareZoning = 0x02A4, // updated 5.0
-        ActorGauge = 0x0337, // updated 5.15
+        ActorGauge = 0x016D, // updated 5.18
 
         // daily quest info -> without them sent,  login will take longer...
         //DailyQuests = 0x02B6, // updated 5.1
