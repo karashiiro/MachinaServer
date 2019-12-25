@@ -44,9 +44,9 @@ namespace Sapphire.Common.Packets
         Init = 0x0066,
 
         ActorFreeSpawn = 0x009B, // updated 5.18
-        InitZone = 0x01BA, // updated 5.15
+        InitZone = 0x007C, // updated 5.18
 
-        EffectResult = 0x010B, // updated 5.15
+        //EffectResult = 0x010B, // updated 5.15
         ActorControl = 0x03BE, // updated 5.18
         ActorControlSelf = 0x00E3, // updated 5.18
         ActorControlTarget = 0x024D, // updated 5.18
@@ -54,7 +54,7 @@ namespace Sapphire.Common.Packets
         /*!
          * @brief Used when resting
          */
-        UpdateHpMpTp = 0x0075, // updated 5.15
+        UpdateHpMpTp = 0x0125, // updated 5.18
 
         ///////////////////////////////////////////////////
 
@@ -65,8 +65,8 @@ namespace Sapphire.Common.Packets
         //CFMemberStatus = 0x0079,
         //CFDutyInfo = 0x007A,
         //CFPlayerInNeed = 0x007F,
-        CFNotifyPop = 0x0135, // added 5.15
-        CFPreferredRole = 0x02A2, // added 5.15
+        CFNotifyPop = 0x01F8, // updated 5.18
+        CFPreferredRole = 0x032A, // updated 5.18
 
         //SocialRequestError = 0x00AD,
 
@@ -82,8 +82,8 @@ namespace Sapphire.Common.Packets
 
         //SocialList = 0x007A, // updated 5.1
 
-        //ExamineSearchInfo = 0x03D7, // updated 5.1
-        //UpdateSearchInfo = 0x0358, // updated 5.1
+        ExamineSearchInfo = 0x012B, // updated 5.18
+        UpdateSearchInfo = 0x01E5, // updated 5.18
         //InitSearchInfo = 0x03A1, // updated 5.1
         //ExamineSearchComment = 0x0102, // updated 4.1
 
@@ -107,12 +107,12 @@ namespace Sapphire.Common.Packets
         //ReqMoogleMailLetter = 0x0139, // updated 5.0
         //MailLetterNotification = 0x013A, // updated 5.0
 
-        MarketTaxRates = 0x016A, // updated 5.15
+        MarketTaxRates = 0x025E, // updated 5.18
 
-        MarketBoardItemListingCount = 0x0349, // updated 5.15
-        MarketBoardItemListing = 0x0130, // updated 5.15
-        MarketBoardItemListingHistory = 0x01F7, // updated 5.15
-        MarketBoardSearchResult = 0x01CF, // updated 5.15
+        MarketBoardItemListingCount = 0x0328, // updated 5.18
+        MarketBoardItemListing = 0x015F, // updated 5.18
+        MarketBoardItemListingHistory = 0x0113, // updated 5.18
+        MarketBoardSearchResult = 0x01EA, // updated 5.18
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -149,14 +149,14 @@ namespace Sapphire.Common.Packets
         ObjectDespawn = 0x034B, // updated 5.18
         UpdateClassInfo = 0x0362, // updated 5.18
         //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-        //PlayerSetup = 0x03B4, // updated 5.15
+        PlayerSetup = 0x0295, // updated 5.18
         PlayerStats = 0x017A, // updated 5.18
         //ActorOwner = 0x0322, // updated 5.11
         PlayerStateFlags = 0x02C6, // updated 5.18
         //PlayerClassInfo = 0x02D4, // updated 5.1
 
         //ModelEquip = 0x0170, // updated 5.11
-        //Examine = 0x00EA, // updated 5.1
+        Examine = 0x0366, // updated 5.18
         CharaNameReq = 0x0172, // updated 5.15
 
         // nb: see #565 on github
@@ -164,7 +164,7 @@ namespace Sapphire.Common.Packets
 
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x02B5, // updated 5.15
+        ItemInfo = 0x00F2, // updated 5.18
         //ContainerInfo = 0x0145, // updated 5.1
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
@@ -175,15 +175,15 @@ namespace Sapphire.Common.Packets
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
-        EventPlay = 0x00A0, // updated 5.15
+        EventPlay = 0x0279, // updated 5.18
         // DirectorPlayScene = 0x01B9, // updated 5.0
         //EventOpenGilShop = 0x01BC, // updated 5.0
 
-        EventStart = 0x03E3, // updated 5.15
+        EventStart = 0x0230, // updated 5.18
         EventFinish = 0x0230, // updated 5.18
-        EventUnk0 = 0x00D8, // updated 5.15
-        EventUnk1 = 0x0081, // updated 5.15
-        UseMooch = 0x0394, // updated 5.15
+        EventUnk0 = 0x02F7, // updated 5.18
+        EventUnk1 = 0x0100, // updated 5.18
+        UseMooch = 0x0233, // updated 5.18
 
         //EventLinkshell = 0x1169,
 
@@ -290,10 +290,10 @@ namespace Sapphire.Common.Packets
         //SocialReqSendHandler = 0x00AE, // updated 4.1
         //CreateCrossWorldLS = 0x00AF, // updated 4.3
 
-        //ChatHandler = 0x02FF, // updated 5.1
+        ChatHandler = 0x0130, // updated 5.18
 
         //SocialListHandler = 0x01F6, // updated 5.1
-        //SetSearchInfoHandler = 0x00E4, // updated 5.0
+        SetSearchInfoHandler = 0x0320, // updated 5.18
         //ReqSearchInfoHandler = 0x024D, // updated 5.1
         //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
@@ -321,7 +321,7 @@ namespace Sapphire.Common.Packets
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
         //ZoneLineHandler = 0x02E0, // updated 5.1
-        ClientTrigger = 0x0371, // updated 5.15
+        ClientTrigger = 0x03C0, // updated 5.18
         //DiscoveryHandler = 0x0177, // updated 5.1
 
         //PlaceFieldMarker = 0x013C, // updated 5.0
