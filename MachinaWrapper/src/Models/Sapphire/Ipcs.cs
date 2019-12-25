@@ -168,10 +168,10 @@ namespace Sapphire.Common.Packets
         //ContainerInfo = 0x0145, // updated 5.1
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
-        CurrencyCrystalInfo = 0x010E, // updated 5.15
+        CurrencyCrystalInfo = 0x02BF, // updated 5.18
 
         //InventoryActionAck = 0x0084, // updated 5.1
-        UpdateInventorySlot = 0x03AB, // updated 5.15
+        UpdateInventorySlot = 0x0370, // updated 5.18
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
