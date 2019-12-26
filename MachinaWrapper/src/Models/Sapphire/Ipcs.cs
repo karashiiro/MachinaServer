@@ -165,7 +165,7 @@ namespace Sapphire.Common.Packets
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
         ItemInfo = 0x00F2, // updated 5.18
-        //ContainerInfo = 0x0145, // updated 5.1
+        ContainerInfo = 0x01F2, // updated 5.18
         //InventoryTransactionFinish = 0x01AB, // updated 5.1
         //InventoryTransaction = 0x023E, // updated 5.1
         CurrencyCrystalInfo = 0x02BF, // updated 5.18
