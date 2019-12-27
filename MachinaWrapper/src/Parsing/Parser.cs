@@ -157,21 +157,21 @@ namespace MachinaWrapper.Parsing
             // The JSON consists of potentially useful header information and the IPC data if it exists.
             // Heavy data processing is done on the Node side, since it's easier to test packet structures like that.
             StringBuilder JSON = new StringBuilder(capacity ?? Capacity);
-            JSON.Append("{ \"type\": \"").Append(ipcData.Type).Append("\",\n");
-            JSON.Append("  \"opcode\": ").Append(ipcData.Opcode).Append(",\n");
-            JSON.Append("  \"region\": \"").Append(Region).Append("\",\n");
-            JSON.Append("  \"connection\": \"").Append(ipcData.Metadata.ConnectionRoute).Append("\",\n");
-            JSON.Append("  \"operation\": \"").Append(ipcData.Metadata.ConnectionType).Append("\",\n");
-            JSON.Append("  \"epoch\": ").Append(ipcData.Metadata.Epoch).Append(",\n");
-            JSON.Append("  \"packetSize\": ").Append(ipcData.Metadata.PacketSize).Append(",\n");
-            JSON.Append("  \"segmentType\": ").Append(ipcData.Metadata.SegmentType).Append(",\n");
+            JSON.Append("{\"type\":\"").Append(ipcData.Type).Append("\",");
+            JSON.Append("\"opcode\":").Append(ipcData.Opcode).Append(",");
+            JSON.Append("\"region\":\"").Append(Region).Append("\",");
+            JSON.Append("\"connection\":\"").Append(ipcData.Metadata.ConnectionRoute).Append("\",");
+            JSON.Append("\"operation\":\"").Append(ipcData.Metadata.ConnectionType).Append("\",");
+            JSON.Append("\"epoch\": ").Append(ipcData.Metadata.Epoch).Append(",");
+            JSON.Append("\"packetSize\":").Append(ipcData.Metadata.PacketSize).Append(",");
+            JSON.Append("\"segmentType\":").Append(ipcData.Metadata.SegmentType).Append(",");
             if (ipcData.Metadata.SegmentType == 3)
             {
                 // IPC header info
-                JSON.Append("  \"sourceActorSessionID\": ").Append(BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.SourceActor)).Append(",\n");
-                JSON.Append("  \"targetActorSessionID\": ").Append(BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.TargetActor)).Append(",\n");
-                JSON.Append("  \"serverID\": ").Append(ipcData.ServerId).Append(",\n");
-                JSON.Append("  \"timestamp\": ").Append(ipcData.Timestamp).Append(",\n");
+                JSON.Append("\"sourceActorSessionID\":").Append(BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.SourceActor)).Append(",");
+                JSON.Append("\"targetActorSessionID\":").Append(BitConverter.ToUInt32(ipcData.Metadata.Data, (int)Offsets.TargetActor)).Append(",");
+                JSON.Append("\"serverID\":").Append(ipcData.ServerId).Append(",");
+                JSON.Append("\"timestamp\":").Append(ipcData.Timestamp).Append(",");
                 
                 // Trim useless information
                 ipcData.Metadata.Data = ipcData.Metadata.Data.Skip((int)Offsets.IpcData).ToArray();
@@ -179,16 +179,16 @@ namespace MachinaWrapper.Parsing
                 // If the IPC type isn't unknown we might have category data sitting around
                 if (ipcData.ActorControlCategory != null)
                 {
-                    JSON.Append("  \"superType\": \"actorControl\",\n");
-                    JSON.Append("  \"subType\": \"").Append(ipcData.ActorControlCategory).Append("\",\n");
+                    JSON.Append("\"superType\":\"actorControl\",");
+                    JSON.Append("\"subType\":\"").Append(ipcData.ActorControlCategory).Append("\",");
                 }
                 else if (ipcData.ClientTriggerCategory != null)
                 {
-                    JSON.Append("  \"superType\": \"clientTrigger\",\n");
-                    JSON.Append("  \"subType\": \"").Append(ipcData.ClientTriggerCategory).Append("\",\n");
+                    JSON.Append("\"superType\":\"clientTrigger\",");
+                    JSON.Append("\"subType\":\"").Append(ipcData.ClientTriggerCategory).Append("\",");
                 }
             }
-            JSON.Append("  \"data\": [").Append(string.Join(",", ipcData.Metadata.Data)).Append("] }\n");
+            JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}");
 
             Console.Out.Write(JSON.ToString());
 
