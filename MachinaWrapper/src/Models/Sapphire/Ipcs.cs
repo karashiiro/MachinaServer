@@ -49,7 +49,7 @@ namespace Sapphire.Common.Packets
         //EffectResult = 0x010B, // updated 5.15
         ActorControl = 0x03BE, // updated 5.18
         ActorControlSelf = 0x00E3, // updated 5.18
-        ActorControlTarget = 0x024D, // updated 5.18
+        //ActorControlTarget = 0x024D, // updated 5.18
 
         /*!
          * @brief Used when resting
