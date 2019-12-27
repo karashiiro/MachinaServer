@@ -140,7 +140,7 @@ namespace MachinaWrapper.Parsing
             StringBuilder sb = OutputCPUHeavy(ipcData);
 
             // Update the size so that future StringBuilders don't need to repeatedly resize themselves.
-            if (sb.Capacity > ipcMessageSize.Value)
+            if (ipcData.Type != "unknown" && sb.Capacity > ipcMessageSize.Value)
             {
                 MessageSizes.Remove(ipcMessageSize);
                 ipcMessageSize = new NameSizePair(ipcData.Type, sb.Capacity);
