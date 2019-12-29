@@ -4,6 +4,7 @@ using Sapphire.Common.Packets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 
 using NameSizePair = System.Collections.Generic.KeyValuePair<string, int>;
@@ -18,6 +19,8 @@ namespace MachinaWrapper.Parsing
         public Region Region;
 
         private readonly uint Modulator = (uint)new Random().Next(int.MinValue, int.MaxValue);
+
+        private static readonly HttpClient http = new HttpClient(); // For sending data to Node.js
 
         public Parser(Region region)
         {
@@ -184,13 +187,13 @@ namespace MachinaWrapper.Parsing
                 }
                 else if (ipcData.ClientTriggerCategory != null)
                 {
-                    JSON.Append("\"superType\":\"clientTrigger\",");
+                    JSON.Append("\"superType\":\"clientTrigger\",\n");
                     JSON.Append("\"subType\":\"").Append(ipcData.ClientTriggerCategory).Append("\",\n");
                 }
             }
             JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}\n");
-
-            Console.Out.Write(JSON.ToString());
+            
+            http.PostAsync("http://localhost:13346", new StringContent(JSON.ToString(), Encoding.UTF8, "application/json"));
 
             return JSON;
         }
