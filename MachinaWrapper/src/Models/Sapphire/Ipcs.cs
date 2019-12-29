@@ -41,7 +41,7 @@ namespace Sapphire.Common.Packets
 
         // static opcode ( the ones that rarely, if ever, change )
         Ping = 0x0065,
-        Init = 0x0066,
+        Init = 0x018E, // updated 5.18
 
         ActorFreeSpawn = 0x009B, // updated 5.18
         InitZone = 0x007C, // updated 5.18
@@ -96,7 +96,7 @@ namespace Sapphire.Common.Packets
 
         //PlayerAddedToBlacklist = 0x033F, // updated 5.1
         //PlayerRemovedFromBlacklist = 0x0385, // updated 5.1
-        //BlackList = 0x031F, // updated 5.1
+        BlackList = 0x01EB, // updated 5.18
 
         //LinkshellList = 0x012A, // updated 5.0
 
@@ -272,7 +272,7 @@ namespace Sapphire.Common.Packets
     {
 
         //PingHandler = 0x0065, // unchanged 5.0
-        //InitHandler = 0x03D2, // updated 5.1
+        InitHandler = 0x018E, // updated 5.18
 
         //FinishLoadingHandler = 0x01DC, // updated 5.1
 
