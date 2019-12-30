@@ -40,7 +40,7 @@ namespace Sapphire.Common.Packets
     {
 
         // static opcode ( the ones that rarely, if ever, change )
-        Ping = 0x0065,
+        Ping = 0x0200, // updated 5.18
         Init = 0x018E, // updated 5.18
 
         ActorFreeSpawn = 0x009B, // updated 5.18
@@ -49,7 +49,7 @@ namespace Sapphire.Common.Packets
         //EffectResult = 0x010B, // updated 5.15
         ActorControl = 0x03BE, // updated 5.18
         ActorControlSelf = 0x00E3, // updated 5.18
-        //ActorControlTarget = 0x024D, // updated 5.18
+        ActorControlTarget = 0x024D, // updated 5.18
 
         /*!
          * @brief Used when resting
@@ -80,15 +80,15 @@ namespace Sapphire.Common.Packets
 
         //WorldVisitList = 0x00FE, // added 4.5
 
-        //SocialList = 0x007A, // updated 5.1
+        SocialList = 0x01F1, // updated 5.18
 
         ExamineSearchInfo = 0x012B, // updated 5.18
         UpdateSearchInfo = 0x01E5, // updated 5.18
-        //InitSearchInfo = 0x03A1, // updated 5.1
+        InitSearchInfo = 0x01D0, // updated 5.18
         //ExamineSearchComment = 0x0102, // updated 4.1
 
         //ServerNoticeShort = 0x0115, // updated 5.0
-        //ServerNotice = 0x0116, // updated 5.0
+        ServerNotice = 0x0088, // updated 5.18
         //SetOnlineStatus = 0x015E, // updated 5.1
 
         //CountdownInitiate = 0x0309, // updated 5.11
@@ -98,7 +98,7 @@ namespace Sapphire.Common.Packets
         //PlayerRemovedFromBlacklist = 0x0385, // updated 5.1
         BlackList = 0x01EB, // updated 5.18
 
-        //LinkshellList = 0x012A, // updated 5.0
+        LinkshellList = 0x00AC, // updated 5.18
 
         //MailDeleteRequest = 0x012B, // updated 5.0
 
@@ -123,7 +123,7 @@ namespace Sapphire.Common.Packets
 
         StatusEffectList = 0x0183, // updated 5.18
         EurekaStatusEffectList = 0x0167, // updated 5.18
-        BossStatusEffectList = 0x0312, // added 5.15
+        //BossStatusEffectList = 0x0312, // added 5.15
         Effect = 0x026B, // updated 5.18
         AoeEffect8 = 0x033E, // updated 5.18
         AoeEffect16 = 0x0305, // updated 5.18
@@ -153,7 +153,7 @@ namespace Sapphire.Common.Packets
         PlayerStats = 0x017A, // updated 5.18
         //ActorOwner = 0x0322, // updated 5.11
         PlayerStateFlags = 0x02C6, // updated 5.18
-        //PlayerClassInfo = 0x02D4, // updated 5.1
+        PlayerClassInfo = 0x01B0, // updated 5.18
 
         //ModelEquip = 0x0170, // updated 5.11
         Examine = 0x0366, // updated 5.18
@@ -176,7 +176,7 @@ namespace Sapphire.Common.Packets
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
         EventPlay = 0x0279, // updated 5.18
-        // DirectorPlayScene = 0x01B9, // updated 5.0
+        //DirectorPlayScene = 0x01B9, // updated 5.0
         //EventOpenGilShop = 0x01BC, // updated 5.0
 
         EventStart = 0x0230, // updated 5.18
@@ -187,7 +187,7 @@ namespace Sapphire.Common.Packets
 
         //EventLinkshell = 0x1169,
 
-        //QuestActiveList = 0x01D2, // updated 5.0
+        QuestActiveList = 0x019C, // updated 5.18
         //QuestUpdate = 0x01D3, // updated 5.0
         QuestCompleteList = 0x0066, // updated 5.18
 
@@ -197,7 +197,7 @@ namespace Sapphire.Common.Packets
 
         //QuestMessage = 0x01DE, // updated 5.0
 
-        //QuestTracker = 0x01E3, // updated 5.0
+        QuestTracker = 0x0073, // updated 5.18
 
         Mount = 0x02F0, // updated 5.18
 
@@ -225,7 +225,7 @@ namespace Sapphire.Common.Packets
         //LandRename = 0x023A, // updated 5.0
         //HousingEstateGreeting = 0x023B, // updated 5.0
         //HousingUpdateLandFlagsSlot = 0x023C, // updated 5.0
-        //HousingLandFlags = 0x023D, // updated 5.0
+        HousingLandFlags = 0x01F3, // updated 5.18
         //HousingShowEstateGuestAccess = 0x023E, // updated 5.0
 
         //HousingObjectInitialize = 0x0240, // updated 5.0
@@ -249,8 +249,8 @@ namespace Sapphire.Common.Packets
         ActorGauge = 0x016D, // updated 5.18
 
         // daily quest info -> without them sent,  login will take longer...
-        //DailyQuests = 0x02B6, // updated 5.1
-        //DailyQuestRepeatFlags = 0x0124, // updated 5.1
+        DailyQuests = 0x0340, // updated 5.18
+        DailyQuestRepeatFlags = 0x03A3, // updated 5.18
 
         /// Doman Mahjong //////////////////////////////////////
         //MahjongOpenGui = 0x02A4, // only available in mahjong instance
@@ -274,7 +274,7 @@ namespace Sapphire.Common.Packets
         //PingHandler = 0x0065, // unchanged 5.0
         InitHandler = 0x018E, // updated 5.18
 
-        //FinishLoadingHandler = 0x01DC, // updated 5.1
+        FinishLoadingHandler = 0x01F5, // updated 5.18
 
         //CFCommenceHandler = 0x006F,
 
@@ -282,7 +282,7 @@ namespace Sapphire.Common.Packets
         //CFRegisterDuty = 0x0071,
         //CFRegisterRoulette = 0x0072,
         //PlayTimeHandler = 0x0276, // updated 5.1
-        //LogoutHandler = 0x02D6, // updated 5.1
+        LogoutHandler = 0x015D, // updated 5.18
         //CancelLogout = 0x008F, // updated 5.1
 
         //CFDutyInfoHandler = 0x0078, // updated 4.2
@@ -292,16 +292,16 @@ namespace Sapphire.Common.Packets
 
         ChatHandler = 0x0130, // updated 5.18
 
-        //SocialListHandler = 0x01F6, // updated 5.1
+        SocialListHandler = 0x0090, // updated 5.18
         SetSearchInfoHandler = 0x0320, // updated 5.18
-        //ReqSearchInfoHandler = 0x024D, // updated 5.1
+        ReqSearchInfoHandler = 0x0374, // updated 5.18
         //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
         //ReqRemovePlayerFromBlacklist = 0x00F1, // updated 5.0
         //BlackListHandler = 0x0167, // updated 5.1
         //PlayerSearchHandler = 0x00F4, // updated 5.0
 
-        //LinkshellListHandler = 0x00D3, // updated 5.1
+        LinkshellListHandler = 0x014A, // updated 5.18
 
         //MarketBoardRequestItemListingInfo = 0x0102, // updated 4.5
         //MarketBoardRequestItemListings = 0x0103, // updated 4.5
