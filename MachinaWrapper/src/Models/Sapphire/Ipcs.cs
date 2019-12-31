@@ -177,7 +177,7 @@ namespace Sapphire.Common.Packets
 
         EventPlay = 0x0279, // updated 5.18
         //DirectorPlayScene = 0x01B9, // updated 5.0
-        //EventOpenGilShop = 0x01BC, // updated 5.0
+        EventOpenGilShop = 0x01B1, // updated 5.18
 
         EventStart = 0x0230, // updated 5.18
         EventFinish = 0x0230, // updated 5.18
@@ -208,7 +208,7 @@ namespace Sapphire.Common.Packets
 
         // WeatherChange = 0x02FB, // updated 5.11
         //PlayerTitleList = 0x037D, // updated 5.1
-        Discovery = 0x0285, // updated 5.18
+        Discovery = 0x02E7, // updated 5.18
 
         //EorzeaTimeOffset = 0x03B8, // updated 5.1
 
@@ -320,15 +320,15 @@ namespace Sapphire.Common.Packets
         //ReqCountdownInitiate = 0x0135, // updated 5.0
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
-        //ZoneLineHandler = 0x02E0, // updated 5.1
+        ZoneLineHandler = 0x0174, // updated 5.18
         ClientTrigger = 0x03C0, // updated 5.18
-        //DiscoveryHandler = 0x0177, // updated 5.1
+        DiscoveryHandler = 0x017B, // updated 5.18
 
         //PlaceFieldMarker = 0x013C, // updated 5.0
 
-        //SkillHandler = 0x013D, // updated 5.0
-        //GMCommand1 = 0x00A4, // updated 5.1
-        //GMCommand2 = 0x013F, // updated 5.0
+        SkillHandler = 0x01BE, // updated 5.18
+        GMCommand1 = 0x014D, // updated 5.18
+        GMCommand2 = 0x03C2, // updated 5.18
         //AoESkillHandler = 0x140, // updated 5.0
 
         UpdatePositionHandler = 0x0318, // updated 5.18
@@ -339,9 +339,9 @@ namespace Sapphire.Common.Packets
         //ReqPlaceHousingItem = 0x014B, // updated 5.0
         //BuildPresetHandler = 0x014F, // updated 5.0
 
-        //TalkEventHandler = 0x0151, // updated 5.0
+        TalkEventHandler = 0x02FD, // updated 5.48
         //EmoteEventHandler = 0x0152, // updated 5.0
-        // WithinRangeEventHandler = 0x0165, // updated 5.11
+        //WithinRangeEventHandler = 0x0165, // updated 5.11
         //OutOfRangeEventHandler = 0x0154, // updated 5.0
         //EnterTeriEventHandler = 0x0155, // updated 5.0
         //ShopEventHandler = 0x0156, // updated 5.0
