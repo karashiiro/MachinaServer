@@ -194,7 +194,6 @@ namespace MachinaWrapper.Parsing
             JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}");
             
             StringContent message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
-            message.Headers.Add("message_id", ipcData.Metadata.Epoch.ToString());
             http.PostAsync("http://localhost:13346", message);
 
             return JSON;
