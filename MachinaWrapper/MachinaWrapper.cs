@@ -22,6 +22,7 @@ namespace MachinaWrapper
             int PIDIndex = Array.IndexOf(args, "--ProcessID");
             int IPIndex = Array.IndexOf(args, "--LocalIP");
             int RegionIndex = Array.IndexOf(args, "--Region");
+            int PortIndex = Array.IndexOf(args, "--Port");
             
             TCPNetworkMonitor.NetworkMonitorType MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
@@ -71,24 +72,24 @@ namespace MachinaWrapper
             {
                 if (args[ParseAlgorithmIndex + 1] == "RAMHeavy")
                 {
-                    Parser = new Parser(localRegion, ParserMode.RAMHeavy);
+                    Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
                 }
                 else if (args[ParseAlgorithmIndex + 1] == "CPUHeavy")
                 {
-                    Parser = new Parser(localRegion, ParserMode.CPUHeavy);
+                    Parser = new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1]));
                 }
                 else if (args[ParseAlgorithmIndex + 1] == "PacketSpecific")
                 {
-                    Parser = new Parser(localRegion, ParserMode.PacketSpecific);
+                    Parser = new Parser(localRegion, ParserMode.PacketSpecific, uint.Parse(args[PortIndex + 1]));
                 }
                 else
                 {
-                    Parser = new Parser(localRegion, ParserMode.RAMHeavy);
+                    Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
                 }
             }
             else
             {
-                Parser = new Parser(localRegion, ParserMode.RAMHeavy);
+                Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
             }
 
             // Check for input.
