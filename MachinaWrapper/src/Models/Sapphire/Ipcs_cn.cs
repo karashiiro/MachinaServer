@@ -76,8 +76,7 @@ namespace Sapphire.Common.Packets
         EventFinish = 0x007A, // updated 5.1
         EventPlay = 0x0384, // updated 5.1
         EventStart = 0x0134, // updated 5.1
-        EventUnk0 = 0x021D, // updated 5.1
-        EventUnk1 = 0x0248, // updated 5.1
+        EventPlay4 = 0x021D, // updated 5.1
         Examine = 0x039F, // updated 5.1
         ExamineSearchInfo = 0x0218, // updated 5.1
         FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
@@ -150,6 +149,7 @@ namespace Sapphire.Common.Packets
         SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
         SocialList = 0x010D, // updated 5.0
         SocialRequestError = 0x00AD,
+        SomeDirectorUnk4 = 0x0248, // updated 5.1
         StatusEffectList = 0x015B, // updated 5.0
         UpdateClassInfo = 0x02B6, // updated 5.1
         UpdateHpMpTp = 0x03D4, // updated 5.1
