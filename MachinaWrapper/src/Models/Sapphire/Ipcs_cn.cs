@@ -70,10 +70,9 @@ namespace Sapphire.Common.Packets
         EorzeaTimeOffset = 0x0214, // updated 5.0
         EquipDisplayFlags = 0x0220, // updated 5.0
         EurekaStatusEffectList = 0x015C, // updated 5.0
-        EventFinish = 0x01BF, // updated 5.0
+        EventFinish = 0x007A, // updated 5.1
         EventLinkshell = 0x1169,
         EventOpenGilShop = 0x01BC, // updated 5.0
-        EventFinish = 0x007A, // updated 5.1
         EventPlay = 0x0384, // updated 5.1
         EventStart = 0x0134, // updated 5.1
         EventPlay4 = 0x021D, // updated 5.1
