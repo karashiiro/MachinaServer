@@ -23,7 +23,13 @@ namespace MachinaWrapper
             int IPIndex = Array.IndexOf(args, "--LocalIP");
             int RegionIndex = Array.IndexOf(args, "--Region");
             int PortIndex = Array.IndexOf(args, "--Port");
-            
+
+            if (PortIndex == -1)
+            {
+                Console.WriteLine("Port must be provided via command line");
+                Environment.Exit(1);
+            }
+
             TCPNetworkMonitor.NetworkMonitorType MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
