@@ -61,11 +61,11 @@ namespace Sapphire.Common.Packets
     ChatBanned = 0x006B,
     Playtime = 0x00E7, // updated 5.18
     Logout = 0x0A1, // updated 5.2
-    CFNotify = 0x01F8, // updated 5.18
+    CFNotifyPop = 0x025C, // updated 5.2
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
-    CFPreferredRole = 0x032A, // added 5.18
+    CFPreferredRole = 0x031F, // updated 5.2
 
     //SocialRequestError = 0x00AD,
 
@@ -81,8 +81,8 @@ namespace Sapphire.Common.Packets
 
     SocialList = 0x033E, // updated 5.2
 
-    ExamineSearchInfo = 0x012B, // updated 5.18
-    UpdateSearchInfo = 0x01E5, // updated 5.18
+    UpdateSearchInfo = 0x017D, // updated 5.2
+    ExamineSearchInfo = 0x0186, // updated 5.2
     InitSearchInfo = 0x021C, // updated 5.2
     //ExamineSearchComment = 0x0102, // updated 4.1
 
@@ -106,12 +106,12 @@ namespace Sapphire.Common.Packets
     //ReqMoogleMailLetter = 0x0139, // updated 5.0
     //MailLetterNotification = 0x013A, // updated 5.0
 
-    MarketTaxRates = 0x025E, // updated 5.18
+    MarketTaxRates = 0x02CD, // updated 5.2
 
-    MarketBoardItemListingCount = 0x0328, // updated 5.18
-    MarketBoardItemListing = 0x015F, // updated 5.18
-    MarketBoardItemListingHistory = 0x0113, // updated 5.18
-    MarketBoardSearchResult = 0x01EA, // updated 5.18
+    MarketBoardItemListingCount = 0x030A, // updated 5.2
+    MarketBoardItemListingHistory = 0x03C0, // updated 5.2
+    MarketBoardItemListing = 0x023E, // updated 5.2
+    MarketBoardSearchResult = 0x03D2, // updated 5.2
 
     //CharaFreeCompanyTag = 0x013B, // updated 4.5
     //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -156,7 +156,7 @@ namespace Sapphire.Common.Packets
     PlayerClassInfo = 0x039A, // updated 5.2
 
     //ModelEquip = 0x0170, // updated 5.11
-    Examine = 0x0366, // updated 5.18
+    Examine = 0x038B, // updated 5.2
     CharaNameReq = 0x0116, // updated 5.18
 
     // nb: see #565 on github
