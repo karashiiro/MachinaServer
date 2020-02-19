@@ -177,7 +177,7 @@ namespace Sapphire.Common.Packets
     //HuntingLogEntry = 0x01B3, // updated 5.0
 
     EventPlay = 0x01F3, // updated 5.2
-    EventPlay4 = 0x02F7, // updated 5.18
+    EventPlay4 = 0x010C, // updated 5.2
     EventPlay8 = 0x0119, // updated 5.18
     EventPlay16 = 0x01FB, // updated 5.18
     EventPlay32 = 0x0364, // updated 5.18
@@ -187,7 +187,7 @@ namespace Sapphire.Common.Packets
 
     EventStart = 0x023D, // updated 5.2
     EventFinish = 0x0318, // updated 5.2
-    UseMooch = 0x0233, // updated 5.18
+    UseMooch = 0x01D8, // updated 5.2
 
     //EventLinkshell = 0x1169,
 
@@ -208,7 +208,7 @@ namespace Sapphire.Common.Packets
     DirectorVars = 0x00E6, // updated 5.18
     SomeDirectorUnk1 = 0x0084, // updated 5.18
     SomeDirectorUnk2 = 0x00C1, // updated 5.18
-    SomeDirectorUnk4 = 0x0100, // updated 5.18
+    SomeDirectorUnk4 = 0x0385, // updated 5.2
     SomeDirectorUnk8 = 0x028A, // updated 5.18
     SomeDirectorUnk16 = 0x028C, // updated 5.18
     DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
