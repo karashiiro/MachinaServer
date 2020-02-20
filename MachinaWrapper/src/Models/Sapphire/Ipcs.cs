@@ -43,7 +43,7 @@ namespace Sapphire.Common.Packets
     Ping = 0x0106, // updated 5.2
     Init = 0x0307, // updated 5.2
 
-    ActorFreeSpawn = 0x009B, // updated 5.18
+    ActorFreeSpawn = 0x01D1, // updated 5.2
     InitZone = 0x033A, // updated 5.2
 
     EffectResult = 0x0340, // updated 5.2
@@ -59,7 +59,7 @@ namespace Sapphire.Common.Packets
     ///////////////////////////////////////////////////
 
     ChatBanned = 0x006B,
-    Playtime = 0x00E7, // updated 5.18
+    //Playtime = 0x00E7, // updated 5.18
     Logout = 0x0A1, // updated 5.2
     CFNotifyPop = 0x025C, // updated 5.2
     //CFMemberStatus = 0x0079,
@@ -75,7 +75,7 @@ namespace Sapphire.Common.Packets
 
     //LogMessage = 0x00D0,
 
-    Chat = 0x02A3, // updated 5.18
+    //Chat = 0x02A3, // updated 5.18
 
     //WorldVisitList = 0x00FE, // added 4.5
 
@@ -91,7 +91,7 @@ namespace Sapphire.Common.Packets
     SetOnlineStatus = 0x0185, // updated 5.2
 
     //CountdownInitiate = 0x0309, // updated 5.11
-    CountdownCancel = 0x00D9, // updated 5.18
+    //CountdownCancel = 0x00D9, // updated 5.18
 
     //PlayerAddedToBlacklist = 0x033F, // updated 5.1
     //PlayerRemovedFromBlacklist = 0x0385, // updated 5.1
@@ -121,10 +121,10 @@ namespace Sapphire.Common.Packets
     //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
     StatusEffectList = 0x0374, // updated 5.2
-    EurekaStatusEffectList = 0x0167, // updated 5.18
+    //EurekaStatusEffectList = 0x0167, // updated 5.18
     //BossStatusEffectList = 0x0312, // added 5.1
     Effect = 0x028A, // updated 5.2
-    AoeEffect8 = 0x033E, // updated 5.18
+    AoeEffect8 = 0x01F5, // updated 5.2
     AoeEffect16 = 0x0305, // updated 5.18
     AoeEffect24 = 0x023F, // updated 5.18
     AoeEffect32 = 0x0352, // updated 5.18
@@ -134,24 +134,24 @@ namespace Sapphire.Common.Packets
 
     PlayerSpawn = 0x027D, // updated 5.2
     NpcSpawn = 0x034B, // updated 5.2
-    NpcSpawn2 = 0x010C, // ( Bigger statuseffectlist? ) updated 5.18
+    //NpcSpawn2 = 0x010C, // ( Bigger statuseffectlist? ) updated 5.18
     ActorMove = 0x0130, // updated 5.2
 
     ActorSetPos = 0x00CF, // updated 5.2
 
-    ActorCast = 0x03B1, // updated 5.18
-    SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
+    //ActorCast = 0x03B1, // updated 5.18
+    //SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
-    PartyList = 0x0287, // updated 5.18
-    HateRank = 0x0226, // updated 5.18
-    HateList = 0x0361, // updated 5.18
+    //PartyList = 0x0287, // updated 5.18
+    HateRank = 0x03AC, // updated 5.2
+    HateList = 0x00C8, // updated 5.2
     ObjectSpawn = 0x01B3, // updated 5.2
-    ObjectDespawn = 0x034B, // updated 5.18
+    //ObjectDespawn = 0x034B, // updated 5.18
     UpdateClassInfo = 0x0131, // updated 5.2
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
     PlayerSetup = 0x0278, // updated 5.2
     PlayerStats = 0x03C8, // updated 5.2
-    //ActorOwner = 0x0322, // updated 5.11
+    ActorOwner = 0x0290, // updated 5.2
     PlayerStateFlags = 0x032B, // updated 5.2
     PlayerClassInfo = 0x039A, // updated 5.2
 
