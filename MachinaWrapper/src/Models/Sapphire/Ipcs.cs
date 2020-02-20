@@ -178,11 +178,11 @@ namespace Sapphire.Common.Packets
 
     EventPlay = 0x01F3, // updated 5.2
     EventPlay4 = 0x010C, // updated 5.2
-    EventPlay8 = 0x0119, // updated 5.18
-    EventPlay16 = 0x01FB, // updated 5.18
-    EventPlay32 = 0x0364, // updated 5.18
-    EventPlay64 = 0x00E5, // updated 5.18
-    EventPlay128 = 0x02BE, // updated 5.18
+    //EventPlay8 = 0x0119, // updated 5.18
+    //EventPlay16 = 0x01FB, // updated 5.18
+    //EventPlay32 = 0x0364, // updated 5.18
+    //EventPlay64 = 0x00E5, // updated 5.18
+    //EventPlay128 = 0x02BE, // updated 5.18
     EventPlay255 = 0x03B0, // updated 5.2
 
     EventStart = 0x023D, // updated 5.2
@@ -192,34 +192,34 @@ namespace Sapphire.Common.Packets
     //EventLinkshell = 0x1169,
 
     QuestActiveList = 0x017B, // updated 5.2
-    QuestUpdate = 0x0066, // updated 5.18
+    //QuestUpdate = 0x0066, // updated 5.18
     QuestCompleteList = 0x0255, // updated 5.2
 
-    QuestFinish = 0x013A, // updated 5.18
+    //QuestFinish = 0x013A, // updated 5.18
     //MSQTrackerComplete = 0x01D6, // updated 5.0
     //MSQTrackerProgress = 0xF1CD, // updated 4.5 ? this actually looks like the two opcodes have been combined, see #474
 
-    QuestMessage = 0x00BF, // updated 5.18
+    //QuestMessage = 0x00BF, // updated 5.18
 
     QuestTracker = 0x0306, // updated 5.2
 
-    Mount = 0x02F0, // updated 5.18
+    //Mount = 0x02F0, // updated 5.18
 
-    DirectorVars = 0x00E6, // updated 5.18
-    SomeDirectorUnk1 = 0x0084, // updated 5.18
-    SomeDirectorUnk2 = 0x00C1, // updated 5.18
+    //DirectorVars = 0x00E6, // updated 5.18
+    //SomeDirectorUnk1 = 0x0084, // updated 5.18
+    //SomeDirectorUnk2 = 0x00C1, // updated 5.18
     SomeDirectorUnk4 = 0x0385, // updated 5.2
-    SomeDirectorUnk8 = 0x028A, // updated 5.18
-    SomeDirectorUnk16 = 0x028C, // updated 5.18
-    DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
-    DirectorPopUp4 = 0x0214, // updated 5.18
-    DirectorPopUp8 = 0x00F8, // updated 5.18
+    //SomeDirectorUnk8 = 0x028A, // updated 5.18
+    //SomeDirectorUnk16 = 0x028C, // updated 5.18
+    //DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
+    //DirectorPopUp4 = 0x0214, // updated 5.18
+    //DirectorPopUp8 = 0x00F8, // updated 5.18
 
     //CFAvailableContents = 0xF1FD, // updated 4.2
 
     //WeatherChange = 0x02FB, // updated 5.11
     //PlayerTitleList = 0x037D, // updated 5.1
-    Discovery = 0x02E7, // updated 5.18
+    //Discovery = 0x02E7, // updated 5.18
 
     //EorzeaTimeOffset = 0x03B8, // updated 5.1
 
@@ -333,7 +333,7 @@ namespace Sapphire.Common.Packets
 
     ZoneLineHandler = 0x00B9, // updated 5.2
     ClientTrigger = 0x017C, // updated 5.2
-    DiscoveryHandler = 0x017B, // updated 5.18
+    //DiscoveryHandler = 0x017B, // updated 5.18
 
     //PlaceFieldMarker = 0x013C, // updated 5.0
     SkillHandler = 0x0225, // updated 5.2
@@ -351,10 +351,10 @@ namespace Sapphire.Common.Packets
     //BuildPresetHandler = 0x014F, // updated 5.0
 
     TalkEventHandler = 0x0340, // updated 5.2
-    EmoteEventHandler = 0x0183, // updated 5.18
-    WithinRangeEventHandler = 0x0167, // updated 5.18
-    OutOfRangeEventHandler = 0x02B5, // updated 5.18
-    EnterTeriEventHandler = 0x0267, // updated 5.18
+    //EmoteEventHandler = 0x0183, // updated 5.18
+    //WithinRangeEventHandler = 0x0167, // updated 5.18
+    //OutOfRangeEventHandler = 0x02B5, // updated 5.18
+    //EnterTeriEventHandler = 0x0267, // updated 5.18
     //ShopEventHandler = 0x0156, // updated 5.0
 
     ReturnEventHandler = 0x027F, // updated 5.2
