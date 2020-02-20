@@ -130,7 +130,7 @@ namespace Sapphire.Common.Packets
         PlayerSetup = 0x014F, // updated 5.1
         PlayerSpawn = 0x0147, // updated 5.1
         PlayerStateFlags = 0x0193, // updated 5.0
-        PlayerStats = 0x0190, // updated 5.0
+        PlayerStats = 0x0258, // updated 5.1
         PlayerTitleList = 0x0211, // updated 5.0
         Playtime = 0x02AE, // updated 5.1
         PrepareZoning = 0x02A4, // updated 5.0
