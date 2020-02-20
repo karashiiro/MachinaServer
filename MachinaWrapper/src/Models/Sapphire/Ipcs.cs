@@ -157,7 +157,7 @@ namespace Sapphire.Common.Packets
 
     //ModelEquip = 0x0170, // updated 5.11
     Examine = 0x038B, // updated 5.2
-    CharaNameReq = 0x0116, // updated 5.18
+    CharaNameReq = 0x0245, // updated 5.2
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
