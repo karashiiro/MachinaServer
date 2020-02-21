@@ -161,6 +161,7 @@ namespace Sapphire.Common.Packets
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
+    RetainerInformation = 0x021F, // added 5.2
 
     //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
