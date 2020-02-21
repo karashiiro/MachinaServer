@@ -125,9 +125,9 @@ namespace Sapphire.Common.Packets
     //BossStatusEffectList = 0x0312, // added 5.1
     Effect = 0x028A, // updated 5.2
     AoeEffect8 = 0x01F5, // updated 5.2
-    AoeEffect16 = 0x0305, // updated 5.18
-    AoeEffect24 = 0x023F, // updated 5.18
-    AoeEffect32 = 0x0352, // updated 5.18
+    //AoeEffect16 = 0x0305, // updated 5.18
+    //AoeEffect24 = 0x023F, // updated 5.18
+    //AoeEffect32 = 0x0352, // updated 5.18
     PersistantEffect = 0x00CE, // updated 5.2
 
     //GCAffiliation = 0x016F, // updated 5.0
@@ -281,7 +281,6 @@ namespace Sapphire.Common.Packets
   */
   enum ClientZoneIpcType : ushort
   {
-
     PingHandler = 0x0106, // updated 5.2
     InitHandler = 0x0307, // updated 5.2
 
@@ -397,6 +396,4 @@ namespace Sapphire.Common.Packets
   {
     TellReq = 0x0064,
   };
-
-
 }
