@@ -48,10 +48,10 @@ namespace Sapphire.Common.Packets
         Playtime = 0x0100, // updated 5.0
         Logout = 0x0077, // updated 5.0
         CFNotify = 0x0078,
-        CfPreferredRole = 0x7F, // updated 5.0 
+        CfPreferredRole = 0x007F, // updated 5.0 
         CFMemberStatus = 0x0079,
         CFDutyInfo = 0x007A,
-        CFPlayerInNeed = 0x007F,
+        //CFPlayerInNeed = 0x007F,
         SocialRequestError = 0x00AD,
         //    CFRegistered = 0x00B8, // updated 4.1
         //    SocialRequestResponse = 0x00BB, // updated 4.1
@@ -120,6 +120,7 @@ namespace Sapphire.Common.Packets
         CharaNameReq = 0x0198, // updated 5.0
                                // nb: see #565 on github
         UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
+        RetainerInformation = 0x0149, // updated 5.05
                                               //    SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
         ItemInfo = 0x01A1, // updated 5.0
         ContainerInfo = 0x01A2, // updated 5.0
