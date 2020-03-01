@@ -174,7 +174,6 @@ namespace Sapphire.Common.Packets
 
     //InventoryActionAck = 0x0084, // updated 5.1
     UpdateInventorySlot = 0x02E9, // updated 5.2
-    UpdateTemporaryInventorySlot = 0x01D8, // updated 5.2
 
     //HuntingLogEntry = 0x01B3, // updated 5.0
 
