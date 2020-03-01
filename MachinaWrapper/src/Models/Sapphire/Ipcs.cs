@@ -174,6 +174,7 @@ namespace Sapphire.Common.Packets
 
     //InventoryActionAck = 0x0084, // updated 5.1
     UpdateInventorySlot = 0x02E9, // updated 5.2
+    UpdateTemporaryInventorySlot = 0x01D8, // updated 5.2
 
     //HuntingLogEntry = 0x01B3, // updated 5.0
 
@@ -188,7 +189,6 @@ namespace Sapphire.Common.Packets
 
     EventStart = 0x023D, // updated 5.2
     EventFinish = 0x0318, // updated 5.2
-    UseMooch = 0x01D8, // updated 5.2
 
     //EventLinkshell = 0x1169,
 
