@@ -200,7 +200,15 @@ namespace MachinaWrapper.Parsing
             JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}");
             
             StringContent message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
-            http.PostAsync("http://localhost:" + Port, message);
+
+            try
+            {
+                http.PostAsync("http://localhost:" + Port, message);
+            }
+            catch (HttpRequestException e)
+            {
+                Console.Error.WriteLine(e.Message);
+            }
 
             return JSON;
         }
