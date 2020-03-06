@@ -188,7 +188,6 @@ namespace Sapphire.Common.Packets
 
     EventStart = 0x023D, // updated 5.2
     EventFinish = 0x0318, // updated 5.2
-    UseMooch = 0x01D8, // updated 5.2
 
     //EventLinkshell = 0x1169,
 
@@ -218,7 +217,7 @@ namespace Sapphire.Common.Packets
 
     //CFAvailableContents = 0xF1FD, // updated 4.2
 
-    //WeatherChange = 0x02FB, // updated 5.11
+    WeatherChange = 0x00C1, // updated 5.2
     //PlayerTitleList = 0x037D, // updated 5.1
     //Discovery = 0x02E7, // updated 5.18
 
