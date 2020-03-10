@@ -55,13 +55,13 @@ namespace Sapphire.Network.Packets
     ///////////////////////////////////////////////////
 
     //ChatBanned = 0x006B,
-    //Playtime = 0x00E7, // updated 5.18
+    Playtime = 0x0284, // updated 5.21
     Logout = 0x01D4, // updated 5.21
-    //CFNotify = 0x01F8, // updated 5.18
+    CFNotify = 0x0241, // updated 5.21
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
-    //CFPreferredRole = 0x031F, // added 5.2
+    CFPreferredRole = 0x00D4, // updated 5.21
 
     //SocialRequestError = 0x00AD,
 
@@ -77,8 +77,8 @@ namespace Sapphire.Network.Packets
 
     SocialList = 0x00CE, // updated 5.21
 
-    //ExamineSearchInfo = 0x0186, // updated 5.2
-    //UpdateSearchInfo = 0x017D, // updated 5.2
+    ExamineSearchInfo = 0x014B, // updated 5.21
+    UpdateSearchInfo = 0x00EA, // updated 5.21
     InitSearchInfo = 0x0143, // updated 5.21
     //ExamineSearchComment = 0x0102, // updated 4.1
 
@@ -102,12 +102,12 @@ namespace Sapphire.Network.Packets
     //ReqMoogleMailLetter = 0x0139, // updated 5.0
     //MailLetterNotification = 0x013A, // updated 5.0
 
-    //MarketTaxRates = 0x02CD, // updated 5.2
+    MarketTaxRates = 0x01D7, // updated 5.21
 
-    //MarketBoardItemListingCount = 0x030A, // updated 5.2
-    //MarketBoardItemListing = 0x023E, // updated 5.2
-    //MarketBoardItemListingHistory = 0x03C0, // updated 5.2
-    //MarketBoardSearchResult = 0x03D2, // updated 5.2
+    MarketBoardSearchResult = 0x01DD, // updated 5.21
+    MarketBoardItemListingCount = 0x00B7, // updated 5.21
+    MarketBoardItemListingHistory = 0x023F, // updated 5.21
+    MarketBoardItemListing = 0x0115, // updated 5.21
 
     //CharaFreeCompanyTag = 0x013B, // updated 4.5
     //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -152,7 +152,7 @@ namespace Sapphire.Network.Packets
     PlayerClassInfo = 0x016B, // updated 5.21
 
     ModelEquip = 0x0292, // updated 5.21
-    //Examine = 0x038B, // updated 5.2
+    Examine = 0x0210, // updated 5.21
     //CharaNameReq = 0x0116, // updated 5.18
 
     // nb: see #565 on github
@@ -182,7 +182,7 @@ namespace Sapphire.Network.Packets
 
     EventStart = 0x0392, // updated 5.21
     EventFinish = 0x00EF, // updated 5.21
-    //UseMooch = 0x0233, // updated 5.18
+    UseMooch = 0x006E, // updated 5.21
 
     //EventLinkshell = 0x1169,
 
@@ -203,7 +203,7 @@ namespace Sapphire.Network.Packets
     //DirectorVars = 0x00E6, // updated 5.18
     //SomeDirectorUnk1 = 0x0084, // updated 5.18
     //SomeDirectorUnk2 = 0x00C1, // updated 5.18
-    //SomeDirectorUnk4 = 0x0100, // updated 5.18
+    SomeDirectorUnk4 = 0x014A, // updated 5.21
     //SomeDirectorUnk8 = 0x028A, // updated 5.18
     //SomeDirectorUnk16 = 0x028C, // updated 5.18
     //DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
