@@ -1,4 +1,4 @@
-namespace Sapphire.Network.Packets
+namespace Sapphire.Common.Packets
 {
   ////////////////////////////////////////////////////////////////////////////////
   /// Lobby Connection IPC Codes
@@ -153,10 +153,11 @@ namespace Sapphire.Network.Packets
 
     ModelEquip = 0x0292, // updated 5.21
     Examine = 0x0210, // updated 5.21
-    //CharaNameReq = 0x0116, // updated 5.18
+    CharaNameReq = 0x03A6, // updated 5.21
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
+    RetainerInformation = 0x0318, // updated 5.21
 
     //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
