@@ -56,6 +56,7 @@ namespace Sapphire.Common.Packets
         Examine = 0x0252, // updated 5.11
         ExamineSearchInfo = 0x0243, // updated 5.11
         InitZone = 0x035D, // updated 5.11
+        InventoryTransaction = 0x0244, // updated 5.11
         ItemInfo = 0x026B, // updated 5.11
         MarketBoardItemListing = 0x039B, // updated 5.11
         MarketBoardItemListingCount = 0x00A2, // updated 5.11
@@ -75,7 +76,6 @@ namespace Sapphire.Common.Packets
         UpdateHpMpTp = 0x0084, // updated 5.11
         UpdateInventorySlot = 0x011E, // updated 5.11
         UpdateSearchInfo = 0x01D6, // updated 5.11
-        UseMooch = 0x0244, // updated 5.11
     };
     /**
     * Client IPC Zone Type Codes.
