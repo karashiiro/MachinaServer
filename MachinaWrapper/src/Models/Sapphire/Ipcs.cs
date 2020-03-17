@@ -116,7 +116,7 @@ namespace Sapphire.Common.Packets
 
     //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-    StatusEffectList = 0x0327, // updated 5.21
+    StatusEffectList = 0x0327, // updated 5.21 hotfix
     //EurekaStatusEffectList = 0x0167, // updated 5.18
     //BossStatusEffectList = 0x0312, // added 5.1
     Effect = 0x0252, // Updated for 5.21 hotfix
