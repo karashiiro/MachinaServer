@@ -118,7 +118,7 @@ namespace Sapphire.Common.Packets
 
     StatusEffectList = 0x0327, // updated 5.21 hotfix
     //EurekaStatusEffectList = 0x0167, // updated 5.18
-    BossStatusEffectList = 0x01F5, // updated 5.12 hotfix
+    BossStatusEffectList = 0x01F5, // updated 5.21 hotfix
     Effect = 0x0252, // Updated for 5.21 hotfix
     AoeEffect8  = 0x0140, // Updated for 5.21 hotfix
     AoeEffect16 = 0x02A2, // Updated for 5.21 hotfix
