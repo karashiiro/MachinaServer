@@ -55,7 +55,7 @@ namespace Sapphire.Common.Packets
     ///////////////////////////////////////////////////
 
     //ChatBanned = 0x006B,
-    //Playtime = 0x0284, // updated 5.21
+    Playtime = 0x006C, // updated 5.21 hotfix
     Logout = 0x02A8, // updated 5.21 hotfix
     CFNotify = 0x02C7, // updated 5.21 hotfix
     //CFMemberStatus = 0x0079,
@@ -116,7 +116,7 @@ namespace Sapphire.Common.Packets
 
     //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-    //StatusEffectList = 0x01B8, // updated 5.21
+    StatusEffectList = 0x0327, // updated 5.21
     //EurekaStatusEffectList = 0x0167, // updated 5.18
     //BossStatusEffectList = 0x0312, // added 5.1
     Effect = 0x0252, // Updated for 5.21 hotfix
@@ -135,7 +135,7 @@ namespace Sapphire.Common.Packets
 
     ActorSetPos = 0x0295, // updated 5.21 hotfix
 
-    //ActorCast = 0x0262, // updated 5.21
+    ActorCast = 0x02C3, // updated 5.21 hotfix
     //SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
     //PartyList = 0x0287, // updated 5.18
@@ -256,7 +256,7 @@ namespace Sapphire.Common.Packets
     //PerformNote = 0x0286, // updated 4.3
 
     //PrepareZoning = 0x01BE, // updated 5.21
-    //ActorGauge = 0x03BB, // updated 5.21
+    ActorGauge = 0x00C7, // updated 5.21 hotfix
 
     // daily quest info -> without them sent,  login will take longer...
     //DailyQuests = 0x00E4, // updated 5.21
