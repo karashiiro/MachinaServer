@@ -42,7 +42,7 @@ namespace Sapphire.Common.Packets
     ActorFreeSpawn = 0x006C, // updated 5.21 hotfix
     InitZone = 0x037B, // updated 5.21 hotfix
 
-    //EffectResult = 0x02CF, // updated 5.21
+    EffectResult = 0x0281, // updated 5.21 hotfix
     ActorControl = 0x0380, // updated 5.21 hotfix
     ActorControlSelf = 0x0253, // updated 5.21 hotfix
     //ActorControlTarget = 0x02FB, // updated 5.21
