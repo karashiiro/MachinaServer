@@ -36,32 +36,32 @@ namespace Sapphire.Common.Packets
   */
   enum ServerZoneIpcType : ushort
   {
-    //Ping = 0x0106, // updated 5.2
-    Init = 0x00F2, // updated 5.21
+    Ping = 0x012C, // updated 5.21 hotfix
+    //Init = 0x00F2, // updated 5.21
 
-    ActorFreeSpawn = 0x034F, // updated 5.21
-    InitZone = 0x019C, // updated 5.21
+    ActorFreeSpawn = 0x006C, // updated 5.21 hotfix
+    InitZone = 0x037B, // updated 5.21 hotfix
 
-    EffectResult = 0x02CF, // updated 5.21
-    ActorControl = 0x0246, // updated 5.21
-    ActorControlSelf = 0x02D1, // updated 5.21
-    ActorControlTarget = 0x02FB, // updated 5.21
+    //EffectResult = 0x02CF, // updated 5.21
+    ActorControl = 0x0380, // updated 5.21 hotfix
+    ActorControlSelf = 0x0253, // updated 5.21 hotfix
+    //ActorControlTarget = 0x02FB, // updated 5.21
 
     /*!
      * @brief Used when resting
      */
-    UpdateHpMpTp = 0x0284, // updated 5.21
+    //UpdateHpMpTp = 0x0284, // updated 5.21
 
     ///////////////////////////////////////////////////
 
     //ChatBanned = 0x006B,
-    Playtime = 0x0284, // updated 5.21
-    Logout = 0x01D4, // updated 5.21
-    CFNotify = 0x0241, // updated 5.21
+    //Playtime = 0x0284, // updated 5.21
+    Logout = 0x02A8, // updated 5.21 hotfix
+    CFNotify = 0x02C7, // updated 5.21 hotfix
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
-    CFPreferredRole = 0x00D4, // updated 5.21
+    CFPreferredRole = 0x025B, // updated 5.21 hotfix
 
     //SocialRequestError = 0x00AD,
 
@@ -71,29 +71,29 @@ namespace Sapphire.Common.Packets
 
     //LogMessage = 0x00D0,
 
-    Chat = 0x022F, // updated 5.21
+    Chat = 0x012B, // updated 5.21 hotfix
 
     //WorldVisitList = 0x00FE, // added 4.5
 
-    SocialList = 0x00CE, // updated 5.21
+    //SocialList = 0x00CE, // updated 5.21
 
-    ExamineSearchInfo = 0x014B, // updated 5.21
-    UpdateSearchInfo = 0x00EA, // updated 5.21
-    InitSearchInfo = 0x0143, // updated 5.21
+    ExamineSearchInfo = 0x032B, // updated 5.21 hotfix
+    UpdateSearchInfo = 0x0379, // updated 5.21 hotfix
+    //InitSearchInfo = 0x0143, // updated 5.21
     //ExamineSearchComment = 0x0102, // updated 4.1
 
     //ServerNoticeShort = 0x0115, // updated 5.0
-    ServerNotice = 0x016F, // updated 5.21
-    SetOnlineStatus = 0x01EA, // updated 5.21
+    //ServerNotice = 0x016F, // updated 5.21
+    //SetOnlineStatus = 0x01EA, // updated 5.21
 
     //CountdownInitiate = 0x0309, // updated 5.11
     //CountdownCancel = 0x00D9, // updated 5.18
 
     //PlayerAddedToBlacklist = 0x033F, // updated 5.1
     //PlayerRemovedFromBlacklist = 0x0385, // updated 5.1
-    BlackList = 0x01DE, // updated 5.21
+    //BlackList = 0x01DE, // updated 5.21
 
-    LinkshellList = 0x01EB, // updated 5.21
+    //LinkshellList = 0x01EB, // updated 5.21
 
     //MailDeleteRequest = 0x012B, // updated 5.0
 
@@ -102,12 +102,12 @@ namespace Sapphire.Common.Packets
     //ReqMoogleMailLetter = 0x0139, // updated 5.0
     //MailLetterNotification = 0x013A, // updated 5.0
 
-    MarketTaxRates = 0x01D7, // updated 5.21
+    MarketTaxRates = 0x034C, // updated 5.21 hotfix
 
-    MarketBoardSearchResult = 0x01DD, // updated 5.21
-    MarketBoardItemListingCount = 0x00B7, // updated 5.21
-    MarketBoardItemListingHistory = 0x023F, // updated 5.21
-    MarketBoardItemListing = 0x0115, // updated 5.21
+    MarketBoardItemListingCount = 0x0261, // updated 5.21 hotfix
+    MarketBoardItemListing = 0x02E2, // updated 5.21 hotfix
+    MarketBoardItemListingHistory = 0x03CC, // updated 5.21 hotfix
+    MarketBoardSearchResult = 0x016D, // updated 5.21 hotfix
 
     //CharaFreeCompanyTag = 0x013B, // updated 4.5
     //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -116,95 +116,98 @@ namespace Sapphire.Common.Packets
 
     //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-    StatusEffectList = 0x01B8, // updated 5.21
+    //StatusEffectList = 0x01B8, // updated 5.21
     //EurekaStatusEffectList = 0x0167, // updated 5.18
     //BossStatusEffectList = 0x0312, // added 5.1
-    Effect = 0x0371, // updated 5.21
-    AoeEffect8 = 0x02DA, // updated 5.21
-    AoeEffect16 = 0x012E, // updated 5.21
-    AoeEffect24 = 0x0089, // updated 5.21
-    AoeEffect32 = 0x01A9, // updated 5.21
-    PersistantEffect = 0x03E7, // updated 5.21
+    Effect = 0x0252, // Updated for 5.21 hotfix
+    AoeEffect8  = 0x0140, // Updated for 5.21 hotfix
+    AoeEffect16 = 0x02A2, // Updated for 5.21 hotfix
+    AoeEffect24 = 0x01FD, // Updated for 5.21 hotfix
+    AoeEffect32 = 0x0376, // Updated for 5.21 hotfix
+    //PersistantEffect = 0x03E7, // updated 5.21
 
     //GCAffiliation = 0x016F, // updated 5.0
 
-    PlayerSpawn = 0x018E, // updated 5.21
-    NpcSpawn = 0x023A, // updated 5.21
+    PlayerSpawn = 0x033D, // updated 5.21 hotfix
+    NpcSpawn = 0x00B3, // updated 5.21 hotfix
     //NpcSpawn2 = 0x010C, // ( Bigger statuseffectlist? ) updated 5.18
-    ActorMove = 0x0213, // updated 5.21
+    //ActorMove = 0x0213, // updated 5.21
 
-    ActorSetPos = 0x00CC, // updated 5.21
+    ActorSetPos = 0x0295, // updated 5.21 hotfix
 
-    ActorCast = 0x0262, // updated 5.21
+    //ActorCast = 0x0262, // updated 5.21
     //SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
     //PartyList = 0x0287, // updated 5.18
-    HateRank = 0x008F, // updated 5.21
-    HateList = 0x01C5, // updated 5.21
+    //HateRank = 0x008F, // updated 5.21
+    //HateList = 0x01C5, // updated 5.21
     //ObjectSpawn = 0x01B3, // updated 5.2
     //ObjectDespawn = 0x034B, // updated 5.18
-    UpdateClassInfo = 0x0145, // updated 5.21
+    UpdateClassInfo = 0x0235, // updated 5.21 hotfix
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
-    PlayerSetup = 0x028A, // updated 5.21
-    PlayerStats = 0x0112, // updated 5.21
-    ActorOwner = 0x0385, // updated 5.21
-    PlayerStateFlags = 0x02E1, // updated 5.21
-    PlayerClassInfo = 0x016B, // updated 5.21
-    CharaVisualEffect = 0x00AB, // updated 5.21
+    PlayerSetup = 0x0316, // updated 5.21 hotfix
+    //PlayerStats = 0x0112, // updated 5.21
+    ActorOwner = 0x03C8, // updated 5.21 hotfix
+    //PlayerStateFlags = 0x02E1, // updated 5.21
+    //PlayerClassInfo = 0x016B, // updated 5.21
+    //CharaVisualEffect = 0x00AB, // updated 5.21
 
-    ModelEquip = 0x0292, // updated 5.21
-    Examine = 0x0210, // updated 5.21
-    CharaNameReq = 0x03A6, // updated 5.21
+    //ModelEquip = 0x0292, // updated 5.21
+    Examine = 0x036E, // updated 5.21 hotfix
+    //CharaNameReq = 0x03A6, // updated 5.21
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
-    RetainerInformation = 0x0318, // updated 5.21
+    RetainerSaleHistory = 0x020E, // updated 5.21 hotfix
+    RetainerInformation = 0x039D, // updated 5.21 hotfix
 
     //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-    ItemInfo = 0x009E, // updated 5.21
-    ContainerInfo = 0x0315, // updated 5.21
+    ItemInfo = 0x0244, // updated 5.21 hotfix
+    ContainerInfo = 0x0315, // updated 5.21 hotfix
     InventoryTransactionFinish = 0x030E, // updated 5.21
-    InventoryTransaction = 0x006E, // updated 5.21
-    CurrencyCrystalInfo = 0x00E9, // updated 5.21
+    //InventoryTransaction = 0x006E, // updated 5.21
+    CurrencyCrystalInfo = 0x017F, // updated 5.21 hotfix
 
-    InventoryActionAck = 0x01F8, // updated 5.21
-    UpdateInventorySlot = 0x006F, // updated 5.21
+    //InventoryActionAck = 0x01F8, // updated 5.21
+    UpdateInventorySlot = 0x0213, // updated 5.21 hotfix
 
     //HuntingLogEntry = 0x01B3, // updated 5.0
 
-    EventPlay = 0x0167, // updated 5.21
-    EventPlay4 = 0x0313, // updated 5.21
+    EventPlay = 0x007F, // updated 5.21 hotfix
+    EventPlay4 = 0x03BD, // updated 5.21 hotfix
     //EventPlay8 = 0x0119, // updated 5.18
     //EventPlay16 = 0x01FB, // updated 5.18
-    EventPlay32 = 0x017D, // updated 5.21
+    //EventPlay32 = 0x017D, // updated 5.21
     //EventPlay64 = 0x00E5, // updated 5.18
     //EventPlay128 = 0x02BE, // updated 5.18
-    EventPlay255 = 0x0249, // updated 5.21
+    EventPlay255 = 0x00D9, // updated 5.21 hotfix
 
-    EventStart = 0x0392, // updated 5.21
-    EventFinish = 0x00EF, // updated 5.21
+    EventStart = 0x03E4, // updated 5.21 hotfix
+    EventFinish = 0x0197, // updated 5.21 hotfix
+
+    UseMooch = 0x0202, // updated 5.21 hotfix
 
     //EventLinkshell = 0x1169,
 
-    QuestActiveList = 0x01FA, // updated 5.21
-    QuestUpdate = 0x00B1, // updated 5.21
-    QuestCompleteList = 0x0093, // updated 5.21
+    //QuestActiveList = 0x01FA, // updated 5.21
+    QuestUpdate = 0x01F8, // updated 5.21 hotfix
+    //QuestCompleteList = 0x0093, // updated 5.21
 
-    QuestFinish = 0x00AA, // updated 5.21
+    QuestFinish = 0x01FE, // updated 5.21 hotfix
     //MSQTrackerComplete = 0x01D6, // updated 5.0
     //MSQTrackerProgress = 0xF1CD, // updated 4.5 ? this actually looks like the two opcodes have been combined, see #474
 
-    QuestMessage = 0x0379, // updated 5.21
+    QuestMessage = 0x0324, // updated 5.21 hotfix
 
-    QuestTracker = 0x00B0, // updated 5.21
+    //QuestTracker = 0x00B0, // updated 5.21
 
-    Mount = 0x036C, // updated 5.21
+    Mount = 0x02F1, // updated 5.21 hotfix
 
     //DirectorVars = 0x00E6, // updated 5.18
     //SomeDirectorUnk1 = 0x0084, // updated 5.18
     //SomeDirectorUnk2 = 0x00C1, // updated 5.18
-    SomeDirectorUnk4 = 0x014A, // updated 5.21
+    SomeDirectorUnk4 = 0x01F3, // updated 5.21 hotfix
     //SomeDirectorUnk8 = 0x028A, // updated 5.18
     //SomeDirectorUnk16 = 0x028C, // updated 5.18
     //DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
@@ -213,13 +216,13 @@ namespace Sapphire.Common.Packets
 
     //CFAvailableContents = 0xF1FD, // updated 4.2
 
-    WeatherChange = 0x024A, // updated 5.21
+    //WeatherChange = 0x024A, // updated 5.21
     //PlayerTitleList = 0x037D, // updated 5.1
     //Discovery = 0x0091, // updated 5.2
 
     //EorzeaTimeOffset = 0x03B8, // updated 5.1
 
-    EquipDisplayFlags = 0x012F, // updated 5.21
+    //EquipDisplayFlags = 0x012F, // updated 5.21
 
     /// Housing //////////////////////////////////////
 
@@ -232,7 +235,7 @@ namespace Sapphire.Common.Packets
     //LandRename = 0x023A, // updated 5.0
     //HousingEstateGreeting = 0x023B, // updated 5.0
     //HousingUpdateLandFlagsSlot = 0x023C, // updated 5.0
-    HousingLandFlags = 0x0291, // updated 5.21
+    //HousingLandFlags = 0x0291, // updated 5.21
     //HousingShowEstateGuestAccess = 0x023E, // updated 5.0
 
     //HousingObjectInitialize = 0x0240, // updated 5.0
@@ -252,12 +255,12 @@ namespace Sapphire.Common.Packets
     //DuelChallenge = 0x0277, // 4.2; this is responsible for opening the ui
     //PerformNote = 0x0286, // updated 4.3
 
-    PrepareZoning = 0x01BE, // updated 5.21
-    ActorGauge = 0x03BB, // updated 5.21
+    //PrepareZoning = 0x01BE, // updated 5.21
+    //ActorGauge = 0x03BB, // updated 5.21
 
     // daily quest info -> without them sent,  login will take longer...
-    DailyQuests = 0x00E4, // updated 5.21
-    DailyQuestRepeatFlags = 0x0068, // updated 5.21
+    //DailyQuests = 0x00E4, // updated 5.21
+    //DailyQuestRepeatFlags = 0x0068, // updated 5.21
 
     /// Doman Mahjong //////////////////////////////////////
     //MahjongOpenGui = 0x02A4, // only available in mahjong instance
@@ -277,17 +280,17 @@ namespace Sapphire.Common.Packets
   */
   enum ClientZoneIpcType : ushort
   {
-    //PingHandler = 0x0106, // updated 5.2
-    InitHandler = 0x00F2, // updated 5.21
+    PingHandler = 0x012C, // updated 5.21 hotfix
+    //InitHandler = 0x00F2, // updated 5.21
 
-    FinishLoadingHandler = 0x007D, // updated 5.21
+    //FinishLoadingHandler = 0x007D, // updated 5.21
 
-    CFCommenceHandler = 0x0201, // updated 5.21
+    //CFCommenceHandler = 0x0201, // updated 5.21
 
-    CFRegisterDuty = 0x00C4, // updated 5.21
-    CFRegisterRoulette = 0x030F, // updated 5.21
+    //CFRegisterDuty = 0x00C4, // updated 5.21
+    //CFRegisterRoulette = 0x030F, // updated 5.21
     //PlayTimeHandler = 0x0276, // updated 5.1
-    LogoutHandler = 0x0365, // updated 5.21
+    LogoutHandler = 0x0139, // updated 5.21 hotfix
     //CancelLogout = 0x008F, // updated 5.1
 
     //CFDutyInfoHandler = 0x0078, // updated 4.2
@@ -295,18 +298,18 @@ namespace Sapphire.Common.Packets
     //SocialReqSendHandler = 0x00AE, // updated 4.1
     //CreateCrossWorldLS = 0x00AF, // updated 4.3
 
-    ChatHandler = 0x034C, // updated 5.21
+    ChatHandler = 0x03AB, // updated 5.21 hotfix
 
-    SocialListHandler = 0x0123, // updated 5.21
-    //SetSearchInfoHandler = 0x00A8, // updated 5.2
-    ReqSearchInfoHandler = 0x01CD, // updated 5.21
+    //SocialListHandler = 0x0123, // updated 5.21
+    SetSearchInfoHandler = 0x025C, // updated 5.21 hotfix
+    //ReqSearchInfoHandler = 0x01CD, // updated 5.21
     //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
     //ReqRemovePlayerFromBlacklist = 0x00F1, // updated 5.0
     BlackListHandler = 0x0358, // updated 5.21
     //PlayerSearchHandler = 0x00F4, // updated 5.0
 
-    LinkshellListHandler = 0x01CF, // updated 5.21
+    //LinkshellListHandler = 0x01CF, // updated 5.21
 
     //MarketBoardRequestItemListingInfo = 0x0102, // updated 4.5
     //MarketBoardRequestItemListings = 0x0103, // updated 4.5
@@ -325,39 +328,39 @@ namespace Sapphire.Common.Packets
     //ReqCountdownInitiate = 0x0135, // updated 5.0
     //ReqCountdownCancel = 0x0136, // updated 5.0
 
-    ZoneLineHandler = 0x0163, // updated 5.21
-    ClientTrigger = 0x01A0, // updated 5.21
+    //ZoneLineHandler = 0x0163, // updated 5.21
+    ClientTrigger = 0x017E, // updated 5.21 hotfix
     //DiscoveryHandler = 0x019A, // updated 5.2
 
     //PlaceFieldMarker = 0x013C, // updated 5.0
-    SkillHandler = 0x0372, // updated 5.21
-    GMCommand1 = 0x029A, // updated 5.21
-    GMCommand2 = 0x0182, // updated 5.21
-    //AoESkillHandler = 0x0072, // updated 5.18
+    //SkillHandler = 0x0372, // updated 5.21
+    GMCommand1 = 0x0302, // updated 5.21 hotfix
+    GMCommand2 = 0x01E5, // updated 5.21 hotfix
+    AoESkillHandler = 0x0364, // updated 5.21 hotfix
 
-    UpdatePositionHandler = 0x031A, // updated 5.21
+    //UpdatePositionHandler = 0x031A, // updated 5.21
 
-    InventoryModifyHandler = 0x0073, // updated 5.21
+    //InventoryModifyHandler = 0x0073, // updated 5.21
     
     //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
     //ReqPlaceHousingItem = 0x014B, // updated 5.0
     //BuildPresetHandler = 0x0150, // updated 5.0
 
-    TalkEventHandler = 0x02CF, // updated 5.21
-    EmoteEventHandler = 0x0246, // updated 5.21
-    WithinRangeEventHandler = 0x02D1, // updated 5.21
-    OutOfRangeEventHandler = 0x02FB, // updated 5.21
-    EnterTeriEventHandler = 0x0284, // updated 5.21
+    //TalkEventHandler = 0x02CF, // updated 5.21
+    //EmoteEventHandler = 0x0246, // updated 5.21
+    //WithinRangeEventHandler = 0x02D1, // updated 5.21
+    //OutOfRangeEventHandler = 0x02FB, // updated 5.21
+    //EnterTeriEventHandler = 0x0284, // updated 5.21
     //ShopEventHandler = 0x0156, // updated 5.0
 
-    ReturnEventHandler = 0x012E, // updated 5.21
-    TradeReturnEventHandler = 0x0089, // updated 5.21
+    //ReturnEventHandler = 0x012E, // updated 5.21
+    //TradeReturnEventHandler = 0x0089, // updated 5.21
 
     //LinkshellEventHandler = 0x016B, // updated 4.5
     //LinkshellEventHandler1 = 0x016C, // updated 4.5
 
-    ReqEquipDisplayFlagsChange = 0x0083, // updated 5.21
+    //ReqEquipDisplayFlagsChange = 0x0083, // updated 5.21
 
     //LandRenameHandler = 0xF177, // updated 5.0
     //HousingUpdateHouseGreeting = 0x0178, // updated 5.0
