@@ -146,7 +146,7 @@ namespace Sapphire.Common.Packets
     UpdateClassInfo = 0x0235, // updated 5.21 hotfix
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
     PlayerSetup = 0x0316, // updated 5.21 hotfix
-    PlayerStats = 0x03E1, // updated 5.21
+    PlayerStats = 0x03E1, // updated 5.21 hotfix
     ActorOwner = 0x03C8, // updated 5.21 hotfix
     //PlayerStateFlags = 0x02E1, // updated 5.21
     //PlayerClassInfo = 0x016B, // updated 5.21
