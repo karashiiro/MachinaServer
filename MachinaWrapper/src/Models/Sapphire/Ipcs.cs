@@ -348,11 +348,11 @@ namespace Sapphire.Common.Packets
     //BuildPresetHandler = 0x0150, // updated 5.0
 
     //TalkEventHandler = 0x02CF, // updated 5.21
-    //EmoteEventHandler = 0x0246, // updated 5.21
-    //WithinRangeEventHandler = 0x02D1, // updated 5.21
-    //OutOfRangeEventHandler = 0x02FB, // updated 5.21
+    EmoteEventHandler = 0x0380, // updated 5.21 hotfix
+    WithinRangeEventHandler = 0x0253, // updated 5.21 hotfix
+    OutOfRangeEventHandler = 0x0206, // updated 5.21 hotfix
     //EnterTeriEventHandler = 0x0284, // updated 5.21
-    //ShopEventHandler = 0x0156, // updated 5.0
+    EnterTeriEventHandler = 0x01B8, // updated 5.21 hotfix
 
     //ReturnEventHandler = 0x012E, // updated 5.21
     //TradeReturnEventHandler = 0x0089, // updated 5.21
