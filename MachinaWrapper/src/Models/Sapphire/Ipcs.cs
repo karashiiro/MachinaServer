@@ -141,12 +141,12 @@ namespace Sapphire.Common.Packets
     //PartyList = 0x0287, // updated 5.18
     //HateRank = 0x008F, // updated 5.21
     //HateList = 0x01C5, // updated 5.21
-    //ObjectSpawn = 0x01B3, // updated 5.2
+    ObjectSpawn = 0x0342, // updated 5.2 hotfix
     //ObjectDespawn = 0x034B, // updated 5.18
     UpdateClassInfo = 0x0235, // updated 5.21 hotfix
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
     PlayerSetup = 0x0316, // updated 5.21 hotfix
-    //PlayerStats = 0x0112, // updated 5.21
+    PlayerStats = 0x03E1, // updated 5.21 hotfix
     ActorOwner = 0x03C8, // updated 5.21 hotfix
     //PlayerStateFlags = 0x02E1, // updated 5.21
     //PlayerClassInfo = 0x016B, // updated 5.21
