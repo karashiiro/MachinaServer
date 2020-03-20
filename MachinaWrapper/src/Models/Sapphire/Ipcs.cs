@@ -149,7 +149,7 @@ namespace Sapphire.Common.Packets
     PlayerStats = 0x03E1, // updated 5.21 hotfix
     ActorOwner = 0x03C8, // updated 5.21 hotfix
     //PlayerStateFlags = 0x02E1, // updated 5.21
-    //PlayerClassInfo = 0x016B, // updated 5.21
+    PlayerClassInfo = 0x0169, // updated 5.21 hotfix
     //CharaVisualEffect = 0x00AB, // updated 5.21
 
     //ModelEquip = 0x0292, // updated 5.21
@@ -283,12 +283,12 @@ namespace Sapphire.Common.Packets
     PingHandler = 0x012C, // updated 5.21 hotfix
     //InitHandler = 0x00F2, // updated 5.21
 
-    //FinishLoadingHandler = 0x007D, // updated 5.21
+    FinishLoadingHandler = 0x0158, // updated 5.21 hotfix
 
-    //CFCommenceHandler = 0x0201, // updated 5.21
+    CFCommenceHandler = 0x0078, // updated 5.21 hotfix
 
-    //CFRegisterDuty = 0x00C4, // updated 5.21
-    //CFRegisterRoulette = 0x030F, // updated 5.21
+    CFRegisterDuty = 0x0118, // updated 5.21 hotfix
+    CFRegisterRoulette = 0x037A, // updated 5.21 hotfix
     //PlayTimeHandler = 0x0276, // updated 5.1
     LogoutHandler = 0x0139, // updated 5.21 hotfix
     //CancelLogout = 0x008F, // updated 5.1
@@ -347,11 +347,10 @@ namespace Sapphire.Common.Packets
     //ReqPlaceHousingItem = 0x014B, // updated 5.0
     //BuildPresetHandler = 0x0150, // updated 5.0
 
-    //TalkEventHandler = 0x02CF, // updated 5.21
+    TalkEventHandler = 0x0281, // updated 5.21 hotfix
     EmoteEventHandler = 0x0380, // updated 5.21 hotfix
     WithinRangeEventHandler = 0x0253, // updated 5.21 hotfix
     OutOfRangeEventHandler = 0x0206, // updated 5.21 hotfix
-    //EnterTeriEventHandler = 0x0284, // updated 5.21
     EnterTeriEventHandler = 0x01B8, // updated 5.21 hotfix
 
     //ReturnEventHandler = 0x012E, // updated 5.21
