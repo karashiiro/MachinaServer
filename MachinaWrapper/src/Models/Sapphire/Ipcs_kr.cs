@@ -36,7 +36,7 @@ namespace Sapphire.Common.Packets
         ActorCast = 0x020A, // updated 5.1
         ActorControl = 0x018C, // updated 5.1 (ActorControl142?)
         ActorControlSelf = 0x0097, // updated 5.1 (ActorControl143?)
-        //ActorControlTarget = 0x0383, // updated 5.1 (ActorControl144?)
+        ActorControlTarget = 0x0383, // updated 5.1 (ActorControl144?)
         ActorGauge = 0x0377, // updated 5.1
         ActorSetPos = 0x028B, // updated 5.1
         AddStatusEffect = 0x0328, // updated 5.1
@@ -56,7 +56,8 @@ namespace Sapphire.Common.Packets
         Examine = 0x0213, // updated 5.1
         ExamineSearchInfo = 0x0130, // updated 5.1
         InitZone = 0x031E, // updated 5.1
-        //InventoryTransaction = ?
+        InventoryTransaction = 0x0162, // updated 5.1
+        //InventoryTransactionFinish = ?
         ItemInfo = 0x017C, // updated 5.1
         MarketBoardItemListing = 0x009C, // updated 5.1
         MarketBoardItemListingCount = 0x026E, // updated 5.1
@@ -66,9 +67,9 @@ namespace Sapphire.Common.Packets
         NpcSpawn = 0x01FC, // updated 5.1
         PlayerSetup = 0x0382, // updated 5.1
         PlayerSpawn = 0x010A, // updated 5.1
-        //PlayerStats = ?
+        PlayerStats = 0x03E7, // updated 5.1
         Playtime = 0x0205, // updated 5.1
-        //RetainerInformation = ?
+        RetainerInformation = 0x3DC, // updated 5.1
         SomeDirectorUnk4 = 0x00FB, // updated 5.1
         StatusEffectList = 0x01CE, // updated 5.1
         UpdateClassInfo = 0x03D0, // updated 5.1
@@ -84,7 +85,7 @@ namespace Sapphire.Common.Packets
     {
         ChatHandler = 0x024E, // updated 5.1
         ClientTrigger = 0x031C, // updated 5.1
-        //InventoryModifyHandler = ?
+        InventoryModifyHandler = 0x0273, // updated 5.1
         SetSearchInfoHandler = 0x0242, // updated 5.1
     };
     ////////////////////////////////////////////////////////////////////////////////
