@@ -255,7 +255,7 @@ namespace Sapphire.Common.Packets
     //DuelChallenge = 0x0277, // 4.2; this is responsible for opening the ui
     //PerformNote = 0x0286, // updated 4.3
 
-    //PrepareZoning = 0x01BE, // updated 5.21
+    PrepareZoning = 0x00B6, // updated 5.21 hotfix
     ActorGauge = 0x00C7, // updated 5.21 hotfix
 
     // daily quest info -> without them sent,  login will take longer...
