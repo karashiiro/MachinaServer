@@ -72,6 +72,7 @@ namespace Sapphire.Common.Packets
         PlayerSpawn = 0x029D, // updated 5.15
         PlayerStats = 0x0285, // updated 5.15
         Playtime = 0x0105, // updated 5.15
+        RetainerInformation = 0x011e, // updated 5.15
         SomeDirectorUnk4 = 0x02BE, // updated 5.15
         StatusEffectList = 0x0399, // updated 5.15
         UpdateClassInfo = 0x03C5, // updated 5.15
