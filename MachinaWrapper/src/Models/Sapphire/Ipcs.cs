@@ -55,13 +55,13 @@ namespace Sapphire.Common.Packets
     ///////////////////////////////////////////////////
 
     //ChatBanned = 0x006B,
-    Playtime = 0x006C, // updated 5.21 hotfix
+    //Playtime = 0x006C, // updated 5.21 hotfix
     Logout = 0x00CD, // updated 5.25
-    CFNotify = 0x02C7, // updated 5.21 hotfix
+    //CFNotify = 0x02C7, // updated 5.21 hotfix
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
-    CFPreferredRole = 0x025B, // updated 5.21 hotfix
+    //CFPreferredRole = 0x025B, // updated 5.21 hotfix
 
     //SocialRequestError = 0x00AD,
 
@@ -71,14 +71,14 @@ namespace Sapphire.Common.Packets
 
     //LogMessage = 0x00D0,
 
-    Chat = 0x012B, // updated 5.21 hotfix
+    //Chat = 0x012B, // updated 5.21 hotfix
 
     //WorldVisitList = 0x00FE, // added 4.5
 
     SocialList = 0x0269, // updated 5.25
 
-    ExamineSearchInfo = 0x032B, // updated 5.21 hotfix
-    UpdateSearchInfo = 0x0379, // updated 5.21 hotfix
+    //ExamineSearchInfo = 0x032B, // updated 5.21 hotfix
+    //UpdateSearchInfo = 0x0379, // updated 5.21 hotfix
     InitSearchInfo = 0x0347, // updated 5.25
     //ExamineSearchComment = 0x0102, // updated 4.1
 
@@ -119,12 +119,12 @@ namespace Sapphire.Common.Packets
 
     StatusEffectList = 0x01D7, // updated 5.25
     //EurekaStatusEffectList = 0x0167, // updated 5.18
-    BossStatusEffectList = 0x01F5, // updated 5.21 hotfix
+    //BossStatusEffectList = 0x01F5, // updated 5.21 hotfix
     Effect = 0x0087, // updated 5.25
-    AoeEffect8  = 0x0140, // Updated for 5.21 hotfix
-    AoeEffect16 = 0x02A2, // Updated for 5.21 hotfix
-    AoeEffect24 = 0x01FD, // Updated for 5.21 hotfix
-    AoeEffect32 = 0x0376, // Updated for 5.21 hotfix
+    //AoeEffect8  = 0x0140, // Updated for 5.21 hotfix
+    //AoeEffect16 = 0x02A2, // Updated for 5.21 hotfix
+    //AoeEffect24 = 0x01FD, // Updated for 5.21 hotfix
+    //AoeEffect32 = 0x0376, // Updated for 5.21 hotfix
     PersistantEffect = 0x032E, // updated 5.25
 
     //GCAffiliation = 0x016F, // updated 5.0
@@ -140,8 +140,8 @@ namespace Sapphire.Common.Packets
     //SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
     //PartyList = 0x0287, // updated 5.18
-    //HateRank = 0x008F, // updated 5.21
-    //HateList = 0x01C5, // updated 5.21
+    HateRank = 0x012E, // updated 5.25
+    HateList = 0x02C4, // updated 5.25
     ObjectSpawn = 0x00D2, // updated 5.25
     //ObjectDespawn = 0x034B, // updated 5.18
     UpdateClassInfo = 0x00DC, // updated 5.25
@@ -154,12 +154,12 @@ namespace Sapphire.Common.Packets
     CharaVisualEffect = 0x0258, // updated 5.25
 
     ModelEquip = 0x01E5, // updated 5.25
-    Examine = 0x036E, // updated 5.21 hotfix
-    CharaNameReq = 0x02E4, // updated 5.21 hotfix
+    //Examine = 0x036E, // updated 5.21 hotfix
+    //CharaNameReq = 0x02E4, // updated 5.21 hotfix
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
-    RetainerSaleHistory = 0x020E, // updated 5.21 hotfix
+    //RetainerSaleHistory = 0x020E, // updated 5.21 hotfix
     RetainerInformation = 0x0169, // updated 5.25
 
     //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
@@ -175,14 +175,14 @@ namespace Sapphire.Common.Packets
 
     //HuntingLogEntry = 0x01B3, // updated 5.0
 
-    EventPlay = 0x2C3,    // updated 5.25
-    EventPlay4 = 0x29A,   // updated 5.25
-    EventPlay8 = 0x14C,   // updated 5.25
-    EventPlay16 = 0x74,   // updated 5.25
-    EventPlay32 = 0x2D9,  // updated 5.25
-    EventPlay64 = 0x388,  // updated 5.25
-    EventPlay128 = 0x3A4, // updated 5.25
-    EventPlay255 = 0x1AC, // updated 5.25
+    EventPlay = 0x02C3,    // updated 5.25
+    EventPlay4 = 0x029A,   // updated 5.25
+    EventPlay8 = 0x014C,   // updated 5.25
+    EventPlay16 = 0x0074,   // updated 5.25
+    EventPlay32 = 0x02D9,  // updated 5.25
+    EventPlay64 = 0x0388,  // updated 5.25
+    EventPlay128 = 0x03A4, // updated 5.25
+    EventPlay255 = 0x01AC, // updated 5.25
 
     EventStart = 0x0360, // updated 5.25
     EventFinish = 0x0239, // updated 5.25
@@ -190,14 +190,14 @@ namespace Sapphire.Common.Packets
     //EventLinkshell = 0x1169,
 
     QuestActiveList = 0x0391, // updated 5.25
-    QuestUpdate = 0x01F8, // updated 5.21 hotfix
+    QuestUpdate = 0x0352, // updated 5.25
     QuestCompleteList = 0x0231, // updated 5.25
 
     QuestFinish = 0x01FE, // updated 5.21 hotfix
     //MSQTrackerComplete = 0x01D6, // updated 5.0
     //MSQTrackerProgress = 0xF1CD, // updated 4.5 ? this actually looks like the two opcodes have been combined, see #474
 
-    QuestMessage = 0x0324, // updated 5.21 hotfix
+    QuestMessage = 0x0093, // updated 5.25
 
     QuestTracker = 0x00AD, // updated 5.25
 
@@ -284,9 +284,9 @@ namespace Sapphire.Common.Packets
 
     FinishLoadingHandler = 0x008A, // updated 5.25
 
-    CFCommenceHandler = 0x0078, // updated 5.21 hotfix
+    //CFCommenceHandler = 0x0078, // updated 5.21 hotfix
 
-    CFRegisterDuty = 0x0118, // updated 5.21 hotfix
+    //CFRegisterDuty = 0x0118, // updated 5.21 hotfix
     CFRegisterRoulette = 0x037A, // updated 5.21 hotfix
     //PlayTimeHandler = 0x0276, // updated 5.1
     LogoutHandler = 0x00B7, // updated 5.25
@@ -300,7 +300,7 @@ namespace Sapphire.Common.Packets
     ChatHandler = 0x0189, // updated 5.25
 
     SocialListHandler = 0x0371, // updated 5.25
-    SetSearchInfoHandler = 0x025C, // updated 5.21 hotfix
+    //SetSearchInfoHandler = 0x025C, // updated 5.21 hotfix
     ReqSearchInfoHandler = 0x0366, // updated 5.25
     //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
@@ -333,9 +333,9 @@ namespace Sapphire.Common.Packets
 
     //PlaceFieldMarker = 0x013C, // updated 5.0
     SkillHandler = 0x0241, // updated 5.25
-    GMCommand1 = 0x0302, // updated 5.21 hotfix
-    GMCommand2 = 0x01E5, // updated 5.21 hotfix
-    AoESkillHandler = 0x0364, // updated 5.21 hotfix
+    GMCommand1 = 0x01EC, // updated 5.25
+    GMCommand2 = 0x0368, // updated 5.25
+    //AoESkillHandler = 0x0364, // updated 5.21 hotfix
 
     UpdatePositionHandler = 0x014D, // updated 5.25
 
@@ -347,10 +347,10 @@ namespace Sapphire.Common.Packets
     //BuildPresetHandler = 0x0150, // updated 5.0
 
     TalkEventHandler = 0x030F, // updated 5.25
-    EmoteEventHandler = 0x0380, // updated 5.21 hotfix
-    WithinRangeEventHandler = 0x0253, // updated 5.21 hotfix
-    OutOfRangeEventHandler = 0x0206, // updated 5.21 hotfix
-    EnterTeriEventHandler = 0x01B8, // updated 5.21 hotfix
+    EmoteEventHandler = 0x01DD, // updated 5.25
+    WithinRangeEventHandler = 0x0165, // updated 5.25
+    OutOfRangeEventHandler = 0x01EB, // updated 5.25
+    EnterTeriEventHandler = 0x00F8, // updated 5.25
 
     ReturnEventHandler = 0x00BB, // updated 5.25
     TradeReturnEventHandler = 0x03B6, // updated 5.25
