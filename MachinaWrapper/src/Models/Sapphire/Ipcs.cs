@@ -61,7 +61,7 @@ namespace Sapphire.Common.Packets
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
-    //CFPreferredRole = 0x025B, // updated 5.21 hotfix
+    CFPreferredRole = 0x0186, // updated 5.25
 
     //SocialRequestError = 0x00AD,
 
@@ -153,7 +153,7 @@ namespace Sapphire.Common.Packets
 
     ModelEquip = 0x01E5, // updated 5.25
     //Examine = 0x036E, // updated 5.21 hotfix
-    //CharaNameReq = 0x02E4, // updated 5.21 hotfix
+    CharaNameReq = 0x011B, // updated 5.25
 
     // nb: see #565 on github
     //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
