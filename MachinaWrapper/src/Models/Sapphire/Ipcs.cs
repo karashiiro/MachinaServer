@@ -55,9 +55,9 @@ namespace Sapphire.Common.Packets
     ///////////////////////////////////////////////////
 
     //ChatBanned = 0x006B,
-    //Playtime = 0x006C, // updated 5.21 hotfix
+    Playtime = 0x0286, // updated 5.25
     Logout = 0x00CD, // updated 5.25
-    //CFNotify = 0x02C7, // updated 5.21 hotfix
+    CFNotify = 0x0145, // updated 5.25
     //CFMemberStatus = 0x0079,
     //CFDutyInfo = 0x007A,
     //CFPlayerInNeed = 0x007F,
@@ -77,8 +77,8 @@ namespace Sapphire.Common.Packets
 
     SocialList = 0x0269, // updated 5.25
 
-    //ExamineSearchInfo = 0x032B, // updated 5.21 hotfix
-    //UpdateSearchInfo = 0x0379, // updated 5.21 hotfix
+    ExamineSearchInfo = 0x0288, // updated 5.25
+    UpdateSearchInfo = 0x00B3, // updated 5.25
     InitSearchInfo = 0x0347, // updated 5.25
     //ExamineSearchComment = 0x0102, // updated 4.1
 
@@ -101,8 +101,6 @@ namespace Sapphire.Common.Packets
     //ReqMoogleMailList = 0x0138, // updated 5.0
     //ReqMoogleMailLetter = 0x0139, // updated 5.0
     //MailLetterNotification = 0x013A, // updated 5.0
-
-
 
     MarketBoardSearchResult = 0x02D8, // updated 5.25
     MarketBoardItemListingCount = 0x0244, // updated 5.25
@@ -300,7 +298,7 @@ namespace Sapphire.Common.Packets
     ChatHandler = 0x0189, // updated 5.25
 
     SocialListHandler = 0x0371, // updated 5.25
-    //SetSearchInfoHandler = 0x025C, // updated 5.21 hotfix
+    SetSearchInfoHandler = 0x00FA, // updated 5.25
     ReqSearchInfoHandler = 0x0366, // updated 5.25
     //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
