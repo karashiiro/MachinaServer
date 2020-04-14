@@ -36,7 +36,7 @@ namespace Sapphire.Common.Packets
         ActorCast = 0x03E5, // updated 5.11
         ActorControl = 0x0282, // updated 5.11 (ActorControl142)
         ActorControlSelf = 0x032A, // updated 5.11 (ActorControl143)
-        ActorControlTarget = 0x0387;, // updated 5.11 (ActorControl144)
+        ActorControlTarget = 0x0387, // updated 5.11 (ActorControl144)
         ActorGauge = 0x0352, // updated 5.11
         ActorSetPos = 0x033C, // updated 5.11
         AddStatusEffect = 0x010B, // updated 5.11
