@@ -18,11 +18,11 @@ namespace MachinaWrapper
         static void Main(string[] args)
         {
             // Configure the monitor with command-line arguments.
-            int MonitorIndex = Array.IndexOf(args, "--MonitorType");
-            int PIDIndex = Array.IndexOf(args, "--ProcessID");
-            int IPIndex = Array.IndexOf(args, "--LocalIP");
-            int RegionIndex = Array.IndexOf(args, "--Region");
-            int PortIndex = Array.IndexOf(args, "--Port");
+            var MonitorIndex = Array.IndexOf(args, "--MonitorType");
+            var PIDIndex = Array.IndexOf(args, "--ProcessID");
+            var IPIndex = Array.IndexOf(args, "--LocalIP");
+            var RegionIndex = Array.IndexOf(args, "--Region");
+            var PortIndex = Array.IndexOf(args, "--Port");
 
             if (PortIndex == -1)
             {
@@ -30,22 +30,23 @@ namespace MachinaWrapper
                 Environment.Exit(1);
             }
 
-            TCPNetworkMonitor.NetworkMonitorType MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
             }
 
-            Region localRegion = Region.Global;
+            var localRegion = Region.Global;
             if (RegionIndex != -1)
             {
-                if (args[RegionIndex + 1] == "KR")
+                switch (args[RegionIndex + 1])
                 {
-                    localRegion = Region.KR;
-                }
-                else if (args[RegionIndex + 1] == "CN")
-                {
-                    localRegion = Region.CN;
+                    case "KR":
+                        localRegion = Region.KR;
+                        break;
+                    case "CN":
+                        localRegion = Region.CN;
+                        break;
                 }
             }
             else if (!Util.SystemHasGlobalClient())
@@ -61,36 +62,35 @@ namespace MachinaWrapper
             }
 
             // Create the monitor.
-            FFXIVNetworkMonitor monitor = new FFXIVNetworkMonitor
+            var monitor = new FFXIVNetworkMonitor
             {
                 MonitorType = MonitorType,
                 Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
                 LocalIP = IPIndex != -1 ? args[IPIndex + 1] : "",
                 UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1 ? true : false,
-                MessageReceived = (string connection, long epoch, byte[] message) => MessageReceived(connection, epoch, message),
-                MessageSent = (string connection, long epoch, byte[] message) => MessageSent(connection, epoch, message)
+                MessageReceived = MessageReceived,
+                MessageSent = MessageSent
             };
 
             // Create the parser.
-            int ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
+            var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
             if (ParseAlgorithmIndex != -1)
             {
-                if (args[ParseAlgorithmIndex + 1] == "RAMHeavy")
+                switch (args[ParseAlgorithmIndex + 1])
                 {
-                    Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
-                }
-                else if (args[ParseAlgorithmIndex + 1] == "CPUHeavy")
-                {
-                    Parser = new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1]));
-                }
-                else if (args[ParseAlgorithmIndex + 1] == "PacketSpecific")
-                {
-                    Parser = new Parser(localRegion, ParserMode.PacketSpecific, uint.Parse(args[PortIndex + 1]));
-                }
-                else
-                {
-                    Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
+                    case "RAMHeavy":
+                        Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
+                        break;
+                    case "CPUHeavy":
+                        Parser = new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1]));
+                        break;
+                    case "PacketSpecific":
+                        Parser = new Parser(localRegion, ParserMode.PacketSpecific, uint.Parse(args[PortIndex + 1]));
+                        break;
+                    default:
+                        Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
+                        break;
                 }
             }
             else
@@ -99,10 +99,10 @@ namespace MachinaWrapper
             }
 
             // Check for input.
-            string input = "";
+            var input = "";
 
             // Get the input without blocking the output.
-            Thread InputLoop = new Thread(() =>
+            var InputLoop = new Thread(() =>
             {
                 while (true)
                 {
@@ -112,7 +112,7 @@ namespace MachinaWrapper
             InputLoop.Start();
 
             // Process the input.
-            Thread InputProcessingLoop = new Thread(() => {
+            var InputProcessingLoop = new Thread(() => {
                 while (input != "kill")
                 {
                     if (input == "start")
@@ -150,7 +150,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
-            Packet meta = new Packet(connection, "receive", epoch, data);
+            var meta = new Packet(connection, "receive", epoch, data);
             Parser.Parse(meta);
         }
 
@@ -159,7 +159,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
-            Packet meta = new Packet(connection, "send", epoch, data);
+            var meta = new Packet(connection, "send", epoch, data);
             Parser.Parse(meta);
         }
     }

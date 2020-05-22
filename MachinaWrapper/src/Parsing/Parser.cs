@@ -76,10 +76,10 @@ namespace MachinaWrapper.Parsing
 
             // Actor ID obfuscation for some measure of privacy, discouraging stalking and the like.
             // Ideally this data could just be wiped out, but that would make IPC data useless for minimap features.
-            byte[] sourceActorID = (int)Offsets.SourceActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.SourceActor) ^ Modulator) : new byte[4];
-            byte[] targetActorID = (int)Offsets.TargetActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.TargetActor) ^ Modulator) : new byte[4];
+            var sourceActorID = (int)Offsets.SourceActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.SourceActor) ^ Modulator) : new byte[4];
+            var targetActorID = (int)Offsets.TargetActor + 4 < meta.PacketSize ? BitConverter.GetBytes(BitConverter.ToUInt32(meta.Data, (int)Offsets.TargetActor) ^ Modulator) : new byte[4];
             // Copy obfuscated data in
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 meta.Data[(int)Offsets.SourceActor + i] = sourceActorID[i];
                 meta.Data[(int)Offsets.TargetActor + i] = targetActorID[i];
@@ -87,7 +87,7 @@ namespace MachinaWrapper.Parsing
 
             // Get IPC data, if applicable.
             meta.SegmentType = (int)Offsets.SegmentType + 2 < meta.PacketSize ? BitConverter.ToUInt16(meta.Data, (int)Offsets.SegmentType) : new ushort();
-            IpcPacket ipcData = new IpcPacket(meta);
+            var ipcData = new IpcPacket(meta);
             if (meta.SegmentType == 3) // IPC segment type
             {
                 ProcessIPCData(ref ipcData);
@@ -117,7 +117,7 @@ namespace MachinaWrapper.Parsing
         private void OutputRAMHeavy(IpcPacket ipcData)
         {
             // This is just a slight modification of the CPU-heavy logger.
-            StringBuilder sb = OutputCPUHeavy(ipcData);
+            var sb = OutputCPUHeavy(ipcData);
 
             // Update the size so that future StringBuilders don't need to repeatedly resize themselves.
             // This is likely to be the main cause of memory usage increases.
@@ -146,7 +146,7 @@ namespace MachinaWrapper.Parsing
             }
 
             // This is a modification of the CPU-heavy logger.
-            StringBuilder sb = OutputCPUHeavy(ipcData);
+            var sb = OutputCPUHeavy(ipcData);
 
             // Update the size so that future StringBuilders don't need to repeatedly resize themselves.
             if (ipcData.Type != "unknown" && sb.Capacity > ipcMessageSize.Value)
@@ -165,7 +165,7 @@ namespace MachinaWrapper.Parsing
         {
             // The JSON consists of potentially useful header information and the IPC data if it exists.
             // Heavy data processing is done on the Node side, since it's easier to test packet structures like that.
-            StringBuilder JSON = new StringBuilder(capacity ?? Capacity);
+            var JSON = new StringBuilder(capacity ?? Capacity);
             JSON.Append("{\"type\":\"").Append(ipcData.Type).Append("\",")
                 .Append("\"opcode\":").Append(ipcData.Opcode).Append(",")
                 .Append("\"region\":\"").Append(Region).Append("\",")
@@ -199,7 +199,7 @@ namespace MachinaWrapper.Parsing
             }
             JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}");
             
-            StringContent message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
+            var message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
 
             try
             {
@@ -219,34 +219,22 @@ namespace MachinaWrapper.Parsing
         private void ProcessIPCData(ref IpcPacket ipcData)
         {
             // IPC opcode
-            ushort ipcOpcode = (int)Offsets.IpcType + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcType) : new ushort();
+            var ipcOpcode = (int)Offsets.IpcType + 2 < ipcData.Metadata.PacketSize ? BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcType) : new ushort();
             ipcData.Opcode = ipcOpcode;
             if (ipcData.Metadata.ConnectionType == "receive")
             {
                 // Inbound packet
                 if (Region == Region.Global)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
                 }
                 else if (Region == Region.KR)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
                 }
                 else if (Region == Region.CN)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeCN), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ServerChatIpcTypeCN), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeCN), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcTypeCN), ipcOpcode);
                 }
                 else
                 {
@@ -256,7 +244,7 @@ namespace MachinaWrapper.Parsing
                 // ActorControl categories
                 if (ipcData.Type == "ActorControl" || ipcData.Type == "ActorControlSelf" || ipcData.Type == "ActorControlTarget")
                 {
-                    ushort actorControlOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                    var actorControlOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
                     ipcData.ActorControlCategory = Enum.GetName(typeof(ActorControlType), actorControlOpcode) ?? "unknown";
                     // Camelcase it for JavaScript style
                     Util.JSify(ref ipcData.ActorControlCategory);
@@ -267,27 +255,15 @@ namespace MachinaWrapper.Parsing
                 // Outbound packet
                 if (Region == Region.Global)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
                 }
                 else if (Region == Region.KR)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
                 }
                 else if (Region == Region.CN)
                 {
-                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeCN), ipcOpcode);
-                    if (ipcData.Type == null)
-                    {
-                        ipcData.Type = Enum.GetName(typeof(ClientChatIpcTypeCN), ipcOpcode);
-                    }
+                    ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeCN), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcTypeCN), ipcOpcode);
                 }
                 else
                 {
@@ -297,7 +273,7 @@ namespace MachinaWrapper.Parsing
                 // ClientTrigger categories
                 if (ipcData.Type == "ClientTrigger")
                 {
-                    ushort clientTriggerOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                    var clientTriggerOpcode = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
                     ipcData.ClientTriggerCategory = Enum.GetName(typeof(ClientTriggerType), clientTriggerOpcode) ?? "unknown";
                     Util.JSify(ref ipcData.ClientTriggerCategory);
                 }
@@ -318,7 +294,7 @@ namespace MachinaWrapper.Parsing
             // Check world ID for region validation
             if (ipcData.Type == "InitZone")
             {
-                ushort worldId = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
+                var worldId = BitConverter.ToUInt16(ipcData.Metadata.Data, (int)Offsets.IpcData);
                 if (Region != Region.Global && worldId >= 23 && worldId <= 99)
                 {
                     Region = Region.Global;
