@@ -56,8 +56,8 @@ namespace Sapphire.Common.Packets
         Examine = 0x015C, // updated 5.15
         ExamineSearchInfo = 0x02B5, // updated 5.15
         InitZone = 0x01AE, // updated 5.15
-        InventoryTransaction = 0x014F, // updated 5.15
-        //InventoryTransactionFinish
+        //InventoryTransaction
+        //InventoryTransactionFinish = 0x014F, // updated 5.15
         ItemInfo = 0x0356, // updated 5.15
         MarketBoardItemListing = 0x0223, // updated 5.15  (MarketBoardOfferings)
         MarketBoardItemListingCount = 0x013E, // updated 5.15 (MarketBoardItemRequestStart)
