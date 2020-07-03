@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Machina;
 using Machina.FFXIV;
 
@@ -27,7 +28,7 @@ namespace MachinaWrapper
         /// Specifies the Process ID that is generating or receiving the traffic.  Either ProcessID or WindowName must be specified.
         /// </summary>
         public uint ProcessID
-        { get; set; } = 0;
+        { get; set; }
 
         /// <summary>
         /// Specifies the local IP address to override the detected IP
@@ -40,7 +41,7 @@ namespace MachinaWrapper
         ///   This has a small chance of losing data when new TCP sockets connect, but significantly reduces data processing overhead.
         /// </summary>
         public bool UseSocketFilter
-        { get; set; } = false;
+        { get; set; }
 
         #region Message Delegates section
         public delegate void MessageReceivedDelegate(string connection, long epoch, byte[] message);
@@ -66,9 +67,9 @@ namespace MachinaWrapper
 
         #endregion
 
-        private TCPNetworkMonitor _monitor = null;
-        private Dictionary<string, FFXIVBundleDecoder> _sentDecoders = new Dictionary<string, FFXIVBundleDecoder>();
-        private Dictionary<string, FFXIVBundleDecoder> _receivedDecoders = new Dictionary<string, FFXIVBundleDecoder>();
+        private TCPNetworkMonitor _monitor;
+        private readonly Dictionary<string, FFXIVBundleDecoder> _sentDecoders = new Dictionary<string, FFXIVBundleDecoder>();
+        private readonly Dictionary<string, FFXIVBundleDecoder> _receivedDecoders = new Dictionary<string, FFXIVBundleDecoder>();
 
         /// <summary>
         /// Validates the parameters and starts the monitor.
@@ -92,8 +93,8 @@ namespace MachinaWrapper
             _monitor.LocalIP = LocalIP;
             _monitor.UseSocketFilter = UseSocketFilter;
 
-            _monitor.DataSent = (string connection, byte[] data) => ProcessSentMessage(connection, data);
-            _monitor.DataReceived = (string connection, byte[] data) => ProcessReceivedMessage(connection, data);
+            _monitor.DataSent = ProcessSentMessage;
+            _monitor.DataReceived = ProcessReceivedMessage;
 
             _monitor.Start();
         }
@@ -114,29 +115,44 @@ namespace MachinaWrapper
 
         public void ProcessSentMessage(string connection, byte[] data)
         {
-            Tuple<long, byte[]> message;
-            if (!_sentDecoders.ContainsKey(connection))
-                _sentDecoders.Add(connection, new FFXIVBundleDecoder());
-
-            _sentDecoders[connection].StoreData(data);
-            while ((message = _sentDecoders[connection].GetNextFFXIVMessage()) != null)
+            try
             {
-                OnMessageSent(connection, message.Item1, message.Item2);
+                Tuple<long, byte[]> message;
+                if (!_sentDecoders.ContainsKey(connection))
+                    _sentDecoders.Add(connection, new FFXIVBundleDecoder());
+
+                _sentDecoders[connection].StoreData(data);
+
+                while ((message = _sentDecoders[connection].GetNextFFXIVMessage()) != null)
+                {
+                    OnMessageSent(connection, message.Item1, message.Item2);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
             }
         }
 
         public void ProcessReceivedMessage(string connection, byte[] data)
         {
-            Tuple<long, byte[]> message;
-            if (!_receivedDecoders.ContainsKey(connection))
-                _receivedDecoders.Add(connection, new FFXIVBundleDecoder());
-
-            _receivedDecoders[connection].StoreData(data);
-            while ((message = _receivedDecoders[connection].GetNextFFXIVMessage()) != null)
+            try
             {
-                OnMessageReceived(connection, message.Item1, message.Item2);
-            }
+                Tuple<long, byte[]> message;
+                if (!_receivedDecoders.ContainsKey(connection))
+                    _receivedDecoders.Add(connection, new FFXIVBundleDecoder());
 
+                _receivedDecoders[connection].StoreData(data);
+
+                while ((message = _receivedDecoders[connection].GetNextFFXIVMessage()) != null)
+                {
+                    OnMessageReceived(connection, message.Item1, message.Item2);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+            }
         }
     }
 }
