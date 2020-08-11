@@ -42,7 +42,7 @@ namespace Sapphire.Common.Packets
     ActorFreeSpawn = 0x022F, // updated 5.3
     InitZone = 0x0388, // updated 5.3
 
-    //EffectResult = 0x030F, // updated 5.25
+    EffectResult = 0x0346, // updated 5.3
     ActorControl = 0x0344, // updated 5.3
     ActorControlSelf = 0x0212, // updated 5.3
     //ActorControlTarget = 0x01EB, // updated 5.25
@@ -115,7 +115,7 @@ namespace Sapphire.Common.Packets
 
     //FreeCompanyUpdateShortMessage = 0x0157, // added 5.0
 
-    //StatusEffectList = 0x01D7, // updated 5.25
+    StatusEffectList = 0x0172, // updated 5.3
     //EurekaStatusEffectList = 0x0167, // updated 5.18
     //BossStatusEffectList = 0x01F5, // updated 5.21 hotfix
     Effect = 0x00F4, // updated 5.3
@@ -140,7 +140,7 @@ namespace Sapphire.Common.Packets
     //PartyList = 0x0287, // updated 5.18
     //HateRank = 0x012E, // updated 5.25
     //HateList = 0x02C4, // updated 5.25
-    //ObjectSpawn = 0x00D2, // updated 5.25
+    ObjectSpawn = 0x02A4, // updated 5.3
     //ObjectDespawn = 0x034B, // updated 5.18
     UpdateClassInfo = 0x039A, // updated 5.3
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
@@ -215,7 +215,7 @@ namespace Sapphire.Common.Packets
 
     //CFAvailableContents = 0xF1FD, // updated 4.2
 
-    //WeatherChange = 0x0157, // updated 5.25
+    WeatherChange = 0x03D6, // updated 5.3
     //PlayerTitleList = 0x037D, // updated 5.1
     //Discovery = 0x0091, // updated 5.2
 
@@ -339,7 +339,7 @@ namespace Sapphire.Common.Packets
 
     //UpdatePositionHandler = 0x014D, // updated 5.25
 
-    //InventoryModifyHandler = 0x0179, // updated 5.25
+    InventoryModifyHandler = 0x0118, // updated 5.3
     
     //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
