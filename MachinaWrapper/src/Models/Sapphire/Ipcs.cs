@@ -145,7 +145,7 @@ namespace Sapphire.Common.Packets
     UpdateClassInfo = 0x039A, // updated 5.3
     //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
     PlayerSetup = 0x00D4, // updated 5.3
-    //PlayerStats = 0x007C, // updated 5.25
+    PlayerStats = 0x3D8, // updated 5.3
     //ActorOwner = 0x0149, // updated 5.25
     //PlayerStateFlags = 0x0125, // updated 5.25
     //PlayerClassInfo = 0x034F, // updated 5.25
@@ -337,7 +337,7 @@ namespace Sapphire.Common.Packets
     //GMCommand2 = 0x0368, // updated 5.25
     //AoESkillHandler = 0x0364, // updated 5.21 hotfix
 
-    //UpdatePositionHandler = 0x014D, // updated 5.25
+    UpdatePositionHandler = 0x037B, // updated 5.3
 
     InventoryModifyHandler = 0x0118, // updated 5.3
     
@@ -366,7 +366,7 @@ namespace Sapphire.Common.Packets
 
     //SetSharedEstateSettings = 0x017B, // updated 5.0
 
-    //UpdatePositionInstance = 0x0290, // updated 5.25
+    UpdatePositionInstance = 0x0245, // updated 5.3
 
     //PerformNoteHandler = 0x029B, // updated 4.3
 
