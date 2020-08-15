@@ -7,7 +7,10 @@ using Machina;
 using MachinaWrapper.Common;
 using MachinaWrapper.Parsing;
 using System;
+using System.Configuration;
+using System.Linq;
 using System.Threading;
+using Sapphire.Common.Packets;
 
 namespace MachinaWrapper
 {
@@ -17,6 +20,8 @@ namespace MachinaWrapper
 
         static void Main(string[] args)
         {
+            ValidateOpcodes();
+
             // Configure the monitor with command-line arguments.
             var MonitorIndex = Array.IndexOf(args, "--MonitorType");
             var PIDIndex = Array.IndexOf(args, "--ProcessID");
@@ -161,6 +166,24 @@ namespace MachinaWrapper
         {
             var meta = new Packet(connection, "send", epoch, data);
             Parser.Parse(meta);
+        }
+
+        private static void ValidateOpcodes()
+        {
+            var globalIpcLists = new[] { typeof(ClientChatIpcType), typeof(ServerChatIpcType), typeof(ClientLobbyIpcType), typeof(ServerLobbyIpcType), typeof(ClientZoneIpcType), typeof(ServerZoneIpcType) };
+            var cnIpcLists = new[] { typeof(ClientChatIpcTypeCN), typeof(ServerChatIpcTypeCN), typeof(ClientZoneIpcTypeCN), typeof(ServerZoneIpcTypeCN) };
+            var krIpcLists = new[] { typeof(ClientChatIpcTypeKR), typeof(ServerChatIpcTypeKR), typeof(ClientLobbyIpcTypeKR), typeof(ServerLobbyIpcTypeKR), typeof(ClientZoneIpcTypeKR), typeof(ServerZoneIpcTypeKR) };
+            var ipcListsList = new[] { globalIpcLists, cnIpcLists, krIpcLists };
+            foreach (var ipcLists in ipcListsList)
+            {
+                foreach (var ipcList in ipcLists)
+                {
+                    var ipcValues = (ushort[]) Enum.GetValues(ipcList);
+                    if (ipcValues.Distinct().Count() != ipcValues.Length)
+                        throw new ConfigurationErrorsException(
+                            $"{ipcList.Name} contains one or more duplicate values!");
+                }
+            }
         }
     }
 }
