@@ -330,7 +330,7 @@ namespace Sapphire.Common.Packets
     //DiscoveryHandler = 0x019A, // updated 5.2
 
     //PlaceFieldMarker = 0x013C, // updated 5.0
-    //SkillHandler = 0x0241, // updated 5.25
+    SkillHandler = 0x033C, // updated 5.3
     //GMCommand1 = 0x01EC, // updated 5.25
     //GMCommand2 = 0x0368, // updated 5.25
     //AoESkillHandler = 0x0364, // updated 5.21 hotfix
