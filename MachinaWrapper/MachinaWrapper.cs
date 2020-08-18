@@ -73,30 +73,23 @@ namespace MachinaWrapper
                 Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
                 LocalIP = IPIndex != -1 ? args[IPIndex + 1] : "",
-                UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1 ? true : false,
+                UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
                 MessageReceived = MessageReceived,
-                MessageSent = MessageSent
+                MessageSent = MessageSent,
             };
 
             // Create the parser.
             var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
             if (ParseAlgorithmIndex != -1)
             {
-                switch (args[ParseAlgorithmIndex + 1])
+                Parser = args[ParseAlgorithmIndex + 1] switch
                 {
-                    case "RAMHeavy":
-                        Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
-                        break;
-                    case "CPUHeavy":
-                        Parser = new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1]));
-                        break;
-                    case "PacketSpecific":
-                        Parser = new Parser(localRegion, ParserMode.PacketSpecific, uint.Parse(args[PortIndex + 1]));
-                        break;
-                    default:
-                        Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
-                        break;
-                }
+                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1])),
+                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1])),
+                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific,
+                        uint.Parse(args[PortIndex + 1])),
+                    _ => new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]))
+                };
             }
             else
             {
