@@ -1,0 +1,23 @@
+name: Check for duplicate opcodes
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: Install dependencies
+      run: nuget restore
+    - name: Build with dotnet
+      run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
+    - name: Check for duplicate opcodes
+      run: ./MachinaWrapper/bin/Release/MachinaWrapper.exe --Test
