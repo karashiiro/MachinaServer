@@ -20,8 +20,6 @@ namespace MachinaWrapper
 
         static void Main(string[] args)
         {
-            ValidateOpcodes();
-
             // Configure the monitor with command-line arguments.
             var MonitorIndex = Array.IndexOf(args, "--MonitorType");
             var PIDIndex = Array.IndexOf(args, "--ProcessID");
@@ -65,6 +63,8 @@ namespace MachinaWrapper
                     localRegion = Region.CN;
                 }
             }
+
+            ValidateOpcodes(localRegion);
 
             // Create the monitor.
             var monitor = new FFXIVNetworkMonitor
@@ -168,21 +168,24 @@ namespace MachinaWrapper
             Parser.Parse(meta);
         }
 
-        private static void ValidateOpcodes()
+        private static void ValidateOpcodes(Region region)
         {
             var globalIpcLists = new[] { typeof(ClientChatIpcType), typeof(ServerChatIpcType), typeof(ClientLobbyIpcType), typeof(ServerLobbyIpcType), typeof(ClientZoneIpcType), typeof(ServerZoneIpcType) };
             var cnIpcLists = new[] { typeof(ClientChatIpcTypeCN), typeof(ServerChatIpcTypeCN), typeof(ClientZoneIpcTypeCN), typeof(ServerZoneIpcTypeCN) };
             var krIpcLists = new[] { typeof(ClientChatIpcTypeKR), typeof(ServerChatIpcTypeKR), typeof(ClientLobbyIpcTypeKR), typeof(ServerLobbyIpcTypeKR), typeof(ClientZoneIpcTypeKR), typeof(ServerZoneIpcTypeKR) };
-            var ipcListsList = new[] { globalIpcLists, cnIpcLists, krIpcLists };
-            foreach (var ipcLists in ipcListsList)
+
+            foreach (var ipcList in region switch
             {
-                foreach (var ipcList in ipcLists)
-                {
-                    var ipcValues = (ushort[]) Enum.GetValues(ipcList);
-                    if (ipcValues.Distinct().Count() != ipcValues.Length)
-                        throw new ConfigurationErrorsException(
-                            $"{ipcList.Name} contains one or more duplicate values!");
-                }
+                Region.Global => globalIpcLists,
+                Region.CN => cnIpcLists,
+                Region.KR => krIpcLists,
+                _ => throw new NotImplementedException(),
+            })
+            {
+                var ipcValues = (ushort[]) Enum.GetValues(ipcList);
+                if (ipcValues.Distinct().Count() != ipcValues.Length)
+                    throw new ConfigurationErrorsException(
+                        $"{ipcList.Name} contains one or more duplicate values!");
             }
         }
     }
