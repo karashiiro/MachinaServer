@@ -44,7 +44,7 @@ namespace Sapphire.Common.Packets
         PlayerSetup = 0x02DD,
         PlayerSpawn = 0x03A0,
         PlayerStats = 0x00A7,
-        Playtime = 0x0237,
+        //Playtime = 0x0237,
         RetainerInformation = 0x0179,
         SomeDirectorUnk4 = 0x0228,
         StatusEffectList = 0x00F0,
