@@ -19,6 +19,8 @@ jobs:
       run: nuget restore
     - name: Build with dotnet
       run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
+    - name: Check for duplicate opcodes
+      run: ./node-machina-ffxiv/MachinaWrapper/*.exe --Test
     - name: Clone node-machina-ffxiv
       run: git clone https://github.com/karashiiro/node-machina-ffxiv.git
     - name: Move build results into node-machina-ffxiv
