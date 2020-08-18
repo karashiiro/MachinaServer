@@ -19,7 +19,7 @@ namespace Sapphire.Common.Packets
         CFNotify = 0x034F,
         CFPreferredRole = 0x007A,
         Chat = 0x01f3,
-        ContainerInfo = 0x0179,
+        //ContainerInfo = 0x0179,
         CurrencyCrystalInfo = 0x0375,
         DirectorStart = 0x02de,
         Effect = 0x035E,
@@ -50,7 +50,7 @@ namespace Sapphire.Common.Packets
         StatusEffectList = 0x00F0,
         UpdateClassInfo = 0x01B8,
         UpdateHpMpTp = 0x0237,
-        UpdateInventorySlot = 0x02F0,
+        //UpdateInventorySlot = 0x02F0,
         UpdateSearchInfo = 0x014F,
     };
 

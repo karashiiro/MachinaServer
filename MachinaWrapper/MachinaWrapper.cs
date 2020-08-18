@@ -26,6 +26,13 @@ namespace MachinaWrapper
             var IPIndex = Array.IndexOf(args, "--LocalIP");
             var RegionIndex = Array.IndexOf(args, "--Region");
             var PortIndex = Array.IndexOf(args, "--Port");
+            var TestIndex = Array.IndexOf(args, "--Test");
+
+            if (TestIndex != -1)
+            {
+                ValidateOpcodes();
+                return;
+            }
 
             if (PortIndex == -1)
             {
@@ -42,15 +49,12 @@ namespace MachinaWrapper
             var localRegion = Region.Global;
             if (RegionIndex != -1)
             {
-                switch (args[RegionIndex + 1])
+                localRegion = args[RegionIndex + 1] switch
                 {
-                    case "KR":
-                        localRegion = Region.KR;
-                        break;
-                    case "CN":
-                        localRegion = Region.CN;
-                        break;
-                }
+                    "KR" => Region.KR,
+                    "CN" => Region.CN,
+                    _ => localRegion,
+                };
             }
             else if (!Util.SystemHasGlobalClient())
             {
@@ -63,8 +67,6 @@ namespace MachinaWrapper
                     localRegion = Region.CN;
                 }
             }
-
-            ValidateOpcodes(localRegion);
 
             // Create the monitor.
             var monitor = new FFXIVNetworkMonitor
@@ -100,17 +102,17 @@ namespace MachinaWrapper
             var input = "";
 
             // Get the input without blocking the output.
-            var InputLoop = new Thread(() =>
+            var inputLoop = new Thread(() =>
             {
                 while (true)
                 {
-                    input = Console.In.ReadLine(); // This blocks the InputLoop thread, so there's no need to sleep or anything like that.
+                    input = Console.ReadLine(); // This blocks the inputLoop thread, so there's no need to sleep or anything like that.
                 }
             });
-            InputLoop.Start();
+            inputLoop.Start();
 
             // Process the input.
-            var InputProcessingLoop = new Thread(() => {
+            var inputProcessingLoop = new Thread(() => {
                 while (input != "kill")
                 {
                     if (input == "start")
@@ -138,9 +140,9 @@ namespace MachinaWrapper
                     monitor.Stop();
                 }
                 catch (NullReferenceException) {}
-                InputLoop.Abort();
+                inputLoop.Abort();
             });
-            InputProcessingLoop.Start();
+            inputProcessingLoop.Start();
         }
 
         /// <summary>
@@ -161,24 +163,22 @@ namespace MachinaWrapper
             Parser.Parse(meta);
         }
 
-        private static void ValidateOpcodes(Region region)
+        private static void ValidateOpcodes()
         {
             var globalIpcLists = new[] { typeof(ClientChatIpcType), typeof(ServerChatIpcType), typeof(ClientLobbyIpcType), typeof(ServerLobbyIpcType), typeof(ClientZoneIpcType), typeof(ServerZoneIpcType) };
             var cnIpcLists = new[] { typeof(ClientChatIpcTypeCN), typeof(ServerChatIpcTypeCN), typeof(ClientZoneIpcTypeCN), typeof(ServerZoneIpcTypeCN) };
             var krIpcLists = new[] { typeof(ClientChatIpcTypeKR), typeof(ServerChatIpcTypeKR), typeof(ClientLobbyIpcTypeKR), typeof(ServerLobbyIpcTypeKR), typeof(ClientZoneIpcTypeKR), typeof(ServerZoneIpcTypeKR) };
+            var ipcLists = new[] { globalIpcLists, cnIpcLists, krIpcLists};
 
-            foreach (var ipcList in region switch
+            foreach (var ipcList in ipcLists)
             {
-                Region.Global => globalIpcLists,
-                Region.CN => cnIpcLists,
-                Region.KR => krIpcLists,
-                _ => throw new NotImplementedException(),
-            })
-            {
-                var ipcValues = (ushort[]) Enum.GetValues(ipcList);
-                if (ipcValues.Distinct().Count() != ipcValues.Length)
-                    throw new ConfigurationErrorsException(
-                        $"{ipcList.Name} contains one or more duplicate values!");
+                foreach (var ipcType in ipcList)
+                {
+                    var ipcValues = (ushort[])Enum.GetValues(ipcType);
+                    if (ipcValues.Distinct().Count() != ipcValues.Length)
+                        throw new ConfigurationErrorsException(
+                            $"{ipcType.Name} contains one or more duplicate values!");
+                }
             }
         }
     }
