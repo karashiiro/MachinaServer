@@ -19,46 +19,38 @@ namespace MachinaWrapper.Parsing
         public ParserMode Mode;
         public Region Region;
 
-        public uint Port;
-
         private readonly uint Modulator = (uint)new Random().Next(int.MinValue, int.MaxValue);
 
-        private static readonly HttpClient http = new HttpClient(); // For sending data to Node.js
-
-        public Parser(Region region, uint port)
+        public Parser(Region region)
         {
             Capacity = 50; // Initialize the StringBuilder with 50 characters.
             MessageSizes = new List<NameSizePair>();
             Mode = ParserMode.RAMHeavy;
             Region = region;
-            Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port)
+        public Parser(Region region, ParserMode mode)
         {
             Capacity = 50;
             MessageSizes = new List<NameSizePair>();
             Mode = mode;
             Region = region;
-            Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port, int capacity)
+        public Parser(Region region, ParserMode mode, int capacity)
         {
             Capacity = capacity;
             MessageSizes = new List<NameSizePair>();
             Mode = mode;
             Region = region;
-            Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port, List<NameSizePair> capacities)
+        public Parser(Region region, ParserMode mode, List<NameSizePair> capacities)
         {
             Capacity = 50;
             MessageSizes = capacities;
             Mode = mode;
             Region = region;
-            Port = port;
         }
 
         /// <summary>
@@ -207,12 +199,10 @@ namespace MachinaWrapper.Parsing
                 }
             }
             JSON.Append("\"data\":[").Append(string.Join(",", ipcData.Metadata.Data)).Append("]}");
-            
-            var message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
 
             try
             {
-                http.PostAsync("http://localhost:" + Port, message);
+                ParseServer.BroadcastMessage(JSON.ToString());
             }
             catch (HttpRequestException e)
             {

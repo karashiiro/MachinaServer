@@ -9,16 +9,16 @@ using MachinaWrapper.Parsing;
 using System;
 using System.Configuration;
 using System.Linq;
-using System.Threading;
 using Sapphire.Common.Packets;
+using WebSocketSharp.Server;
 
 namespace MachinaWrapper
 {
-    class MachinaWrapper
+    public static class MachinaWrapper
     {
-        static Parser Parser;
+        private static Parser _parser;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Configure the monitor with command-line arguments.
             var MonitorIndex = Array.IndexOf(args, "--MonitorType");
@@ -68,7 +68,6 @@ namespace MachinaWrapper
                 }
             }
 
-            // Create the monitor.
             var monitor = new FFXIVNetworkMonitor
             {
                 MonitorType = MonitorType,
@@ -80,69 +79,49 @@ namespace MachinaWrapper
                 MessageSent = MessageSent,
             };
 
-            // Create the parser.
-            var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
-            if (ParseAlgorithmIndex != -1)
+            var commander = new Commander("kill");
+            commander.AddCommand("start", monitor.Start);
+            commander.AddCommand("stop", () =>
             {
-                Parser = args[ParseAlgorithmIndex + 1] switch
-                {
-                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1])),
-                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy, uint.Parse(args[PortIndex + 1])),
-                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific,
-                        uint.Parse(args[PortIndex + 1])),
-                    _ => new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]))
-                };
-            }
-            else
-            {
-                Parser = new Parser(localRegion, ParserMode.RAMHeavy, uint.Parse(args[PortIndex + 1]));
-            }
-
-            // Check for input.
-            var input = "";
-
-            // Get the input without blocking the output.
-            var inputLoop = new Thread(() =>
-            {
-                while (true)
-                {
-                    input = Console.ReadLine(); // This blocks the inputLoop thread, so there's no need to sleep or anything like that.
-                }
-            });
-            inputLoop.Start();
-
-            // Process the input.
-            var inputProcessingLoop = new Thread(() => {
-                while (input != "kill")
-                {
-                    if (input == "start")
-                    {
-                        monitor.Start();
-                    }
-                    else if (input == "stop")
-                    {
-                        try
-                        {
-                            monitor.Stop();
-                        }
-                        catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
-                        {
-                            Console.Error.WriteLine(nre);
-                        }
-                    }
-
-                    input = "";
-                    Thread.Sleep(200); // One-fifth of a second is probably fine for user input, and it's way less intensive than 1.
-                }
-
                 try
                 {
                     monitor.Stop();
                 }
-                catch (NullReferenceException) {}
-                inputLoop.Abort();
+                catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
+                {
+                    Console.Error.WriteLine(nre);
+                }
             });
-            inputProcessingLoop.Start();
+            commander.OnKill(() =>
+            {
+                try
+                {
+                    monitor.Stop();
+                }
+                catch (NullReferenceException) { }
+            });
+            commander.Start();
+
+            var server = new WebSocketServer(int.Parse(args[PortIndex + 1]));
+            server.AddWebSocketService("/", () => ParseServer.Create(commander));
+            server.Start();
+
+            // Create the parser.
+            var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
+            if (ParseAlgorithmIndex != -1)
+            {
+                _parser = args[ParseAlgorithmIndex + 1] switch
+                {
+                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy),
+                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy),
+                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific),
+                    _ => new Parser(localRegion, ParserMode.RAMHeavy),
+                };
+            }
+            else
+            {
+                _parser = new Parser(localRegion, ParserMode.RAMHeavy);
+            }
         }
 
         /// <summary>
@@ -151,7 +130,7 @@ namespace MachinaWrapper
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
             var meta = new Packet(connection, "receive", epoch, data);
-            Parser.Parse(meta);
+            _parser.Parse(meta);
         }
 
         /// <summary>
@@ -160,7 +139,7 @@ namespace MachinaWrapper
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
             var meta = new Packet(connection, "send", epoch, data);
-            Parser.Parse(meta);
+            _parser.Parse(meta);
         }
 
         private static void ValidateOpcodes()

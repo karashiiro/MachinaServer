@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace MachinaWrapper.Common
+namespace MachinaWrapper
 {
-    static class Util
+    public static class Util
     {
         /// <summary>
         /// Camelcases a string.
