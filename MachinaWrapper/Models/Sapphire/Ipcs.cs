@@ -140,12 +140,12 @@ namespace Sapphire.Common.Packets
         //PartyList = 0x0287, // updated 5.18
         HateRank = 0x005E, // updated 5.31
         HateList = 0x007F, // updated 5.31
-        //ObjectSpawn = 0x01D1, // updated 5.3 hotfix
+        ObjectSpawn = 0x02D9, // updated 5.31
                               //ObjectDespawn = 0x034B, // updated 5.18
         UpdateClassInfo = 0x026F, // updated 5.31
                                   //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
         PlayerSetup = 0x02D2, // updated 5.31
-        //PlayerStats = 0x02D2, // updated 5.3 hotfix
+        PlayerStats = 0x00DD, // updated 5.31
                               //ActorOwner = 0x0149, // updated 5.25
                               //PlayerStateFlags = 0x0125, // updated 5.25
                               //PlayerClassInfo = 0x034F, // updated 5.25
@@ -335,9 +335,9 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x0368, // updated 5.25
         //AoESkillHandler = 0x0364, // updated 5.21 hotfix
 
-        //UpdatePositionHandler = 0x01E3, // updated 5.3 hotfix
+        UpdatePositionHandler = 0x0243, // updated 5.31
 
-        //InventoryModifyHandler = 0x0379, // updated 5.3 hotfix
+        InventoryModifyHandler = 0x0370, // updated 5.31
 
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
@@ -364,7 +364,7 @@ namespace Sapphire.Common.Packets
 
         //SetSharedEstateSettings = 0x017B, // updated 5.0
 
-        //UpdatePositionInstance = 0x014F, // updated 5.3 hotfix
+        UpdatePositionInstance = 0x02BC, // updated 5.31
 
         //PerformNoteHandler = 0x029B, // updated 4.3
     };
