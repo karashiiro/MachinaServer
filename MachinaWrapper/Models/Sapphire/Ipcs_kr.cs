@@ -33,59 +33,58 @@ namespace Sapphire.Common.Packets
     */
     enum ServerZoneIpcTypeKR : ushort
     {
-        ActorCast = 0x028D, // updated 5.18
-        ActorControl = 0x02DB, // updated 5.18 (ActorControl142)
-        ActorControlSelf = 0x0363, // updated 5.18 (ActorControl143)
-        ActorControlTarget = 0x02AA, // updated 5.18 (ActorControl144)
-        ActorGauge = 0x00E9, // updated 5.18
-        ActorSetPos = 0x01F9, // updated 5.18
-        AddStatusEffect = 0x0365, // updated 5.18
-        AoeEffect16 = 0x0167, // updated 5.18 (ActionEffect16)
-        AoeEffect24 = 0x02A4, // updated 5.18 (ActionEffect24)
-        AoeEffect32 = 0x0265, // updated 5.18 (ActionEffect32)
-        AoeEffect8 = 0x02B9, // updated 5.18 (ActionEffect8)
-        //BossStatusEffectList
-        CFNotify = 0x01D6, // updated 5.18
-        CFPreferredRole = 0x03A9, // updated 5.18
-        CurrencyCrystalInfo = 0x024A, // updated 5.18
-        Effect = 0x0213, // updated 5.18 (ActionEffect)
-        EventFinish = 0x02E7, // updated 5.18
-        EventPlay = 0x0118, // updated 5.18
-        EventPlay4 = 0x00DF, // updated 5.18
-        EventStart = 0x01FC, // updated 5.18
-        Examine = 0x028A, // updated 5.18
-        ExamineSearchInfo = 0x0174, // updated 5.18
-        InitZone = 0x0360, // updated 5.18
-        InventoryTransaction = 0x02FA, // updated 5.18
-        InventoryTransactionFinish = 0x0267, // updated 5.18
-        ItemInfo = 0x02F6, // updated 5.18
-        MarketBoardItemListing = 0x01AD, // updated 5.18 (MarketBoardOfferings)
-        MarketBoardItemListingCount = 0x0187, // updated 5.18 (MarketBoardItemRequestStart)
-        MarketBoardItemListingHistory = 0x0153, // updated 5.18 (MarketBoardHistory)
-        MarketBoardSearchResult = 0x0109, // updated 5.18
-        MarketTaxRates = 0x023E, // updated 5.18
-        NpcSpawn = 0x0125, // updated 5.18
-        PlayerSetup = 0x0207, // updated 5.18
-        PlayerSpawn = 0x0377, // updated 5.18
-        PlayerStats = 0x036C, // updated 5.18
-        Playtime = 0x0350, // updated 5.18
-        RetainerInformation = 0x02FC, // updated 5.18
-        SomeDirectorUnk4 = 0x03C4, // updated 5.18
-        StatusEffectList = 0x00AE, // updated 5.18
-        UpdateClassInfo = 0x00C6, // updated 5.18
-        UpdateHpMpTp = 0x033F, // updated 5.18
-        UpdateInventorySlot = 0x028E, // updated 5.18
-        UpdateSearchInfo = 0x03D7, // updated 5.18 
+        ActorCast = 0x02B1, // updated 5.2
+        ActorControl = 0x029C, // updated 5.2
+        ActorControlSelf = 0x00AB, // updated 5.2
+        ActorControlTarget = 0x00AD, // updated 5.2
+        ActorGauge = 0x014F, // updated 5.2
+        ActorSetPos = 0x0083, // updated 5.2
+        AddStatusEffect = 0x0164, // updated 5.2
+        AoeEffect16 = 0x0210, // updated 5.2
+        AoeEffect24 = 0x024F, // updated 5.2
+        AoeEffect32 = 0x00F2, // updated 5.2
+        AoeEffect8 = 0x00B4, // updated 5.2
+        CFNotify = 0x00FE, // updated 5.2
+        CFPreferredRole = 0x0324, // updated 5.2
+        CurrencyCrystalInfo = 0x0247, // updated 5.2
+        Effect = 0x0073, // updated 5.2
+        EventFinish = 0x0171, // updated 5.2
+        EventPlay = 0x0113, // updated 5.2
+        EventPlay4 = 0x03DA, // updated 5.2
+        EventStart = 0x0068, // updated 5.2
+        Examine = 0x008E, // updated 5.2
+        ExamineSearchInfo = 0x0146, // updated 5.2
+        InitZone = 0x039D, // updated 5.2
+        InventoryTransaction = 0x02FE, // updated 5.2
+        InventoryTransactionFinish = 0x0121, // updated 5.2
+        ItemInfo = 0x01D8, // updated 5.2
+        MarketBoardItemListing = 0x0190, // updated 5.2
+        MarketBoardItemListingCount = 0x02A7, // updated 5.2
+        MarketBoardItemListingHistory = 0x0362, // updated 5.2
+        MarketBoardSearchResult = 0x0187, // updated 5.2
+        MarketTaxRates = 0x02D7, // updated 5.2
+        NpcSpawn = 0x030E, // updated 5.2
+        PlayerSetup = 0x02E7, // updated 5.2
+        PlayerSpawn = 0x03CC, // updated 5.2
+        PlayerStats = 0x0088, // updated 5.2
+        Playtime = 0x008D, // updated 5.2
+        RetainerInformation = 0x01D2, // updated 5.2
+        SomeDirectorUnk4 = 0x02B2, // updated 5.2
+        StatusEffectList = 0x0166, // updated 5.2
+        UpdateClassInfo = 0x0158, // updated 5.2
+        UpdateHpMpTp = 0x02A2, // updated 5.2
+        UpdateInventorySlot = 0x0349, // updated 5.2
+        UpdateSearchInfo = 0x027E, // updated 5.2
     };
     /**
     * Client IPC Zone Type Codes.
     */
     enum ClientZoneIpcTypeKR : ushort
     {
-        ChatHandler = 0x0113, // updated 5.18
-        ClientTrigger = 0x038B, // updated 5.18
-        InventoryModifyHandler = 0x01AC, // updated 5.18
-        SetSearchInfoHandler = 0x0123, // updated 5.18
+        ChatHandler = 0x00DC, // updated 5.2
+        ClientTrigger = 0x02DC, // updated 5.2
+        InventoryModifyHandler = 0x03A3, // updated 5.2
+        SetSearchInfoHandler = 0x02E3, // updated 5.2
     };
     ////////////////////////////////////////////////////////////////////////////////
     /// Chat Connection IPC Codes
