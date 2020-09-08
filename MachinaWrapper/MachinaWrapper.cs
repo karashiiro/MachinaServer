@@ -1,16 +1,10 @@
-﻿/*
- * The purpose of this program is to wrap the information from Machina into a JSON, and to read the header data of the packets.
- * Packet data processing is done in Node.
- */
-
-using Machina;
+﻿using Machina;
 using MachinaWrapper.Common;
 using MachinaWrapper.Parsing;
 using System;
 using System.Configuration;
 using System.Linq;
 using Sapphire.Common.Packets;
-using WebSocketSharp.Server;
 
 namespace MachinaWrapper
 {
@@ -34,10 +28,10 @@ namespace MachinaWrapper
                 return;
             }
 
-            if (PortIndex == -1)
+            var port = 13346U;
+            if (PortIndex != -1)
             {
-                Console.WriteLine("Port must be provided via command line");
-                Environment.Exit(1);
+                port = uint.Parse(args[PortIndex + 1]);
             }
 
             var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
@@ -102,9 +96,9 @@ namespace MachinaWrapper
             });
             commander.Start();
 
-            var server = new WebSocketServer(int.Parse(args[PortIndex + 1]));
+            /*var server = new WebSocketServer(int.Parse(args[PortIndex + 1]));
             server.AddWebSocketService("/", () => ParseServer.Create(commander));
-            server.Start();
+            server.Start();*/
 
             // Create the parser.
             var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
@@ -112,15 +106,15 @@ namespace MachinaWrapper
             {
                 _parser = args[ParseAlgorithmIndex + 1] switch
                 {
-                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy),
-                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy),
-                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific),
-                    _ => new Parser(localRegion, ParserMode.RAMHeavy),
+                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy, port),
+                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy, port),
+                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific, port),
+                    _ => new Parser(localRegion, ParserMode.RAMHeavy, port),
                 };
             }
             else
             {
-                _parser = new Parser(localRegion, ParserMode.RAMHeavy);
+                _parser = new Parser(localRegion, ParserMode.RAMHeavy, port);
             }
         }
 
