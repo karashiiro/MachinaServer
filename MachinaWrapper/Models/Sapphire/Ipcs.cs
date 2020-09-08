@@ -140,7 +140,7 @@ namespace Sapphire.Common.Packets
         //PartyList = 0x0287, // updated 5.18
         HateRank = 0x005E, // updated 5.31
         HateList = 0x007F, // updated 5.31
-        ObjectSpawn = 0x02D9, // updated 5.31
+        ObjectSpawn = 0x008F, // updated 5.31
                               //ObjectDespawn = 0x034B, // updated 5.18
         UpdateClassInfo = 0x026F, // updated 5.31
                                   //SilentSetClassJob = 0x018E, // updated 5.0 - seems to be the case, not sure if it's actually used for anything
