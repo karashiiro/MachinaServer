@@ -221,6 +221,8 @@ namespace Sapphire.Common.Packets
 
         //EquipDisplayFlags = 0x010D, // updated 5.25
 
+        MiniCactpotInit = 0x0286, // added 5.31
+
         /// Housing //////////////////////////////////////
 
         //LandSetInitialize = 0x0234, // updated 5.0
