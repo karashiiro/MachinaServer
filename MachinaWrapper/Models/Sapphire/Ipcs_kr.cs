@@ -51,6 +51,7 @@ namespace Sapphire.Common.Packets
         EventFinish = 0x0171, // updated 5.2
         EventPlay = 0x0113, // updated 5.2
         EventPlay4 = 0x03DA, // updated 5.2
+        EventPlay32 = 0x02CB, // updated 5.2
         EventStart = 0x0068, // updated 5.2
         Examine = 0x008E, // updated 5.2
         ExamineSearchInfo = 0x0146, // updated 5.2
