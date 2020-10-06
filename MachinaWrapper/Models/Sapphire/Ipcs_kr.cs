@@ -37,7 +37,7 @@ namespace Sapphire.Common.Packets
         ActorControl = 0x01C5, // updated 5.21
         ActorControlSelf = 0x013B, // updated 5.21
         ActorControlTarget = 0x0388, // updated 5.21
-        //ActorFreeSpawn = 0x0343, // updated 5.21
+        // ActorFreeSpawn = 0x0343, // updated 5.21
         ActorGauge = 0x00E6, // updated 5.21
         ActorMove = 0x0379, // updated 5.21
         ActorSetPos = 0x00A4, // updated 5.21
@@ -79,7 +79,7 @@ namespace Sapphire.Common.Packets
         UpdateClassInfo = 0x0272, // updated 5.21
         UpdateHpMpTp = 0x0343, // updated 5.21
         UpdateInventorySlot = 0x0148, // updated 5.21
-        UpdatePositionInstance = 0x0379, // updated 5.21
+        // UpdatePositionInstance = 0x0379, // updated 5.21
         UpdateSearchInfo = 0x02A8, // updated 5.21
         // WaymarkPreset = 0x02DE, // updated 5.21
         // WaymarkSet = 0x02C2, // updated 5.21
