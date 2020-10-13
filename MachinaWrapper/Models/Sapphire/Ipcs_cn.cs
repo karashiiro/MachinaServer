@@ -26,6 +26,7 @@ namespace Sapphire.Common.Packets
         EventFinish = 0x01BA,
         EventPlay = 0x0297,
         EventPlay4 = 0x03B0,
+        EventPlay32 = 0x00a3,
         EventStart = 0x02E2,
         Examine = 0x025E,
         ExamineSearchInfo = 0x01A8,
