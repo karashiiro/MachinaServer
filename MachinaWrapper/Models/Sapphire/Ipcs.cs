@@ -42,8 +42,8 @@ namespace Sapphire.Common.Packets
         //ActorFreeSpawn = 0x0153, // updated 5.35
         InitZone = 0x0303, // updated 5.35
 
-        EffectResult = 0x00F4, // updated 5.31
-        ActorControl = 0x02DC, // updated 5.35
+        EffectResult = 0x035E, // updated 5.35
+        ActorControl = 0x02DC, // updated 5.3
         ActorControlSelf = 0x032C, // updated 5.35
         //ActorControlTarget = 0x00D3, // updated 5.31
 
@@ -134,7 +134,7 @@ namespace Sapphire.Common.Packets
 
         //ActorSetPos = 0x0299, // updated 5.31
 
-        //ActorCast = 0x012E, // updated 5.31
+        ActorCast = 0x0111, // updated 5.35
         //SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
         //PartyList = 0x0287, // updated 5.18
@@ -213,7 +213,7 @@ namespace Sapphire.Common.Packets
 
         //CFAvailableContents = 0xF1FD, // updated 4.2
 
-        //WeatherChange = 0x021E, // updated 5.31
+        WeatherChange = 0x00BC, // updated 5.35
         //PlayerTitleList = 0x037D, // updated 5.1
         //Discovery = 0x0091, // updated 5.2
 
@@ -254,7 +254,7 @@ namespace Sapphire.Common.Packets
         //DuelChallenge = 0x0277, // 4.2; this is responsible for opening the ui
         //PerformNote = 0x0286, // updated 4.3
 
-        //PrepareZoning = 0x0393, // updated 5.31
+        PrepareZoning = 0x0160, // updated 5.35
         //ActorGauge = 0x025D, // updated 5.31
 
         // daily quest info -> without them sent,  login will take longer...
