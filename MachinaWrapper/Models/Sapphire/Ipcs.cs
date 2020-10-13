@@ -175,12 +175,12 @@ namespace Sapphire.Common.Packets
 
         EventPlay = 0x039A, // updated 5.35
         EventPlay4 = 0x0382, // updated 5.35
-        //EventPlay8 = 0x00E5, // updated 5.31
-        //EventPlay16 = 0x019B, // updated 5.31
-        //EventPlay32 = 0x035D, // updated 5.31
-        //EventPlay64 = 0x0335, // updated 5.31
-        //EventPlay128 = 0x038A, // updated 5.31
-        //EventPlay255 = 0x0267, // updated 5.31
+        EventPlay8 = 0x03E2, // updated 5.35
+        EventPlay16 = 0x01DE, // updated 5.35
+        EventPlay32 = 0x0115, // updated 5.35
+        EventPlay64 = 0x01AF, // updated 5.35
+        EventPlay128 = 0x0205, // updated 5.35
+        EventPlay255 = 0x0322, // updated 5.35
 
         EventStart = 0x0131, // updated 5.35
         EventFinish = 0x03DC, // updated 5.35
