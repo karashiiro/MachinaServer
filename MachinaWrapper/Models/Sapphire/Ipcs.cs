@@ -214,7 +214,7 @@ namespace Sapphire.Common.Packets
 
         //CFAvailableContents = 0xF1FD, // updated 4.2
 
-        WeatherChange = 0x0239, // updated 5.35 hotfix
+        WeatherChange = 0x027B, // updated 5.35 hotfix
         //PlayerTitleList = 0x037D, // updated 5.1
         //Discovery = 0x0091, // updated 5.2
 
