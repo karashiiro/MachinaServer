@@ -214,7 +214,7 @@ namespace Sapphire.Common.Packets
 
         //CFAvailableContents = 0xF1FD, // updated 4.2
 
-        WeatherChange = 0x00BC, // updated 5.35
+        WeatherChange = 0x0239, // updated 5.35 hotfix
         //PlayerTitleList = 0x037D, // updated 5.1
         //Discovery = 0x0091, // updated 5.2
 
@@ -255,7 +255,7 @@ namespace Sapphire.Common.Packets
         //DuelChallenge = 0x0277, // 4.2; this is responsible for opening the ui
         //PerformNote = 0x0286, // updated 4.3
 
-        PrepareZoning = 0x0160, // updated 5.35
+        PrepareZoning = 0x026C, // updated 5.35 hotfix
         //ActorGauge = 0x025D, // updated 5.31
 
         // daily quest info -> without them sent,  login will take longer...
