@@ -39,7 +39,7 @@ namespace Sapphire.Common.Packets
         //Ping = 0x017A, // updated 5.25
         //Init = 0x03B9, // updated 5.25
 
-        ActorFreeSpawn = 0x0319, // updated 5.35 hotfix
+        //ActorFreeSpawn = 0x0319, // updated 5.35 hotfix (broken)
         InitZone = 0x03CD, // updated 5.35 hotfix
 
         EffectResult = 0x01C2, // updated 5.35 hotfix
