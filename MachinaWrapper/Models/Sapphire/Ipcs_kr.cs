@@ -36,6 +36,7 @@ namespace Sapphire.Common.Packets
         ActorCast = 0x0310, // updated 5.25
         ActorControl = 0x03B6, // updated 5.25
         ActorControlSelf = 0x0200, // updated 5.25
+        ActorControlTarget = 0x01DE, // updated 5.25
         // ActorFreeSpawn = 0x03BE, // duplication
         ActorGauge = 0x02F9, // updated 5.25
         ActorMove = 0x0117, // updated 5.25
