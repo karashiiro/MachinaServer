@@ -40,6 +40,7 @@ namespace Sapphire.Common.Packets
         // ActorFreeSpawn = 0x03BE, // duplication
         ActorGauge = 0x02F9, // updated 5.25
         ActorMove = 0x0117, // updated 5.25
+        ActorSetPos = 0x01DA, // updated 5.25
         AddStatusEffect = 0x0280, // updated 5.25
         AoeEffect16 = 0x0173, // updated 5.25
         AoeEffect24 = 0x02A1, // updated 5.25
