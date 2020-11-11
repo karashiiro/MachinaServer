@@ -46,14 +46,16 @@ namespace Sapphire.Common.Packets
         AoeEffect24 = 0x02A1, // updated 5.25
         AoeEffect32 = 0x0129, // updated 5.25
         AoeEffect8 = 0x0305, // updated 5.25
-        // BossStatusEffect = 0x0292, // updated 5.25
+        BossStatusEffectList = 0x0292, // updated 5.25
         CFNotify = 0x0242, // updated 5.25
         CFPreferredRole = 0x02F1, // updated 5.25
+        // CraftEfficiencyCalculations = 0x00F5, // updated 5.25
         CurrencyCrystalInfo = 0x00E6, // updated 5.25
         Effect = 0x0198, // updated 5.25
         EventFinish = 0x02C2, // updated 5.25
         EventPlay = 0x011E, // updated 5.25
         EventPlay4 = 0x02F3, // updated 5.25
+        EventPlay32 = 0x0157, // updated 5.25
         EventStart = 0x0272, // updated 5.25
         Examine = 0x01E4, // updated 5.25
         ExamineSearchInfo = 0x01A2, // updated 5.25
