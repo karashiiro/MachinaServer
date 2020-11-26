@@ -37,11 +37,11 @@ namespace Sapphire.Common.Packets
         ActorControl = 0x03B6, // updated 5.25
         ActorControlSelf = 0x0200, // updated 5.25
         ActorControlTarget = 0x01DE, // updated 5.25
-        // ActorFreeSpawn = 0x03BE, // duplication
+        ActorFreeSpawn = 0x03E0, // updated 5.25
         ActorGauge = 0x02F9, // updated 5.25
         ActorMove = 0x0117, // updated 5.25
         ActorSetPos = 0x01DA, // updated 5.25
-        AddStatusEffect = 0x0280, // updated 5.25
+        EffectResult = 0x0280, // updated 5.25
         AoeEffect16 = 0x0173, // updated 5.25
         AoeEffect24 = 0x02A1, // updated 5.25
         AoeEffect32 = 0x0129, // updated 5.25
@@ -69,22 +69,24 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListingHistory = 0x01C3, // updated 5.25
         MarketBoardSearchResult = 0x0277, // updated 5.25
         MarketTaxRates = 0x03E4, // updated 5.25
+        MiniCactpotInit = 0x0114, // updated 5.25
         NpcSpawn = 0x023E, // updated 5.25
         ObjectSpawn = 0x01F2, // updated 5.25
+        PlaceFieldMarker = 0x03E2, // updated 5.25
+        PlaceFieldMarkerPreset = 0x031B, // updated 5.25
         PlayerSetup = 0x0269, // updated 5.25
         PlayerSpawn = 0x019B, // updated 5.25
         PlayerStats = 0x007D, // updated 5.25
         Playtime = 0x02EB, // updated 5.25
         RetainerInformation = 0x0078, // updated 5.25
+        ServerNotice = 0x02A9, // updated 5.25
         SomeDirectorUnk4 = 0x02DA, // updated 5.25
         StatusEffectList = 0x013D, // updated 5.25
         UpdateClassInfo = 0x024E, // updated 5.25
         UpdateHpMpTp = 0x03BE, // updated 5.25
         UpdateInventorySlot = 0x00A3, // updated 5.25
-        // UpdatePositionInstance = 0x0117, // duplication
         UpdateSearchInfo = 0x00B2, // updated 5.25
-        // WaymarkPreset = 0x031B, // updated 5.25
-        // WaymarkSingle = 0x03E2, // updated 5.25
+        WeatherChange = 0x025B, // updated 5.25
     };
     /**
     * Client IPC Zone Type Codes.
@@ -96,6 +98,7 @@ namespace Sapphire.Common.Packets
         InventoryModifyHandler = 0x0393, // updated 5.25 (Base offset: 0x039A)
         SetSearchInfoHandler = 0x01C5, // updated 5.25
         UpdatePositionHandler = 0x015F, // updated 5.25
+        UpdatePositionInstance = 0x0117, // updated 5.25
     };
     ////////////////////////////////////////////////////////////////////////////////
     /// Chat Connection IPC Codes
