@@ -106,7 +106,7 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListingCount = 0x0369, // updated 5.4 hotfix
         MarketBoardItemListingHistory = 0x02A1, // updated 5.4 hotfix
         MarketBoardItemListing = 0x016F, // updated 5.4 hotfix
-        MarketTaxRates = 0x0388, // updated 5.4 hotfix
+        MarketTaxRates = 0x03C0, // updated 5.4 hotfix
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
@@ -344,7 +344,7 @@ namespace Sapphire.Common.Packets
 
         UpdatePositionHandler = 0x0182, // updated 5.4 hotfix
 
-        InventoryModifyHandler = 0x0327, // updated 5.4 hotfix (NOT UPDATED => Base offset: 0x01E6)
+        InventoryModifyHandler = 0x0170, // updated 5.4 hotfix (Base offset: 0x0177)
 
         //InventoryEquipRecommendedItems = 0x0149, // updated 5.0
 
