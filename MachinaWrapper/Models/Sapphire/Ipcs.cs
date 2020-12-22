@@ -39,7 +39,7 @@ namespace Sapphire.Common.Packets
         //Ping = 0x017A, // updated 5.25
         //Init = 0x03B9, // updated 5.25
 
-        ActorFreeSpawn = 0x034A, // updated 5.4 hotfix
+        ActorFreeSpawn = 0x018B, // updated 5.4 hotfix
         InitZone = 0x035A, // updated 5.4 hotfix
 
         EffectResult = 0x0124, // updated 5.4 hotfix
@@ -160,11 +160,11 @@ namespace Sapphire.Common.Packets
         // nb: see #565 on github
         //UpdateRetainerItemSalePrice = 0x019F, // updated 5.0
         //RetainerSaleHistory = 0x020E, // updated 5.21 hotfix
-        RetainerInformation = 0x0232, // updated 5.4 hotfix
+        RetainerInformation = 0x00A4, // updated 5.4 hotfix
 
         //SetLevelSync = 0x1186, // not updated for 4.4, not sure what it is anymore
 
-        ItemInfo = 0x0155, // updated 5.4 hotfix
+        ItemInfo = 0x00B8, // updated 5.4 hotfix
         //ContainerInfo = 0x02A8, // updated 5.25
         InventoryTransaction = 0x0395, // updated 5.4 hotfix
         InventoryTransactionFinish = 0x013A, // updated 5.4 hotfix
@@ -176,13 +176,13 @@ namespace Sapphire.Common.Packets
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
         EventPlay = 0x0336, // updated 5.4 hotfix
-        EventPlay4 = 0x017F, // updated 5.4 hotfix
+        EventPlay4 = 0x0317, // updated 5.4 hotfix
         EventPlay8 = 0x00DF,  // updated 5.4 hotfix
         EventPlay16 = 0x0133,  // updated 5.4 hotfix
         EventPlay32 = 0x01A3, // updated 5.4 hotfix
         EventPlay64 = 0x0277, // updated 5.4 hotfix
         EventPlay128 = 0x026D, // updated 5.4 hotfix
-        EventPlay255 = 0x0317, // updated 5.4 hotfix
+        EventPlay255 = 0x017F, // updated 5.4 hotfix
 
         EventStart = 0x00F5, // updated 5.4 hotfix
         EventFinish = 0x00D4, // updated 5.4 hotfix
@@ -206,7 +206,7 @@ namespace Sapphire.Common.Packets
         //DirectorVars = 0x00E6, // updated 5.18
         //SomeDirectorUnk1 = 0x0084, // updated 5.18
         //SomeDirectorUnk2 = 0x00C1, // updated 5.18
-        SomeDirectorUnk4 = 0x02A5, // updated 5.4 hotfix
+        SomeDirectorUnk4 = 0x0198, // updated 5.4 hotfix
                                    //SomeDirectorUnk8 = 0x028A, // updated 5.18
                                    //SomeDirectorUnk16 = 0x028C, // updated 5.18
                                    //DirectorPopUp = 0x0162, // updated 5.18 - display dialogue pop-ups in duties and FATEs, for example, Teraflare's countdown
@@ -301,10 +301,10 @@ namespace Sapphire.Common.Packets
         //SocialReqSendHandler = 0x00AE, // updated 4.1
         //CreateCrossWorldLS = 0x00AF, // updated 4.3
 
-        ChatHandler = 0x01EA, // updated 5.4 hotfix
+        ChatHandler = 0x0295, // updated 5.4 hotfix
 
         //SocialListHandler = 0x0371, // updated 5.25
-        SetSearchInfoHandler = 0x0373, // updated 5.4 hotfix
+        SetSearchInfoHandler = 0x0223, // updated 5.4 hotfix
                                        //ReqSearchInfoHandler = 0x0366, // updated 5.25
                                        //ReqExamineSearchCommentHandler = 0x00E7, // updated 5.0
 
@@ -332,7 +332,7 @@ namespace Sapphire.Common.Packets
         //ReqCountdownCancel = 0x0136, // updated 5.0
 
         //ZoneLineHandler = 0x0214, // updated 5.25
-        ClientTrigger = 0x0071, // updated 5.4 hotfix
+        ClientTrigger = 0x02C4, // updated 5.4 hotfix
                                 //DiscoveryHandler = 0x019A, // updated 5.2
 
         PlaceFieldMarker = 0x01C5, // updated 5.4 hotfix
@@ -342,7 +342,7 @@ namespace Sapphire.Common.Packets
         //GMCommand2 = 0x0368, // updated 5.25
         //AoESkillHandler = 0x0364, // updated 5.21 hotfix
 
-        UpdatePositionHandler = 0x0182, // updated 5.4 hotfix
+        UpdatePositionHandler = 0x023C, // updated 5.4 hotfix
 
         InventoryModifyHandler = 0x0170, // updated 5.4 hotfix (Base offset: 0x0177)
 
@@ -371,7 +371,7 @@ namespace Sapphire.Common.Packets
 
         //SetSharedEstateSettings = 0x017B, // updated 5.0
 
-        UpdatePositionInstance = 0x0082, // updated 5.4 hotfix
+        UpdatePositionInstance = 0x0226, // updated 5.4 hotfix
 
         //PerformNoteHandler = 0x029B, // updated 4.3
     };
