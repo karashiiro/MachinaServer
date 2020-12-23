@@ -175,14 +175,14 @@ namespace Sapphire.Common.Packets
 
         //HuntingLogEntry = 0x01B3, // updated 5.0
 
-        EventPlay = 0x0336, // updated 5.4 hotfix
-        EventPlay4 = 0x0317, // updated 5.4 hotfix
-        EventPlay8 = 0x00DF,  // updated 5.4 hotfix
-        EventPlay16 = 0x0133,  // updated 5.4 hotfix
-        EventPlay32 = 0x01A3, // updated 5.4 hotfix
-        EventPlay64 = 0x0277, // updated 5.4 hotfix
-        EventPlay128 = 0x026D, // updated 5.4 hotfix
-        EventPlay255 = 0x017F, // updated 5.4 hotfix
+        EventPlay    = 0x336, // Updated for 5.4 hotfix
+        EventPlay4   = 0x317, // Updated for 5.4 hotfix
+        EventPlay8   = 0x277, // Updated for 5.4 hotfix
+        EventPlay16  = 0x133, // Updated for 5.4 hotfix
+        EventPlay32  = 0x17F, // Updated for 5.4 hotfix
+        EventPlay64  = 0x1A3, // Updated for 5.4 hotfix
+        EventPlay128 = 0xDF,  // Updated for 5.4 hotfix
+        EventPlay255 = 0x2D6, // Updated for 5.4 hotfix
 
         EventStart = 0x00F5, // updated 5.4 hotfix
         EventFinish = 0x00D4, // updated 5.4 hotfix
