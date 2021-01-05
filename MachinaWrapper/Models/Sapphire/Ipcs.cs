@@ -108,8 +108,8 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListing = 0x016F, // updated 5.4 hotfix
         //MarketTaxRates = 0x03C0, // updated 5.4
         
-        DesynthResult = 0x01B7;
-        ReductionResult = 0x03C0;
+        DesynthResult = 0x01B7, // added 5.4 hotfix
+        ReductionResult = 0x03C0, // added 5.4 hotfix
 
         //CharaFreeCompanyTag = 0x013B, // updated 4.5
         //FreeCompanyBoardMsg = 0x013C, // updated 4.5
