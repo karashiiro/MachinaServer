@@ -5,17 +5,17 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v1
-    - name: Checkout submodules
-      uses: textbook/git-checkout-submodule-action@master
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/checkout@v2
       with:
-        dotnet-version: 3.1.401
+        submodules: "recursive" 
+    - name: Build DotNet4
+      run: |
+        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+        .\MSBuild.exe $Env:GITHUB_WORKSPACE\Dalamud.sln /t:Build /p:Configuration=Release /p:DefineConstants=XL_NOAUTOUPDATE
     - name: Setup Nuget.exe
       uses: NuGet/setup-nuget@v1.0.5
     - name: Install dependencies
