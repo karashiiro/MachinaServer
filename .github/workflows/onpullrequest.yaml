@@ -11,16 +11,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        submodules: "recursive" 
-    - name: Build DotNet4
-      run: |
-        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-        .\MSBuild.exe $Env:GITHUB_WORKSPACE\Dalamud.sln /t:Build /p:Configuration=Release /p:DefineConstants=XL_NOAUTOUPDATE
+        submodules: "recursive"
     - name: Setup Nuget.exe
       uses: NuGet/setup-nuget@v1.0.5
     - name: Install dependencies
       run: nuget restore
-    - name: Build with dotnet
-      run: dotnet build ./MachinaWrapper/MachinaWrapper.csproj --configuration Release
+    - name: Build DotNet4
+      run: |
+        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+        .\MSBuild.exe $Env:GITHUB_WORKSPACE\MachinaWrapperJSON.sln /t:Build /p:Configuration=Release
     - name: Check for duplicate opcodes
       run: ./MachinaWrapper/bin/Release/MachinaWrapper.exe --Test
