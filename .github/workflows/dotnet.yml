@@ -19,7 +19,7 @@ jobs:
     - name: Build DotNet4
       run: |
         cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-        .\MSBuild.exe $Env:GITHUB_WORKSPACE\MachinaWrapperJSON.sln /t:Build /p:Configuration=Release
+        .\MSBuild.exe $Env:GITHUB_WORKSPACE\..\MachinaWrapperJSON.sln /t:Build /p:Configuration=Release
     - name: Check for duplicate opcodes
       run: ./MachinaWrapper/bin/Release/MachinaWrapper.exe --Test
     - name: Clone node-machina-ffxiv
