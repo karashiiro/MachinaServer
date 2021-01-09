@@ -245,7 +245,7 @@ namespace Sapphire.Common.Packets
         //HousingObjectInitialize = 0x0240, // updated 5.0
         //HousingInternalObjectSpawn = 0x241, // updated 5.0
 
-        //HousingWardInfo = 0x0243, // updated 5.0
+        HousingWardInfo = 0x0096, // updated 5.4 hotfix
         //HousingObjectMove = 0x0244, // updated 5.0
 
         //SharedEstateSettingsResponse = 0x0245, // updated 4.5
