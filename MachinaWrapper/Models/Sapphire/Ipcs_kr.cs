@@ -41,7 +41,7 @@ namespace Sapphire.Common.Packets
         ActorGauge = 0x014B, // updated v5.3
         ActorMove = 0x02E6, // updated v5.3
         ActorSetPos = 0x0164, // updated v5.3
-        AddStatusEffect = 0x0156, // updated v5.3
+        //AddStatusEffect = 0x0156, // updated v5.3
         AoeEffect16 = 0x03A7, // updated v5.3
         AoeEffect24 = 0x016B, // updated v5.3
         AoeEffect32 = 0x0231, // updated v5.3
