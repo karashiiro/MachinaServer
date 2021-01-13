@@ -51,6 +51,7 @@ namespace Sapphire.Common.Packets
         CFPreferredRole = 0x02B9, // updated v5.3
         //CraftEfficiencyCalculations = 0x018F, // updated v5.3
         CurrencyCrystalInfo = 0x0335, // updated v5.3
+        DesynthResult = 0x010A, // updated v5.3
         Effect = 0x0266, // updated v5.3
         EffectResult = 0x0156, // updated v5.3
         EventFinish = 0x0147, // updated v5.3
@@ -81,7 +82,7 @@ namespace Sapphire.Common.Packets
         Playtime = 0x0212, // updated v5.3
         PrepareZoning = 0x0166, // updated v5.3
         RetainerInformation = 0x01F8, // updated v5.3
-        ServerNotice = 0x01B8, // updated 5.25
+        ServerNotice = 0x01B8, // updated v5.3
         SomeDirectorUnk4 = 0x023E, // updated v5.3
         StatusEffectList = 0x0314, // updated v5.3
         UpdateClassInfo = 0x00B3, // updated v5.3
