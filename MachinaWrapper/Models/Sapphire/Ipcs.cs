@@ -278,7 +278,10 @@ namespace Sapphire.Common.Packets
         //MahjongEndRoundDraw = 0x02C5, // self explanatory
         //MahjongEndGame = 0x02C6, // finished oorasu(all-last) round; shows a result screen.
 
-
+        AirshipStatusList = 0x035C, // updated 5.41
+        AirshipExplorationResult = 0x0320, // updated 5.41
+        SubmarineStatusList = 0x02F0, // updated 5.41
+        SubmarineExplorationResult = 0x02BB, // updated 5.41
     };
 
     /**
