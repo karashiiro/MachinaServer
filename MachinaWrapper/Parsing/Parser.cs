@@ -7,19 +7,51 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using NameSizePair = System.Collections.Generic.KeyValuePair<string, int>;
 
 namespace MachinaWrapper.Parsing
 {
     public class Parser
     {
+        private class OpcodeInfo
+        {
+            [JsonProperty("name")]
+            public string Name { get; set; }
+
+            [JsonProperty("opcode")]
+            public ushort Opcode { get; set; }
+        }
+
+        private class OpcodeSublists
+        {
+            public OpcodeInfo[] ServerZoneIpcType { get; set; }
+            public OpcodeInfo[] ClientZoneIpcType { get; set; }
+            public OpcodeInfo[] ServerLobbyIpcType { get; set; }
+            public OpcodeInfo[] ClientLobbyIpcType { get; set; }
+            public OpcodeInfo[] ServerChatIpcType { get; set; }
+            public OpcodeInfo[] ClientChatIpcType { get; set; }
+        }
+
+        private class OpcodeList
+        {
+            [JsonProperty("region")]
+            public string Region { get; set; }
+
+            [JsonProperty("lists")]
+            public OpcodeSublists Lists { get; set; }
+        }
+
         public int Capacity;
         public List<NameSizePair> MessageSizes;
         public ParserMode Mode;
         public Region Region;
 
         public uint Port;
+
+        private OpcodeList[] OpcodeLists;
+        private OpcodeList ActiveOpcodeList;
 
         private readonly uint Modulator = (uint)new Random().Next(int.MinValue, int.MaxValue);
 
@@ -34,31 +66,28 @@ namespace MachinaWrapper.Parsing
             Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port)
+        public Parser(Region region, ParserMode mode, uint port) : this(region, port)
         {
-            Capacity = 50;
-            MessageSizes = new List<NameSizePair>();
             Mode = mode;
-            Region = region;
-            Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port, int capacity)
+        public Parser(Region region, ParserMode mode, uint port, int capacity) : this(region, mode, port)
         {
             Capacity = capacity;
-            MessageSizes = new List<NameSizePair>();
-            Mode = mode;
-            Region = region;
-            Port = port;
         }
 
-        public Parser(Region region, ParserMode mode, uint port, List<NameSizePair> capacities)
+        public Parser(Region region, ParserMode mode, uint port, List<NameSizePair> capacities) : this(region, mode, port)
         {
-            Capacity = 50;
             MessageSizes = capacities;
-            Mode = mode;
-            Region = region;
-            Port = port;
+        }
+
+        public async Task Initialize()
+        {
+            var rawOpcodes =
+                await http.GetStringAsync(
+                    new Uri("https://raw.githubusercontent.com/karashiiro/FFXIVOpcodes/master/opcodes.min.json"));
+            OpcodeLists = JsonConvert.DeserializeObject<OpcodeList[]>(rawOpcodes);
+            ActiveOpcodeList = OpcodeLists.FirstOrDefault(l => l.Region == Region.ToString());
         }
 
         /// <summary>
@@ -100,7 +129,7 @@ namespace MachinaWrapper.Parsing
                 ProcessIPCData(ref ipcData);
             }
 
-            ipcData.Type = ipcData.Type ?? "unknown"; // Check if the property name exists
+            ipcData.Type ??= "unknown"; // Check if the property name exists
             Util.JSify(ref ipcData.Type);
 
             switch (Mode)
@@ -210,6 +239,9 @@ namespace MachinaWrapper.Parsing
 
             var message = new StringContent(JSON.ToString(), Encoding.UTF8, "application/json");
 
+#if DEBUG
+            Console.WriteLine(JSON.ToString());
+#else
             try
             {
                 http.PostAsync("http://localhost:" + Port, message);
@@ -218,6 +250,7 @@ namespace MachinaWrapper.Parsing
             {
                 Console.Error.WriteLine(e.Message);
             }
+#endif
 
             return JSON;
         }
@@ -232,21 +265,7 @@ namespace MachinaWrapper.Parsing
             ipcData.Opcode = ipcOpcode;
             if (ipcData.Metadata.ConnectionType == "receive")
             {
-                switch (Region)
-                {
-                    // Inbound packet
-                    case Region.Global:
-                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcType), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcType), ipcOpcode);
-                        break;
-                    case Region.KR:
-                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeKR), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcTypeKR), ipcOpcode);
-                        break;
-                    case Region.CN:
-                        ipcData.Type = Enum.GetName(typeof(ServerZoneIpcTypeCN), ipcOpcode) ?? Enum.GetName(typeof(ServerChatIpcTypeCN), ipcOpcode);
-                        break;
-                    default:
-                        throw new NoRegionException("No region set!");
-                }
+                ipcData.Type = ActiveOpcodeList.Lists.ServerZoneIpcType.FirstOrDefault(oi => oi.Opcode == ipcOpcode)?.Name;
 
                 // ActorControl categories
                 if (ipcData.Type == "ActorControl" || ipcData.Type == "ActorControlSelf" || ipcData.Type == "ActorControlTarget")
@@ -259,21 +278,7 @@ namespace MachinaWrapper.Parsing
             }
             else
             {
-                switch (Region)
-                {
-                    // Outbound packet
-                    case Region.Global:
-                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcType), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcType), ipcOpcode);
-                        break;
-                    case Region.KR:
-                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeKR), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcTypeKR), ipcOpcode);
-                        break;
-                    case Region.CN:
-                        ipcData.Type = Enum.GetName(typeof(ClientZoneIpcTypeCN), ipcOpcode) ?? Enum.GetName(typeof(ClientChatIpcTypeCN), ipcOpcode);
-                        break;
-                    default:
-                        throw new NoRegionException("No region set!");
-                }
+                ipcData.Type = ActiveOpcodeList.Lists.ClientZoneIpcType.FirstOrDefault(oi => oi.Opcode == ipcOpcode)?.Name;
 
                 // ClientTrigger categories
                 if (ipcData.Type == "ClientTrigger")

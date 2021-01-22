@@ -4,6 +4,7 @@ using MachinaWrapper.Parsing;
 using System;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using Sapphire.Common.Packets;
 
 namespace MachinaWrapper
@@ -12,7 +13,7 @@ namespace MachinaWrapper
     {
         private static Parser _parser;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             // Configure the monitor with command-line arguments.
             var MonitorIndex = Array.IndexOf(args, "--MonitorType");
@@ -116,6 +117,8 @@ namespace MachinaWrapper
             {
                 _parser = new Parser(localRegion, ParserMode.RAMHeavy, port);
             }
+
+            await _parser.Initialize();
         }
 
         /// <summary>
@@ -124,7 +127,7 @@ namespace MachinaWrapper
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
             var meta = new Packet(connection, "receive", epoch, data);
-            _parser.Parse(meta);
+            _parser?.Parse(meta);
         }
 
         /// <summary>
@@ -133,7 +136,7 @@ namespace MachinaWrapper
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
             var meta = new Packet(connection, "send", epoch, data);
-            _parser.Parse(meta);
+            _parser?.Parse(meta);
         }
 
         private static void ValidateOpcodes()
