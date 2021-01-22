@@ -106,10 +106,9 @@ namespace Sapphire.Common.Packets
         MarketBoardItemListingCount = 0x023D, // updated 5.41
         MarketBoardItemListingHistory = 0x031D, // updated 5.41
         MarketBoardItemListing = 0x02B3, // updated 5.41
-        MarketTaxRates = 0x0136, // updated 5.41
 
+        ResultDialog = 0x0136, // updated 5.41
         DesynthResult = 0x0262, // updated 5.41
-        //ReductionResult = 0x0136, // updated 5.41
 
         //CharaFreeCompanyTag = 0x8f, // updated 5.41
         //FreeCompanyBoardMsg = 0x100, // updated 5.41
