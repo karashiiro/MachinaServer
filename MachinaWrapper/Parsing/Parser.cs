@@ -85,7 +85,7 @@ namespace MachinaWrapper.Parsing
         {
             var rawOpcodes =
                 await http.GetStringAsync(
-                    new Uri("https://raw.githubusercontent.com/karashiiro/FFXIVOpcodes/master/opcodes.min.json"));
+                    new Uri("https://cdn.jsdelivr.net/gh/karashiiro/FFXIVOpcodes/opcodes.min.json"));
             OpcodeLists = JsonConvert.DeserializeObject<OpcodeList[]>(rawOpcodes);
             ActiveOpcodeList = OpcodeLists.FirstOrDefault(l => l.Region == Region.ToString());
         }
