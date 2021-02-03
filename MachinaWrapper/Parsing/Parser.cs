@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,9 +84,22 @@ namespace MachinaWrapper.Parsing
 
         public async Task Initialize()
         {
-            var rawOpcodes =
-                await http.GetStringAsync(
+            string rawOpcodes;
+            try
+            {
+                rawOpcodes = await http.GetStringAsync(
                     new Uri("https://cdn.jsdelivr.net/gh/karashiiro/FFXIVOpcodes@latest/opcodes.min.json"));
+            }
+            catch (Exception e)
+            {
+                if (e is HttpRequestException || e is WebException)
+                {
+                    await Console.Error.WriteLineAsync(e.Message);
+                    rawOpcodes = await http.GetStringAsync(
+                        new Uri("https://raw.githubusercontent.com/karashiiro/FFXIVOpcodes/master/opcodes.min.json"));
+                }
+                else throw;
+            }
             OpcodeLists = JsonConvert.DeserializeObject<OpcodeList[]>(rawOpcodes);
             ActiveOpcodeList = OpcodeLists.FirstOrDefault(l => l.Region == Region.ToString());
         }
