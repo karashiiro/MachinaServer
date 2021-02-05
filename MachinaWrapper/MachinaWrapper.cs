@@ -1,17 +1,17 @@
 ﻿using Machina;
-using MachinaWrapper.Common;
-using MachinaWrapper.Parsing;
 using System;
-using System.Configuration;
-using System.Linq;
+using MachinaWrapper.Common;
 using System.Threading.Tasks;
-using Sapphire.Common.Packets;
+using System.Net.Http;
+using System.Text;
 
 namespace MachinaWrapper
 {
     public static class MachinaWrapper
     {
-        private static Parser _parser;
+
+        private static uint Port = 13346U;
+        private static readonly HttpClient http = new HttpClient();
 
         public static async Task Main(string[] args)
         {
@@ -23,16 +23,9 @@ namespace MachinaWrapper
             var PortIndex = Array.IndexOf(args, "--Port");
             var TestIndex = Array.IndexOf(args, "--Test");
 
-            if (TestIndex != -1)
-            {
-                ValidateOpcodes();
-                return;
-            }
-
-            var port = 13346U;
             if (PortIndex != -1)
             {
-                port = uint.Parse(args[PortIndex + 1]);
+                Port = uint.Parse(args[PortIndex + 1]);
             }
 
             var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
@@ -96,29 +89,6 @@ namespace MachinaWrapper
                 catch (NullReferenceException) { }
             });
             commander.Start();
-
-            /*var server = new WebSocketServer(int.Parse(args[PortIndex + 1]));
-            server.AddWebSocketService("/", () => ParseServer.Create(commander));
-            server.Start();*/
-
-            // Create the parser.
-            var ParseAlgorithmIndex = Array.IndexOf(args, "--ParseAlgorithm");
-            if (ParseAlgorithmIndex != -1)
-            {
-                _parser = args[ParseAlgorithmIndex + 1] switch
-                {
-                    "RAMHeavy" => new Parser(localRegion, ParserMode.RAMHeavy, port),
-                    "CPUHeavy" => new Parser(localRegion, ParserMode.CPUHeavy, port),
-                    "PacketSpecific" => new Parser(localRegion, ParserMode.PacketSpecific, port),
-                    _ => new Parser(localRegion, ParserMode.RAMHeavy, port),
-                };
-            }
-            else
-            {
-                _parser = new Parser(localRegion, ParserMode.RAMHeavy, port);
-            }
-
-            await _parser.Initialize();
         }
 
         /// <summary>
@@ -126,8 +96,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
-            var meta = new Packet(connection, "receive", epoch, data);
-            _parser?.Parse(meta);
+            SendViaHttp('S', data);
         }
 
         /// <summary>
@@ -135,27 +104,15 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
-            var meta = new Packet(connection, "send", epoch, data);
-            _parser?.Parse(meta);
+            SendViaHttp('C', data);
         }
 
-        private static void ValidateOpcodes()
+        private static void SendViaHttp(char origin, byte[] data)
         {
-            var globalIpcLists = new[] { typeof(ClientChatIpcType), typeof(ServerChatIpcType), typeof(ClientLobbyIpcType), typeof(ServerLobbyIpcType), typeof(ClientZoneIpcType), typeof(ServerZoneIpcType) };
-            var cnIpcLists = new[] { typeof(ClientChatIpcTypeCN), typeof(ServerChatIpcTypeCN), typeof(ClientZoneIpcTypeCN), typeof(ServerZoneIpcTypeCN) };
-            var krIpcLists = new[] { typeof(ClientChatIpcTypeKR), typeof(ServerChatIpcTypeKR), typeof(ClientLobbyIpcTypeKR), typeof(ServerLobbyIpcTypeKR), typeof(ClientZoneIpcTypeKR), typeof(ServerZoneIpcTypeKR) };
-            var ipcLists = new[] { globalIpcLists, cnIpcLists, krIpcLists};
-
-            foreach (var ipcList in ipcLists)
-            {
-                foreach (var ipcType in ipcList)
-                {
-                    var ipcValues = (ushort[])Enum.GetValues(ipcType);
-                    if (ipcValues.Distinct().Count() != ipcValues.Length)
-                        throw new ConfigurationErrorsException(
-                            $"{ipcType.Name} contains one or more duplicate values!");
-                }
-            }
+            var bufferString = Encoding.UTF8.GetString(data, 0, data.Length);
+            var messageWithOrigin = new StringBuilder().Append(origin).Append(bufferString);
+            var message = new StringContent(messageWithOrigin.ToString(), Encoding.UTF8, "application/text");
+            http.PostAsync("http://localhost:" + Port, message);
         }
     }
 }

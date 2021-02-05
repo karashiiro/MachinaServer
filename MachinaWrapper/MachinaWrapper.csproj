@@ -79,16 +79,8 @@
     <Compile Include="Commander.cs" />
     <Compile Include="FFXIVNetworkMonitor.cs" />
     <Compile Include="MachinaWrapper.cs" />
-    <Compile Include="Models\MachinaWrapper\Common.cs" />
-    <Compile Include="Models\Sapphire\Common.cs" />
-    <Compile Include="Models\Sapphire\CommonActorControl.cs" />
-    <Compile Include="Models\MachinaWrapper\Packet.cs" />
-    <Compile Include="Models\Sapphire\Ipcs_cn.cs" />
-    <Compile Include="Models\Sapphire\Ipcs.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Sapphire\Ipcs_kr.cs" />
-    <Compile Include="Parsing\Parser.cs" />
-    <Compile Include="Parsing\ParserMode.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -118,5 +110,6 @@
       <Name>Machina</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
