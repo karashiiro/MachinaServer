@@ -1,2 +1,3 @@
-# MachinaWrapperJSON
-The JSON wrapper the Node package uses.
+# MachinaWrapper
+
+A simple Machina wrapper to send segments to an http server for easy IPC.
