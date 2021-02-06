@@ -11,9 +11,9 @@ namespace MachinaWrapper
     {
 
         private static uint Port = 13346U;
-        private static readonly HttpClient http = new HttpClient();
+        private static readonly HttpClient Http = new HttpClient();
 
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             // Configure the monitor with command-line arguments.
             var MonitorIndex = Array.IndexOf(args, "--MonitorType");
@@ -21,7 +21,6 @@ namespace MachinaWrapper
             var IPIndex = Array.IndexOf(args, "--LocalIP");
             var RegionIndex = Array.IndexOf(args, "--Region");
             var PortIndex = Array.IndexOf(args, "--Port");
-            var TestIndex = Array.IndexOf(args, "--Test");
 
             if (PortIndex != -1)
             {
@@ -96,7 +95,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
-            SendViaHttp('S', data);
+            SendViaHttp(MessageSource.Server, data);
         }
 
         /// <summary>
@@ -104,27 +103,26 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
-            SendViaHttp('C', data);
+            SendViaHttp(MessageSource.Client, data);
         }
 
-        private static void SendViaHttp(char origin, byte[] data)
+        private static async Task PostAsync(string requestUri, byte[] content)
         {
-            byte[] content = new byte[data.Length + 1];
-            switch (origin)
+            using var message = new ByteArrayContent(content);
+            await Http.PostAsync(requestUri, message);
+        }
+
+        private static void SendViaHttp(MessageSource origin, byte[] data)
+        {
+            var content = new byte[data.Length + 1];
+            content[0] = origin switch
             {
-                case 'C':
-                    content[0] = 0x01;
-                    break;
-                case 'S':
-                    content[0] = 0x02;
-                    break;
-                default:
-                    content[0] = 0x00;
-                    break;
-            }
+                MessageSource.Client => 0x01,
+                MessageSource.Server => 0x02,
+                _ => 0x00,
+            };
             Array.Copy(data, 0, content, 1, data.Length);
-            var message = new ByteArrayContent(content);
-            http.PostAsync("http://localhost:" + Port, message);
+            Task.Run(() => PostAsync("http://localhost:" + Port, content));
         }
     }
 }

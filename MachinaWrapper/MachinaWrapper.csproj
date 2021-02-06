@@ -76,6 +76,7 @@
     <Compile Include="Commander.cs" />
     <Compile Include="FFXIVNetworkMonitor.cs" />
     <Compile Include="MachinaWrapper.cs" />
+    <Compile Include="MessageSource.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
