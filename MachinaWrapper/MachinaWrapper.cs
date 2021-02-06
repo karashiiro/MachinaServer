@@ -28,7 +28,7 @@ namespace MachinaWrapper
                 Port = uint.Parse(args[PortIndex + 1]);
             }
 
-            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
@@ -109,9 +109,21 @@ namespace MachinaWrapper
 
         private static void SendViaHttp(char origin, byte[] data)
         {
-            var bufferString = Encoding.UTF8.GetString(data, 0, data.Length);
-            var messageWithOrigin = new StringBuilder().Append(origin).Append(bufferString);
-            var message = new StringContent(messageWithOrigin.ToString(), Encoding.UTF8, "application/text");
+            byte[] content = new byte[data.Length + 1];
+            switch (origin)
+            {
+                case 'C':
+                    content[0] = 0x01;
+                    break;
+                case 'S':
+                    content[0] = 0x02;
+                    break;
+                default:
+                    content[0] = 0x00;
+                    break;
+            }
+            Array.Copy(data, 0, content, 1, data.Length);
+            var message = new ByteArrayContent(content);
             http.PostAsync("http://localhost:" + Port, message);
         }
     }
