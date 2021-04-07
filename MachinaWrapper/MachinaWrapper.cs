@@ -28,7 +28,7 @@ namespace MachinaWrapper
                 Port = uint.Parse(args[PortIndex + 1]);
             }
 
-            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
+            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
