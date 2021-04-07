@@ -28,7 +28,7 @@ namespace MachinaWrapper
                 Port = uint.Parse(args[PortIndex + 1]);
             }
 
-            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
@@ -123,7 +123,6 @@ namespace MachinaWrapper
                 _ => 0x00,
             };
             var packetIndexBuffer = BitConverter.GetBytes(CurrentPacketIndex);
-            Array.Reverse(packetIndexBuffer);
             Array.Copy(packetIndexBuffer, 0, content, 1, packetIndexBuffer.Length);
             Array.Copy(data, 0, content, 9, data.Length);
             CurrentPacketIndex++;
