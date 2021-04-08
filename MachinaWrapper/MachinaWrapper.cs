@@ -1,11 +1,6 @@
 ﻿using Machina;
 using System;
 using MachinaWrapper.Common;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Collections.Concurrent;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MachinaWrapper
 {
@@ -13,10 +8,8 @@ namespace MachinaWrapper
     {
 
         private static uint Port = 13346U;
-        private static readonly HttpClient Http = new HttpClient();
         private static ulong CurrentPacketIndex = 0U;
-        private static ConcurrentQueue<ByteArrayContent> MessageQueue = new ConcurrentQueue<ByteArrayContent>();
-        private static bool Running = true;
+        private static PacketDispatcher PacketDispatcher;
 
         public static void Main(string[] args)
         {
@@ -71,14 +64,20 @@ namespace MachinaWrapper
                 MessageSent = MessageSent,
             };
 
+            PacketDispatcher = new PacketDispatcher("http://localhost:" + Port);
+
             var commander = new Commander("kill");
-            commander.AddCommand("start", monitor.Start);
+            commander.AddCommand("start", () =>
+            {
+                PacketDispatcher.Start();
+                monitor.Start();
+            });
             commander.AddCommand("stop", () =>
             {
                 try
                 {
                     monitor.Stop();
-                    Running = false;
+                    PacketDispatcher.Cancel();
                 }
                 catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
                 {
@@ -90,26 +89,11 @@ namespace MachinaWrapper
                 try
                 {
                     monitor.Stop();
-                    Running = false;
+                    PacketDispatcher.Cancel();
                 }
                 catch (NullReferenceException) { }
             });
             commander.Start();
-
-            Thread queueConsumer = new Thread(new ThreadStart(QueueConsumer));
-            queueConsumer.Start();
-        }
-
-        private static void QueueConsumer()
-        {
-            while (Running)
-            {
-                ByteArrayContent content;
-                if (MessageQueue.TryDequeue(out content))
-                {
-                    Task.Run(() => Http.PostAsync("http://localhost:" + Port, content)).Wait();
-                }
-            }
         }
 
         /// <summary>
@@ -141,7 +125,7 @@ namespace MachinaWrapper
             Array.Copy(packetIndexBuffer, 0, content, 1, packetIndexBuffer.Length);
             Array.Copy(data, 0, content, 9, data.Length);
             CurrentPacketIndex++;
-            MessageQueue.Enqueue(new ByteArrayContent(content));
+            PacketDispatcher.EnqueuePacket(content);
         }
     }
 }
