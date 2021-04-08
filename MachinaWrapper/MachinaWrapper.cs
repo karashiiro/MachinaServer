@@ -3,7 +3,9 @@ using System;
 using MachinaWrapper.Common;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Text;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MachinaWrapper
 {
@@ -13,6 +15,8 @@ namespace MachinaWrapper
         private static uint Port = 13346U;
         private static readonly HttpClient Http = new HttpClient();
         private static ulong CurrentPacketIndex = 0U;
+        private static ConcurrentQueue<ByteArrayContent> MessageQueue = new ConcurrentQueue<ByteArrayContent>();
+        private static bool Running = true;
 
         public static void Main(string[] args)
         {
@@ -28,7 +32,7 @@ namespace MachinaWrapper
                 Port = uint.Parse(args[PortIndex + 1]);
             }
 
-            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
                 MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
@@ -74,6 +78,7 @@ namespace MachinaWrapper
                 try
                 {
                     monitor.Stop();
+                    Running = false;
                 }
                 catch (NullReferenceException nre) // _monitor is null, and it's a private member of monitor so I can't check if it exists beforehand.
                 {
@@ -85,10 +90,26 @@ namespace MachinaWrapper
                 try
                 {
                     monitor.Stop();
+                    Running = false;
                 }
                 catch (NullReferenceException) { }
             });
             commander.Start();
+
+            Thread queueConsumer = new Thread(new ThreadStart(QueueConsumer));
+            queueConsumer.Start();
+        }
+
+        private static void QueueConsumer()
+        {
+            while (Running)
+            {
+                ByteArrayContent content;
+                if (MessageQueue.TryDequeue(out content))
+                {
+                    Task.Run(() => Http.PostAsync("http://localhost:" + Port, content)).Wait();
+                }
+            }
         }
 
         /// <summary>
@@ -107,12 +128,6 @@ namespace MachinaWrapper
             SendViaHttp(MessageSource.Client, data);
         }
 
-        private static async Task PostAsync(string requestUri, byte[] content)
-        {
-            using var message = new ByteArrayContent(content);
-            await Http.PostAsync(requestUri, message);
-        }
-
         private static void SendViaHttp(MessageSource origin, byte[] data)
         {
             var content = new byte[data.Length + 1 + 8];
@@ -126,7 +141,7 @@ namespace MachinaWrapper
             Array.Copy(packetIndexBuffer, 0, content, 1, packetIndexBuffer.Length);
             Array.Copy(data, 0, content, 9, data.Length);
             CurrentPacketIndex++;
-            Task.Run(() => PostAsync("http://localhost:" + Port, content));
+            MessageQueue.Enqueue(new ByteArrayContent(content));
         }
     }
 }
