@@ -2,6 +2,7 @@
 using System;
 using MachinaWrapper.Common;
 
+
 namespace MachinaWrapper
 {
     public static class MachinaWrapper
@@ -101,7 +102,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageReceived(string connection, long epoch, byte[] data)
         {
-            SendViaHttp(MessageSource.Server, data);
+            PacketDispatcher.EnqueuePacket(MessageSource.Server, data);
         }
 
         /// <summary>
@@ -109,23 +110,7 @@ namespace MachinaWrapper
         /// </summary>
         private static void MessageSent(string connection, long epoch, byte[] data)
         {
-            SendViaHttp(MessageSource.Client, data);
-        }
-
-        private static void SendViaHttp(MessageSource origin, byte[] data)
-        {
-            var content = new byte[data.Length + 1 + 8];
-            content[0] = origin switch
-            {
-                MessageSource.Client => 0x01,
-                MessageSource.Server => 0x02,
-                _ => 0x00,
-            };
-            var packetIndexBuffer = BitConverter.GetBytes(CurrentPacketIndex);
-            Array.Copy(packetIndexBuffer, 0, content, 1, packetIndexBuffer.Length);
-            Array.Copy(data, 0, content, 9, data.Length);
-            CurrentPacketIndex++;
-            PacketDispatcher.EnqueuePacket(content);
+            PacketDispatcher.EnqueuePacket(MessageSource.Client, data);
         }
     }
 }
