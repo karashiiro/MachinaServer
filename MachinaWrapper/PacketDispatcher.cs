@@ -67,8 +67,10 @@ namespace MachinaWrapper
                     using var message = new ByteArrayContent(sendPacket);
                     await this.http.PostAsync(this.requestUri, message);
                 }
-
-                Thread.Yield();
+                else
+                {
+                    Thread.Sleep(1);
+                }
             }
         }
     }
