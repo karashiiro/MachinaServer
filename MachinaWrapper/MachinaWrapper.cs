@@ -1,5 +1,7 @@
 ﻿using Machina;
 using System;
+using System.Net;
+using Machina.Infrastructure;
 using MachinaWrapper.Common;
 
 
@@ -26,10 +28,10 @@ namespace MachinaWrapper
                 Port = uint.Parse(args[PortIndex + 1]);
             }
 
-            var MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            var MonitorType = NetworkMonitorType.RawSocket;
             if (MonitorIndex != -1 && args[MonitorIndex + 1] == "WinPCap")
             {
-                MonitorType = TCPNetworkMonitor.NetworkMonitorType.WinPCap;
+                MonitorType = NetworkMonitorType.WinPCap;
             }
 
             var localRegion = Region.Global;
@@ -59,10 +61,10 @@ namespace MachinaWrapper
                 MonitorType = MonitorType,
                 Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
-                LocalIP = IPIndex != -1 ? args[IPIndex + 1] : "",
-                UseSocketFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
-                MessageReceived = MessageReceived,
-                MessageSent = MessageSent,
+                LocalIP = IPIndex != -1 ? IPAddress.Parse(args[IPIndex + 1]) : IPAddress.None,
+                UseRemoteIpFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
+                MessageReceivedEventHandler = MessageReceived,
+                MessageSentEventHandler = MessageSent,
             };
 
             PacketDispatcher = new PacketDispatcher("http://localhost:" + Port);
@@ -100,7 +102,7 @@ namespace MachinaWrapper
         /// <summary>
         /// Executes on message receipt.
         /// </summary>
-        private static void MessageReceived(string connection, long epoch, byte[] data)
+        private static void MessageReceived(TCPConnection connection, long epoch, byte[] data)
         {
             PacketDispatcher.EnqueuePacket(MessageSource.Server, data);
         }
@@ -108,7 +110,7 @@ namespace MachinaWrapper
         /// <summary>
         /// Executes on message send.
         /// </summary>
-        private static void MessageSent(string connection, long epoch, byte[] data)
+        private static void MessageSent(TCPConnection connection, long epoch, byte[] data)
         {
             PacketDispatcher.EnqueuePacket(MessageSource.Client, data);
         }
