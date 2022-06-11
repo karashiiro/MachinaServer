@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using Machina.FFXIV;
 using Machina.Infrastructure;
 using MachinaWrapper.Common;
@@ -59,8 +60,10 @@ namespace MachinaWrapper
                 }
             }
             
-            var windowName = localRegion == Region.CN ? "最终幻想XIV" : "FINAL FANTASY XIV";
-            var gamePath = Process.GetProcesses().FirstOrDefault(p => p.MainWindowTitle == windowName)?.MainModule?.FileName;
+            var window = FindWindow("FFXIVGAME", null);
+            GetWindowThreadProcessId(window, out var pid);
+            var proc = Process.GetProcessById(Convert.ToInt32(pid));
+            var gamePath = proc.MainModule?.FileName;
 
             var monitor = new FFXIVNetworkMonitor
             {
@@ -70,10 +73,10 @@ namespace MachinaWrapper
                 UseRemoteIpFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
                 MessageReceivedEventHandler = MessageReceived,
                 MessageSentEventHandler = MessageSent,
-                WindowName = windowName,
+                WindowName = localRegion == Region.CN ? "最终幻想XIV" : "FINAL FANTASY XIV",
             };
 
-            if (!string.IsNullOrEmpty(gamePath) && gamePath.EndsWith("ffxiv_dx11.exe"))
+            if (!string.IsNullOrEmpty(gamePath))
             {
                 monitor.FFXIVDX11ExecutablePath = gamePath;
             }
@@ -125,5 +128,11 @@ namespace MachinaWrapper
         {
             PacketDispatcher.EnqueuePacket(MessageSource.Client, data);
         }
+        
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        
+        [DllImport("user32.dll", SetLastError=true)]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
     }
 }
