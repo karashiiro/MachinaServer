@@ -1,5 +1,7 @@
 ﻿using Machina;
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using Machina.FFXIV;
 using Machina.Infrastructure;
@@ -56,6 +58,9 @@ namespace MachinaWrapper
                     localRegion = Region.CN;
                 }
             }
+            
+            var windowName = localRegion == Region.CN ? "最终幻想XIV" : "FINAL FANTASY XIV";
+            var gamePath = Process.GetProcesses().FirstOrDefault(p => p.MainWindowTitle == windowName)?.MainModule?.FileName;
 
             var monitor = new FFXIVNetworkMonitor
             {
@@ -65,8 +70,13 @@ namespace MachinaWrapper
                 UseRemoteIpFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
                 MessageReceivedEventHandler = MessageReceived,
                 MessageSentEventHandler = MessageSent,
-                WindowName = localRegion == Region.CN ? "最终幻想XIV" : "FINAL FANTASY XIV",
+                WindowName = windowName,
             };
+
+            if (gamePath.EndsWith("ffxiv_dx11.exe"))
+            {
+                monitor.FFXIVDX11ExecutablePath = gamePath;
+            }
 
             PacketDispatcher = new PacketDispatcher("http://localhost:" + Port);
 
