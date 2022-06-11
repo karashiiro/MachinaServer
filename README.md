@@ -1,3 +1,3 @@
-# MachinaWrapper
+# MachinaServer
 
-A simple Machina wrapper to send segments to an http server for easy IPC.
+A simple Machina wrapper to send segments to an HTTP server for easy IPC.
