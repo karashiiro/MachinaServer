@@ -2,7 +2,7 @@ name: Build and push to node-machina-ffxiv
 
 on:
   push:
-    branches: [ master ]
+    branches: [ node-machina ]
 
 jobs:
   build:
