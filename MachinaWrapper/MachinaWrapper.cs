@@ -1,6 +1,7 @@
 ﻿using Machina;
 using System;
 using System.Net;
+using Machina.FFXIV;
 using Machina.Infrastructure;
 using MachinaWrapper.Common;
 
@@ -59,12 +60,12 @@ namespace MachinaWrapper
             var monitor = new FFXIVNetworkMonitor
             {
                 MonitorType = MonitorType,
-                Region = localRegion,
                 ProcessID = PIDIndex != -1 ? uint.Parse(args[PIDIndex + 1]) : 0,
                 LocalIP = IPIndex != -1 ? IPAddress.Parse(args[IPIndex + 1]) : IPAddress.None,
                 UseRemoteIpFilter = Array.IndexOf(args, "--UseSocketFilter") != -1,
                 MessageReceivedEventHandler = MessageReceived,
                 MessageSentEventHandler = MessageSent,
+                WindowName = localRegion == Region.CN ? "最终幻想XIV" : "FINAL FANTASY XIV",
             };
 
             PacketDispatcher = new PacketDispatcher("http://localhost:" + Port);
