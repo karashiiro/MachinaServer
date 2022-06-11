@@ -73,7 +73,7 @@ namespace MachinaWrapper
                 WindowName = windowName,
             };
 
-            if (gamePath.EndsWith("ffxiv_dx11.exe"))
+            if (!string.IsNullOrEmpty(gamePath) && gamePath.EndsWith("ffxiv_dx11.exe"))
             {
                 monitor.FFXIVDX11ExecutablePath = gamePath;
             }
