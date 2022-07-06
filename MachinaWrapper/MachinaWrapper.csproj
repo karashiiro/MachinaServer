@@ -62,12 +62,6 @@
     <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machina, Version=2.3.1.0, Culture=neutral, PublicKeyToken=9f740ac505d6bc50, processorArchitecture=MSIL">
-      <HintPath>..\packages\Machina.2.3.1\lib\netstandard2.0\Machina.dll</HintPath>
-    </Reference>
-    <Reference Include="Machina.FFXIV, Version=2.3.3.9, Culture=neutral, PublicKeyToken=9f740ac505d6bc50, processorArchitecture=MSIL">
-      <HintPath>..\packages\Machina.FFXIV.2.3.3.9\lib\netstandard2.0\Machina.FFXIV.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -90,7 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.manifest" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

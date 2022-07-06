@@ -78,7 +78,7 @@ namespace MachinaWrapper
 
             if (!string.IsNullOrEmpty(gamePath))
             {
-                monitor.FFXIVDX11ExecutablePath = gamePath;
+                monitor.OodlePath = gamePath;
             }
 
             PacketDispatcher = new PacketDispatcher("http://localhost:" + Port);
