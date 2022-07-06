@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net461</TargetFramework>
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
@@ -14,10 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\machina\Machina.FFXIV\Machina.FFXIV.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties" />
   </ItemGroup>
 
 </Project>
