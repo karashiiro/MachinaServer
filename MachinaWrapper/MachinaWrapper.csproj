@@ -6,6 +6,11 @@
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
     <PathMap>$(AppOutputBase)=K:\arashiiro\</PathMap>
