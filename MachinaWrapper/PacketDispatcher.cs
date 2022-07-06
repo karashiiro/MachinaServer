@@ -8,14 +8,14 @@ namespace MachinaWrapper
     internal sealed class PacketDispatcher
     {
         private readonly string requestUri;
-        private readonly HttpClient http = new HttpClient();
+        private readonly HttpClient http = new();
 
-        private readonly ConcurrentQueue<byte[]> packetQueue = new ConcurrentQueue<byte[]>();
+        private readonly ConcurrentQueue<byte[]> packetQueue = new();
 
-        private ulong packetCnt = 0;
-        private readonly object cntLock = new object();
+        private ulong packetCount = 0;
+        private readonly object countLock = new();
 
-        private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource cancellationTokenSource = new();
         private Thread thread;
 
         public PacketDispatcher(string requestUri)
@@ -25,7 +25,7 @@ namespace MachinaWrapper
 
         public void EnqueuePacket(MessageSource origin, byte[] data)
         {
-            lock (this.cntLock)
+            lock (this.countLock)
             {
                 var content = new byte[data.Length + 1 + 8];
 
@@ -36,11 +36,11 @@ namespace MachinaWrapper
                     _ => 0x00,
                 };
 
-                var packetIndexBuffer = BitConverter.GetBytes(this.packetCnt);
+                var packetIndexBuffer = BitConverter.GetBytes(this.packetCount);
                 Array.Copy(packetIndexBuffer, 0, content, 1, packetIndexBuffer.Length);
                 Array.Copy(data, 0, content, 9, data.Length);
 
-                this.packetCnt++;
+                this.packetCount++;
 
                 this.packetQueue.Enqueue(content);
             }
